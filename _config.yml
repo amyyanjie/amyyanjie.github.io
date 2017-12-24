@@ -56,8 +56,17 @@ index_generator:
 default_category: uncategorized
 category_map:
    随笔: Essay
+   算法和数据结构: Algorithms
 tag_map:
    随笔: Essay
+   Java基础: Java-Foundation
+   集合: Collection
+   IO流: IOStream
+   二叉树: BinaryTree
+   树: Tree
+   字节流、字符流: ByteCharStream
+   异常: Exception
+   Collection、Collecions: Collection-Collecions
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date

@@ -5,7 +5,7 @@ date: 2017-10-15 12:54:51
 tags: Java基础
 categories: Java
 ---
-
+本篇博文包含以下内容：
 
 - [x] int 和 Integer 哪个会占用更多的内存？ int 和 Integer 有什么区别？相等吗？
 
@@ -13,7 +13,7 @@ categories: Java
 Integer对象会占用更多的内存。Integer是一个对象，需要存储对象的元数据。但是int是一个原始类型的数据，所以占用的空间更少。
 
 ## int和Integer的更多区别：
-除了上述通用的[基本数据类型与包装类的区别]()之外,还有以下方面的比较：
+除了之前写的通用的[基本数据类型与包装类的区别](https://amyyanjie.github.io/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/)之外,还有以下方面的比较：
 
 (注：对于引用类型变量，==操作符比较的是两个引用是否指向同一个对象；对于基本类型变量，==操作符比较的是两个变量的值是否相等。)
 
@@ -51,9 +51,8 @@ public class Test {
 ```
 因为非new生成的Integer变量指向的是java常量池中的对象，而new Integer()生成的变量指向堆中新建的对象，两者在内存中的地址不同。所以  输出为false。
 
-<!--more-->
 
-### 3.两个非new生成的Integer对象进行比较，如果两个变量的值在区间[-128,127]之间，比较结果为true；否则，结果为false。**
+### 3.两个非new生成的Integer对象进行比较，如果两个变量的值在区间[-128,127]之间，比较结果为true；否则，结果为false。
 ```
 /**
  * 比较两个非new生成的Integer变量
@@ -142,6 +141,6 @@ public class Test {
 包装类Integer变量在与基本数据类型int变量比较时，Integer会自动拆包装为int，然后进行比较，实际上就是两个int变量进行比较，值相等，所以为true。
 
 ## 参考资料：
->[Integer与int的种种比较你知道多少?](https://www.cnblogs.com/liuling/archive/2013/05/05/intAndInteger.html)
+* [Integer与int的种种比较你知道多少?](https://www.cnblogs.com/liuling/archive/2013/05/05/intAndInteger.html)
 
->[java面试题之int和integer的区别](https://www.cnblogs.com/guodongdidi/p/6953217.html)
+* [java面试题之int和integer的区别](https://www.cnblogs.com/guodongdidi/p/6953217.html)
