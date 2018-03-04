@@ -140,6 +140,9 @@ public class Test {
 ```
 包装类Integer变量在与基本数据类型int变量比较时，Integer会自动拆包装为int，然后进行比较，实际上就是两个int变量进行比较，值相等，所以为true。
 
+## 推荐：
+* [Java大型互联网公司经典面试题，论JDK源码的重要性的无限思考](https://mp.weixin.qq.com/s/xf1USfUFBGYZZB68gbFHqg)
+
 ## 参考资料：
 * [Integer与int的种种比较你知道多少?](https://www.cnblogs.com/liuling/archive/2013/05/05/intAndInteger.html)
 

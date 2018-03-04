@@ -238,7 +238,7 @@ for (int i = 0; i < list.size(); i++) {
 (2)多态上：  
 
 &emsp; for和foreach都需要先知道集合的类型，甚至是集合内元素的类型，不能实现多态。  
-&emsp; iterator是个借口类型，不需要关心所遍历的序列的类型，能够将遍历序列的操作与序列底层的结构分离。迭代器统一了对容器的访问方式。
+&emsp; iterator是个接口类型，不需要关心所遍历的序列的类型，能够将遍历序列的操作与序列底层的结构分离。迭代器统一了对容器的访问方式。
 
 (3)用法上：
 
@@ -251,7 +251,7 @@ for (int i = 0; i < list.size(); i++) {
 **总结起来，就是for需要知道大小；foreach需要知道类型；iterator既不需要知道大小，也不需要知道类型。**
 
 ## 相关推荐：
-[ArrayList扩容分析](http://www.jianshu.com/p/38e3d67bcc26)
+[ArrayList扩容分析](https://amyyanjie.github.io/2017/10/30/ArrayList-dilatancy-analysis/)
 
 ## 参考资料：
 * [Java中ArrayLIst类详解](http://blog.csdn.net/lskyne/article/details/8966657)

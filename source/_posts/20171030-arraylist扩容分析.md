@@ -2,8 +2,8 @@
 title: ArrayList扩容分析
 english_title: ArrayList-dilatancy-analysis
 date: 2017-10-30 22:36:34
-tags: Java
-categories: Java基础
+tags: [ArrayList, 集合]
+categories: Java
 ---
 
 ArrayList可以实现容量的自适应的增加(As elements are added to an ArrayList,
@@ -185,8 +185,7 @@ private void grow(int minCapacity) {
             //若MAX_ARRAY_SIZE大，将MAX_ARRAY_SIZE作为新数组的大小
     }
 ```
----------
----------
+
 所以，像ArrayList添加对象时，在确定好新数组的大小后，会调用**Arrays.copyOf()方法**，以适当长度(newCapacity)**新建**一个原数组的拷贝，并修改原数组，指向这个新建数组。java垃圾回收机制会自动回收原数组。这样会消耗一定的资源。
 
 因此，在初始化ArrayList时，最好可以估算一个初始大小。
