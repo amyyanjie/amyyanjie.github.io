@@ -1,0 +1,1081 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="google-site-verification" content="hOzwzcL7Td1p_evvLmRBasbQKy5-i5AgJwNLD2vHKJ8">
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="集合,ArrayList,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="ArrayList介绍以下是ArrayList源码的介绍： 12345678910111213/** * Resizable-array implementation of the &amp;lt;tt&amp;gt;List&amp;lt;/tt&amp;gt; interface.  Implements * all optional list operations, and permits all elements, in">
+<meta name="keywords" content="集合,ArrayList">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArrayList类详解与遍历方式">
+<meta property="og:url" content="http://yoursite.com/2017/12/10/Analysis-of-ArrayList-Class-and-its-traversal-Mode/index.html">
+<meta property="og:site_name" content="Amy&#39;s Blog">
+<meta property="og:description" content="ArrayList介绍以下是ArrayList源码的介绍： 12345678910111213/** * Resizable-array implementation of the &amp;lt;tt&amp;gt;List&amp;lt;/tt&amp;gt; interface.  Implements * all optional list operations, and permits all elements, in">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://files.jb51.net/file_images/article/201311/20131105100548.jpg?201310510715">
+<meta property="og:updated_time" content="2019-08-02T03:27:06.529Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ArrayList类详解与遍历方式">
+<meta name="twitter:description" content="ArrayList介绍以下是ArrayList源码的介绍： 12345678910111213/** * Resizable-array implementation of the &amp;lt;tt&amp;gt;List&amp;lt;/tt&amp;gt; interface.  Implements * all optional list operations, and permits all elements, in">
+<meta name="twitter:image" content="http://files.jb51.net/file_images/article/201311/20131105100548.jpg?201310510715">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键字","hits_empty":"没有找到与 ${query} 相关的内容","hits_stats":"${hits}条相关记录，共耗时${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/10/Analysis-of-ArrayList-Class-and-its-traversal-Mode/">
+
+
+
+
+
+  <title>ArrayList类详解与遍历方式 | Amy's Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Amy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">这是副标题</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/10/Analysis-of-ArrayList-Class-and-its-traversal-Mode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">ArrayList类详解与遍历方式</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-10T00:10:04+08:00">
+                2017-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/10/Analysis-of-ArrayList-Class-and-its-traversal-Mode/" class="leancloud_visitors" data-flag-title="ArrayList类详解与遍历方式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="ArrayList介绍"><a href="#ArrayList介绍" class="headerlink" title="ArrayList介绍"></a>ArrayList介绍</h2><p>以下是ArrayList源码的介绍：</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Resizable-array implementation <span class="keyword">of</span> the <span class="xml"><span class="tag">&lt;<span class="name">tt</span>&gt;</span>List<span class="tag">&lt;/<span class="name">tt</span>&gt;</span></span> interface.  Implements</span><br><span class="line"> * all optional list operations, <span class="keyword">and</span> permits all elements, including</span><br><span class="line"> * <span class="xml"><span class="tag">&lt;<span class="name">tt</span>&gt;</span>null<span class="tag">&lt;/<span class="name">tt</span>&gt;</span></span>. </span><br><span class="line"> //ArrayList实现了可变大小的数组（动态数组），它允许所有元素，包括null。</span><br><span class="line"> </span><br><span class="line"> *In addition <span class="keyword">to</span> implementing the <span class="xml"><span class="tag">&lt;<span class="name">tt</span>&gt;</span>List<span class="tag">&lt;/<span class="name">tt</span>&gt;</span></span> interface,</span><br><span class="line"> * this class provides methods <span class="keyword">to</span> manipulate the size <span class="keyword">of</span> the <span class="keyword">array</span> that <span class="literal">is</span> used internally <span class="keyword">to</span> store the list. </span><br><span class="line"> //ArrayList实现了List接口。它提供了一些方法，来操作内部用于存储列表的数组的大小。</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> *(This class <span class="literal">is</span> roughly equivalent <span class="keyword">to</span> <span class="xml"><span class="tag">&lt;<span class="name">tt</span>&gt;</span>Vector<span class="tag">&lt;/<span class="name">tt</span>&gt;</span></span>, <span class="keyword">except</span> that it <span class="literal">is</span> unsynchronized.)</span><br><span class="line"> //ArrayList同Vector类似，不同的是ArrayList不是同步的。</span><br></pre></td></tr></table></figure>
+
+<p><strong>ArrayList的继承与接口实现</strong>：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">ArrayList&lt;E&gt;</span> <span class="keyword">extends</span> <span class="title">AbstractList&lt;E&gt;</span></span></span><br><span class="line"><span class="class">        <span class="title">implements</span> <span class="title">List&lt;E&gt;</span>, <span class="title">RandomAccess</span>, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ArrayList继承了AbstractList，实现了List。它提供了相关的增加、删除、修改、遍历等功能。  </p>
+<p>ArrayList实现了RandomAccess接口，即提供了随机访问功能。RandomAccess是java中用来被List实现，为List提供快速访问功能的。  </p>
+<p>ArrayList实现了Cloneable接口，即覆盖了函数clone()，能被克隆。</p>
+<p>ArrayList实现java.io.Serializable接口，即ArrayList支持序列化，能通过序列化去传输。</p>
+<p><strong>ArrayList与Collection关系如下：</strong></p>
+<p><img src="http://files.jb51.net/file_images/article/201311/20131105100548.jpg?201310510715" alt="image"></p>
+<a id="more"></a>
+
+<h2 id="ArrayList的构造器"><a href="#ArrayList的构造器" class="headerlink" title="ArrayList的构造器"></a>ArrayList的构造器</h2><p>ArrayList提供了三个构造器：</p>
+<p><strong>1.public ArrayList(int initialCapacity);</strong><br><strong>用指定的大小来初始化内部的数组</strong>  </p>
+<p>源码如下：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Shared empty array instance used for empty instances.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">Object</span>[] EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> <span class="keyword">Object</span>[] elementData;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constructs an empty list with the specified initial capacity.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param  initialCapacity  the initial capacity of the list</span></span><br><span class="line"><span class="comment"> * @throws IllegalArgumentException if the specified initial capacity is negative</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> ArrayList(<span class="built_in">int</span> initialCapacity) &#123;</span><br><span class="line">    <span class="keyword">if</span> (initialCapacity &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.elementData = <span class="keyword">new</span> <span class="keyword">Object</span>[initialCapacity];</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (initialCapacity == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//若指定的初始容量为负，非法参数异常</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal Capacity: "</span>+initialCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.public ArrayList();</strong><br><strong>默认的构造器，以默认大小(10)来初始化内部的数组。</strong></p>
+<p>源码如下：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Default initial capacity.</span><br><span class="line"> */</span><br><span class="line">private<span class="keyword"> static</span><span class="keyword"> final</span><span class="built_in"> int </span>DEFAU<span class="class">LT_CAPACITY = 10;</span></span><br><span class="line"> /**</span><br><span class="line"> * Shared empty<span class="built_in"> array </span>instance used for default sized empty instances. We</span><br><span class="line"> * distinguish this from EMPTY_ELEMENTDATA to know how much to inflate when</span><br><span class="line"> * first element is added.</span><br><span class="line"> */</span><br><span class="line">private<span class="keyword"> static</span><span class="keyword"> final</span> Object[] DEFAU<span class="class">LTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</span></span><br><span class="line">/**</span><br><span class="line"> * Constructs an empty list with an initial capacity of ten.</span><br><span class="line"> */</span><br><span class="line">public ArrayList() &#123;</span><br><span class="line">    this.elementData = DEFAU<span class="class">LTCAPACITY_EMPTY_ELEMENTDATA;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.public ArrayList(Collection&lt;? extends E&gt; c);</strong><br><strong>用一个Collection对象来构造，并将集合的元素添加到ArrayList。</strong></p>
+<p>源码如下：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">  * </span>Constructs </span>a<span class="markdown"> list containing </span>the<span class="markdown"> elements of </span>the<span class="markdown"> specified</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">  * </span>collection, in </span>the<span class="markdown"> order </span>they<span class="markdown"> </span>are<span class="markdown"> returned by </span>the<span class="markdown"> collection's iterator.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">  * </span>@param c </span>the<span class="markdown"> collection whose elements </span>are<span class="markdown"> to be placed into this list</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">  * </span>@throws NullPointerException if </span>the<span class="markdown"> specified collection is null</span></span></span><br><span class="line"><span class="comment"><span class="markdown">  */</span></span></span><br><span class="line"> public ArrayList(Collection&lt;? <span class="keyword">extends</span> E&gt; c) &#123;</span><br><span class="line">     elementData = c.toArray();</span><br><span class="line">     <span class="keyword">if</span> ((size = elementData.length) != <span class="number">0</span>) &#123;</span><br><span class="line">         <span class="comment">// c.toArray might (incorrectly) not return Object[] (see 6260652)</span></span><br><span class="line">         <span class="keyword">if</span> (elementData.getClass() != <span class="built_in">Object</span>[].<span class="keyword">class</span>)</span><br><span class="line">             elementData = Arrays.copyOf(elementData, size, <span class="built_in">Object</span>[].<span class="keyword">class</span>);</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         <span class="comment">// replace with empty array.</span></span><br><span class="line">         <span class="keyword">this</span>.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ArrayList的常用方法："><a href="#ArrayList的常用方法：" class="headerlink" title="ArrayList的常用方法："></a>ArrayList的常用方法：</h2><h3 id="1-添加方法："><a href="#1-添加方法：" class="headerlink" title="1.添加方法："></a>1.添加方法：</h3><p>(1) <strong>public boolean add(E e)</strong>  </p>
+<blockquote>
+<p>Appends the specified element to the <strong>end</strong> of this list.</p>
+</blockquote>
+<p>(2) <strong>public void add(int index, E element)</strong>  </p>
+<blockquote>
+<p>Inserts the specified element at the specified position in this ist.</p>
+</blockquote>
+<p>(3) <strong>public boolean addAll(Collection&lt;? extends E&gt;c)</strong>   </p>
+<blockquote>
+<p>Appends all of the elements in the specified collection to the <strong>end</strong> of this list,, in the order that they are returned by the specified collection’s Iterator.</p>
+</blockquote>
+<p>(4) <strong>public boolean addAll(int index, Collection&lt;? extends E&gt; c)</strong></p>
+<blockquote>
+<p>Inserts all of the elements in the specified collection into this<br>list, <strong>starting</strong> at the specified position.</p>
+</blockquote>
+<h3 id="2-删除方法"><a href="#2-删除方法" class="headerlink" title="2.删除方法"></a>2.删除方法</h3><p>(1) <strong>public E remove(int index)</strong></p>
+<blockquote>
+<p>Removes the element at the specified position in this list.</p>
+</blockquote>
+<p>(2) <strong>public boolean remove(Object o)</strong></p>
+<blockquote>
+<p>Removes <strong>the first occurrence</strong> of the specified element from this list,if it is present. </p>
+</blockquote>
+<p>(3) <strong>private void fastRemove(int index)</strong></p>
+<blockquote>
+<p>Private remove method that skips bounds checking and does not return the value removed.</p>
+</blockquote>
+<p>(4) <strong>protected void removeRange(int fromIndex, int toIndex)</strong></p>
+<blockquote>
+<p>Removes from this list all of the elements whose index is between  {@code fromIndex}, <strong>inclusive</strong>, and {@code toIndex}, <strong>exclusive</strong>.</p>
+</blockquote>
+<p>(5) <strong>public void clear()</strong></p>
+<blockquote>
+<p>Removes <strong>all</strong> of the elements from this list.</p>
+</blockquote>
+<p>(6) <strong>public boolean removeAll(Collection&lt;?&gt; c)</strong></p>
+<blockquote>
+<p>Removes from this list all of its elements that are contained in the specified collection.</p>
+</blockquote>
+<h3 id="3-修改方法"><a href="#3-修改方法" class="headerlink" title="3.修改方法"></a>3.修改方法</h3><p><strong>public E set(int index, E element)</strong></p>
+<blockquote>
+<p>Replaces the element at the specified position in this list with the specified element.</p>
+</blockquote>
+<h3 id="4-获取元素"><a href="#4-获取元素" class="headerlink" title="4.获取元素"></a>4.获取元素</h3><p><strong>public E get(int index)</strong></p>
+<blockquote>
+<p>Returns the element at the specified position in this list.</p>
+</blockquote>
+<h3 id="5-toArray"><a href="#5-toArray" class="headerlink" title="5.toArray()"></a>5.toArray()</h3><p>(1) <strong>public Object[] toArray()</strong></p>
+<blockquote>
+<p>Returns an array containing all of the elements in this list in proper sequence (from first to last element).   </p>
+</blockquote>
+<p>（按适当顺序（从第一个元素到最后一个元素）返回包含此列表中所有元素的数组。）</p>
+<p>(2) <strong>public <t> T[] toArray(T[] a)</t></strong></p>
+<blockquote>
+<p>Returns an array containing all of the elements in this list in proper sequence (from first to last element); the runtime type of the returned array is that of the specified array.    </p>
+</blockquote>
+<p>（返回数组的运行时类型是指定数组的运行时类型。）</p>
+<h3 id="6-trimToSize"><a href="#6-trimToSize" class="headerlink" title="6.trimToSize"></a>6.trimToSize</h3><p><strong>public void trimToSize()</strong></p>
+<blockquote>
+<p>Trims the capacity of this <tt>ArrayList</tt> instance to be the list’s current size.</p>
+</blockquote>
+<p>这个方法用于将ArrayList固定到实际元素的大小，当动态数组元素确定不再添加的时候，可以调用这个方法来释放空余的内存。</p>
+<h3 id="7-其他"><a href="#7-其他" class="headerlink" title="7.其他"></a>7.其他</h3><p>(1) <strong>public int indexOf(Object o)</strong></p>
+<blockquote>
+<p>Returns the index of the <strong>first</strong> occurrence of the specified element in this list, or <strong>-1</strong> if this list does not contain the element.</p>
+</blockquote>
+<p>(2) <strong>public int lastIndexOf(Object o)</strong></p>
+<blockquote>
+<p>Returns the index of the <strong>last</strong> occurrence of the specified element in this list, or <strong>-1</strong> if this list does not contain the element.</p>
+</blockquote>
+<p>(3) <strong>public boolean contains(Object o)</strong></p>
+<p>(4) <strong>public boolean isEmpty()</strong></p>
+<p>(5)<strong>public int size()</strong></p>
+<h2 id="ArrayList的遍历方式及效率比较"><a href="#ArrayList的遍历方式及效率比较" class="headerlink" title="ArrayList的遍历方式及效率比较"></a>ArrayList的遍历方式及效率比较</h2><p>遍历ArrayList的方法有如下几种：</p>
+<h3 id="1-Iterator迭代器方式遍历"><a href="#1-Iterator迭代器方式遍历" class="headerlink" title="1.Iterator迭代器方式遍历"></a>1.Iterator迭代器方式遍历</h3><p>(1)Iterator的while实现</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Iterator&lt;Integer&gt; </span><span class="keyword">iter=list.iterator();</span></span><br><span class="line"><span class="keyword"> </span>       <span class="meta">while</span> (<span class="keyword">iter.hasNext())&#123;</span></span><br><span class="line"><span class="keyword"> </span>           System.out.println(<span class="keyword">iter.next());</span></span><br><span class="line"><span class="keyword"> </span>       &#125;</span><br></pre></td></tr></table></figure>
+
+<p>(2)Iterator的for实现</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">for</span> (<span class="keyword">Iterator&lt;Integer&gt; </span><span class="keyword">iter </span>= list.<span class="keyword">iterator(); </span><span class="keyword">iter.hasNext(); </span>) &#123;</span><br><span class="line">            System.out.println(<span class="keyword">iter.next());</span></span><br><span class="line"><span class="keyword"> </span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-随机访问，通过索引值去遍历get-index"><a href="#2-随机访问，通过索引值去遍历get-index" class="headerlink" title="2.随机访问，通过索引值去遍历get(index)"></a>2.随机访问，通过索引值去遍历get(index)</h3><p>ArrayList实现了RandomAccess接口，它支持通过索引值去随机访问元素。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//基本的for</span></span><br><span class="line"><span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">      System.out.<span class="built_in">println</span>(list.<span class="built_in">get</span>(i));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-单用foreach语句遍历"><a href="#3-单用foreach语句遍历" class="headerlink" title="3.单用foreach语句遍历"></a>3.单用foreach语句遍历</h3><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span> (Integer <span class="keyword">value</span> : list) &#123;</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="keyword">value</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="遍历方式间的比较"><a href="#遍历方式间的比较" class="headerlink" title="遍历方式间的比较"></a>遍历方式间的比较</h3><blockquote>
+<p>ArrayList实现了RandomAccess随机访问接口，因此它对随机访问的速度快，而基本的for循环中的get()方法，采用的即是随机访问的方法，因而在ArrayList中，for循环速度快。</p>
+</blockquote>
+<blockquote>
+<p>LinkedList采取的是顺序访问方式，iterator中的next()方法，采用的即是顺序访问方法，因此在LinkedList中，使用iterator的速度较快。</p>
+</blockquote>
+<p><strong>for、foreach、iterator的区别：</strong></p>
+<p>(1)条件上：  </p>
+<p>&emsp; for需要知道集合或数组的大小，还要是有序的，否则无法遍历。<br>&emsp; foreach和iterator不需要知道集合或数组大小，他们是得到集合内的每个元素后进行处理。</p>
+<p>(2)多态上：  </p>
+<p>&emsp; for和foreach都需要先知道集合的类型，甚至是集合内元素的类型，不能实现多态。<br>&emsp; iterator是个接口类型，不需要关心所遍历的序列的类型，能够将遍历序列的操作与序列底层的结构分离。迭代器统一了对容器的访问方式。</p>
+<p>(3)用法上：</p>
+<p>&emsp;<strong>for</strong>循环一般用来处理比较简单的<strong>有序</strong>的，可<strong>预知大小</strong>的集合或数组。 </p>
+<p>&emsp;<strong>foreach</strong>可用于遍历任何集合或数组，但是需要<strong>知道集合内部类型</strong>。  </p>
+<p>&emsp;<strong>iterator不需要知道元素和集合的类型</strong>，可以随时修改或者删除集合内部的元素。当需要对不同的容器实现同样的遍历方式时，可用迭代器。</p>
+<p><strong>总结起来，就是for需要知道大小；foreach需要知道类型；iterator既不需要知道大小，也不需要知道类型。</strong></p>
+<h2 id="相关推荐："><a href="#相关推荐：" class="headerlink" title="相关推荐："></a>相关推荐：</h2><p><a href="https://amyyanjie.github.io/2017/10/30/ArrayList-dilatancy-analysis/" target="_blank" rel="noopener">ArrayList扩容分析</a></p>
+<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ul>
+<li><p><a href="http://blog.csdn.net/lskyne/article/details/8966657" target="_blank" rel="noopener">Java中ArrayLIst类详解</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/aoguren/p/4771589.html" target="_blank" rel="noopener">ArrayList遍历方式及效率比较</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Amy
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2017/12/10/Analysis-of-ArrayList-Class-and-its-traversal-Mode/" title="ArrayList类详解与遍历方式">http://yoursite.com/2017/12/10/Analysis-of-ArrayList-Class-and-its-traversal-Mode/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Collection/" rel="tag"># 集合</a>
+          
+            <a href="/tags/ArrayList/" rel="tag"># ArrayList</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/04/The-difference-between-Collection-and-Collections-and-the-methods-commonly-used-in-Collections/" rel="next" title="Collection和Collections的区别及Collections常用方法">
+                <i class="fa fa-chevron-left"></i> Collection和Collections的区别及Collections常用方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/10/JavaScript-study-notes/" rel="prev" title="JavaScript学习笔记">
+                JavaScript学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59a23d4837e48752" async="async"></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="gitalk-container"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/deppwang.png" alt="Amy">
+          <p class="site-author-name" itemprop="name">Amy</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/DeppWang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://jm.taobao.org/" title="阿里中间件团队博客" target="_blank">阿里中间件团队博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me/" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.liaoxuefeng.com/" title="廖雪峰个人网站" target="_blank">廖雪峰个人网站</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList介绍"><span class="nav-number">1.</span> <span class="nav-text">ArrayList介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList的构造器"><span class="nav-number">2.</span> <span class="nav-text">ArrayList的构造器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList的常用方法："><span class="nav-number">3.</span> <span class="nav-text">ArrayList的常用方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-添加方法："><span class="nav-number">3.1.</span> <span class="nav-text">1.添加方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-删除方法"><span class="nav-number">3.2.</span> <span class="nav-text">2.删除方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-修改方法"><span class="nav-number">3.3.</span> <span class="nav-text">3.修改方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-获取元素"><span class="nav-number">3.4.</span> <span class="nav-text">4.获取元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-toArray"><span class="nav-number">3.5.</span> <span class="nav-text">5.toArray()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-trimToSize"><span class="nav-number">3.6.</span> <span class="nav-text">6.trimToSize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-其他"><span class="nav-number">3.7.</span> <span class="nav-text">7.其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList的遍历方式及效率比较"><span class="nav-number">4.</span> <span class="nav-text">ArrayList的遍历方式及效率比较</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Iterator迭代器方式遍历"><span class="nav-number">4.1.</span> <span class="nav-text">1.Iterator迭代器方式遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-随机访问，通过索引值去遍历get-index"><span class="nav-number">4.2.</span> <span class="nav-text">2.随机访问，通过索引值去遍历get(index)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-单用foreach语句遍历"><span class="nav-number">4.3.</span> <span class="nav-text">3.单用foreach语句遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历方式间的比较"><span class="nav-number">4.4.</span> <span class="nav-text">遍历方式间的比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关推荐："><span class="nav-number">5.</span> <span class="nav-text">相关推荐：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料："><span class="nav-number">6.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Amy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp
+本站访客数<span id="busuanzi_value_site_uv"></span>人次
+
+</div>
+
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  
+   <script src="/js/src/md5.min.js"></script>
+   
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'b58b66e4ffae6a11e4ae',
+          clientSecret: '0a7632a9afef7e63fe9bf854bc04b52d2e531827',
+          repo: 'deppwang.github.io',
+          owner: 'DeppWang',
+          admin: ['DeppWang'],
+          id: md5(location.pathname)
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("TUz90ld4GOIFf4QNVMoS5bOL-gzGzoHsz", "6O4O958ETCIUpQylcG1Gc8wY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

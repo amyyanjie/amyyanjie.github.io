@@ -1,0 +1,1038 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="google-site-verification" content="hOzwzcL7Td1p_evvLmRBasbQKy5-i5AgJwNLD2vHKJ8">
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="集合,Collection、Collecions,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="本文包含以下打钩知识点：   Collections类是什么？Collection 和 Collections的区别？  为什么 Collection 不从 Cloneable 和 Serializable 接口继承  说出几点 Java 中使用 Collections 的最佳实践？   Collection和Collections的区别Collectionsjava.util.Collectio">
+<meta name="keywords" content="集合,Collection、Collecions">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Collection和Collections的区别及Collections常用方法">
+<meta property="og:url" content="http://yoursite.com/2017/12/04/The-difference-between-Collection-and-Collections-and-the-methods-commonly-used-in-Collections/index.html">
+<meta property="og:site_name" content="Amy&#39;s Blog">
+<meta property="og:description" content="本文包含以下打钩知识点：   Collections类是什么？Collection 和 Collections的区别？  为什么 Collection 不从 Cloneable 和 Serializable 接口继承  说出几点 Java 中使用 Collections 的最佳实践？   Collection和Collections的区别Collectionsjava.util.Collectio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/12.4.1.png">
+<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/12.4.4.png">
+<meta property="og:updated_time" content="2019-08-02T03:27:06.528Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Collection和Collections的区别及Collections常用方法">
+<meta name="twitter:description" content="本文包含以下打钩知识点：   Collections类是什么？Collection 和 Collections的区别？  为什么 Collection 不从 Cloneable 和 Serializable 接口继承  说出几点 Java 中使用 Collections 的最佳实践？   Collection和Collections的区别Collectionsjava.util.Collectio">
+<meta name="twitter:image" content="http://ot8blk4sm.bkt.clouddn.com/12.4.1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键字","hits_empty":"没有找到与 ${query} 相关的内容","hits_stats":"${hits}条相关记录，共耗时${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/04/The-difference-between-Collection-and-Collections-and-the-methods-commonly-used-in-Collections/">
+
+
+
+
+
+  <title>Collection和Collections的区别及Collections常用方法 | Amy's Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Amy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">这是副标题</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/The-difference-between-Collection-and-Collections-and-the-methods-commonly-used-in-Collections/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Collection和Collections的区别及Collections常用方法</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T12:55:46+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/04/The-difference-between-Collection-and-Collections-and-the-methods-commonly-used-in-Collections/" class="leancloud_visitors" data-flag-title="Collection和Collections的区别及Collections常用方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文包含以下打钩知识点：</p>
+<ul>
+<li><input checked disabled type="checkbox"> Collections类是什么？Collection 和 Collections的区别？</li>
+<li><input disabled type="checkbox"> 为什么 Collection 不从 Cloneable 和 Serializable 接口继承</li>
+<li><input disabled type="checkbox"> 说出几点 Java 中使用 Collections 的最佳实践？</li>
+</ul>
+<hr>
+<h2 id="Collection和Collections的区别"><a href="#Collection和Collections的区别" class="headerlink" title="Collection和Collections的区别"></a>Collection和Collections的区别</h2><h3 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h3><p>java.util.Collections，是不属于java的集合框架的，它是集合类的一个<strong>工具类/帮助类</strong>。<strong>此类不能被实例化，</strong> 服务于java的Collection框架。</p>
+<p>它<strong>包含有关集合操作的静态多态方法</strong>，实现对各种集合的搜索、排序、线程安全等操作。如：</p>
+<p><img src="http://ot8blk4sm.bkt.clouddn.com/12.4.1.png" alt="image"></p>
+<a id="more"></a>
+
+<p><img src="http://ot8blk4sm.bkt.clouddn.com/12.4.4.png" alt="image"></p>
+<p>常用的有：</p>
+<h4 id="1-排序-sort-Collection"><a href="#1-排序-sort-Collection" class="headerlink" title="(1)排序 sort(Collection)"></a>(1)排序 sort(Collection)</h4><p>如Collections.sort(List<t> list)，Collections.sort(List<t> list, Comparator&lt;? super T&gt; c)。</t></t></p>
+<p>使用sort方法可以根据元素的自然顺序对指定列表按<strong>升序</strong>进行排序。<strong>列表中的所有元素都必须实现Comparable接口，</strong> 而且必须是使用指定比较器可相互比较的。</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T <span class="keyword">extends</span> Comparable&lt;? <span class="keyword">super</span> T&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(List&lt;T&gt; list)</span> </span>&#123;</span><br><span class="line">    list.sort(<span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="type">SuppressWarnings</span>(&#123;<span class="string">"unchecked"</span>, <span class="string">"rawtypes"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;<span class="type">T</span>&gt; void <span class="built_in">sort</span>(<span class="type">List</span>&lt;<span class="type">T</span>&gt; list, <span class="type">Comparator</span>&lt;? <span class="keyword">super</span> <span class="type">T</span>&gt; <span class="built_in">c</span>) &#123;</span><br><span class="line">    list.<span class="built_in">sort</span>(<span class="built_in">c</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简单示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List <span class="built_in">list</span> = Arrays.asList(<span class="string">"one two three four five"</span>.split(<span class="string">" "</span>));</span><br><span class="line">        Collections.sort(<span class="built_in">list</span>);</span><br><span class="line">        System.out.println(<span class="built_in">list</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果：</strong></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[five, four, <span class="keyword">one</span>, three, <span class="keyword">two</span>]   <span class="comment">//（按字母排序）</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-混排-shuffle-Collection"><a href="#2-混排-shuffle-Collection" class="headerlink" title="(2)混排 shuffle(Collection)"></a>(2)混排 shuffle(Collection)</h4><p>如Collections.shuffle(List&lt;?&gt; list)  </p>
+<p>基于随机源的输入随机排序该List，这个算法对实现一个碰运气的游戏非常有用，在生成测试案例时也十分有用。</p>
+<p>简单示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List <span class="built_in">list</span> = Arrays.asList(<span class="string">"one two three four five"</span>.split(<span class="string">" "</span>));</span><br><span class="line">        Collections.shuffle(<span class="built_in">list</span>);</span><br><span class="line">        System.out.println(<span class="built_in">list</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[three, five, four, one, two]</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-反转-reverse-Collection"><a href="#3-反转-reverse-Collection" class="headerlink" title="(3)反转 reverse(Collection)"></a>(3)反转 reverse(Collection)</h4><p>如Collections.reverse(List&lt;?&gt; list)<br>使用reverse()反转集合中元素的顺序</p>
+<p>简单示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List <span class="built_in">list</span> = Arrays.asList(<span class="string">"one two three four five"</span>.split(<span class="string">" "</span>));</span><br><span class="line">        Collections.reverse(<span class="built_in">list</span>);</span><br><span class="line">        System.out.println(<span class="built_in">list</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[five, four, three, two, one]</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-替换所有元素-fill-List-list-Object-o"><a href="#4-替换所有元素-fill-List-list-Object-o" class="headerlink" title="(4)替换所有元素 fill(List list,Object o)"></a>(4)替换所有元素 fill(List list,Object o)</h4><p>使用指定元素替换集合中的所有元素。</p>
+<p>简单示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List <span class="built_in">list</span> = Arrays.asList(<span class="string">"one two three four five"</span>.split(<span class="string">" "</span>));</span><br><span class="line">        Collections.fill(<span class="built_in">list</span>, <span class="string">"zero"</span>);</span><br><span class="line">        System.out.println(<span class="built_in">list</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[zero, zero, zero, zero, zero]</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-拷贝-copy-List-list1-List-list2"><a href="#5-拷贝-copy-List-list1-List-list2" class="headerlink" title="(5)拷贝 copy(List list1,List list2)"></a>(5)拷贝 copy(List list1,List list2)</h4><p>将集合list2中的元素全部复制到list1中，并且覆盖相应索引的元素。目标list1至少与源list2一样长。</p>
+<p>简单示例：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Test &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        List list1 = Arrays.<span class="keyword">asList</span>(<span class="string">"one two three four five"</span>.split(<span class="string">" "</span>));</span><br><span class="line">        List list2 = Arrays.<span class="keyword">asList</span>(<span class="string">"一 二 三 四 五"</span>.split(<span class="string">" "</span>));</span><br><span class="line">        Collections.<span class="keyword">copy</span>(list1, list2);</span><br><span class="line">        System.out.<span class="keyword">println</span>(list1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果</strong>：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[一, 二, 三, 四, 五]</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-rotate-List-list-int-m"><a href="#6-rotate-List-list-int-m" class="headerlink" title="(6)rotate(List list,int m)"></a>(6)rotate(List list,int m)</h4><p>根据指定的距离m循环移动列表中的元素。集合中的元素向后移m个位置，在后面被遮盖的元素循环到前面来。</p>
+<p>简单示例：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">        List list1 = Arrays.asList(<span class="string">"one two three four five"</span>.split(<span class="string">" "</span>));</span><br><span class="line">        Collections.rotate(list1, <span class="number">2</span>);</span><br><span class="line">        System.<span class="keyword">out</span>.println(list1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[four, five, one, two, three]</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-最小（大）元素-min-max"><a href="#7-最小（大）元素-min-max" class="headerlink" title="(7)最小（大）元素 min(),max()"></a>(7)最小（大）元素 min(),max()</h4><p>根据指定比较器产生的顺序，返回给定Collection的最小（大）元素。</p>
+<p>min(Collection),min(Collection,Comparator)<br>max(Collection),max(Collection,Comparator)</p>
+<p>简单示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List <span class="built_in">list</span> = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="built_in">list</span>.add(<span class="number">10</span>);</span><br><span class="line">        <span class="built_in">list</span>.add(<span class="number">40</span>);</span><br><span class="line">        <span class="built_in">list</span>.add(<span class="number">20</span>);</span><br><span class="line">        <span class="built_in">list</span>.add(<span class="number">50</span>);</span><br><span class="line">        System.out.println(Collections.min(<span class="built_in">list</span>));</span><br><span class="line">        System.out.println(Collections.max(<span class="built_in">list</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果：</strong>  </p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">10 </span>    </span><br><span class="line"><span class="number">50</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="8-indexOfSublist-List-list-List-sublist"><a href="#8-indexOfSublist-List-list-List-sublist" class="headerlink" title="(8)indexOfSublist(List list,List sublist)"></a>(8)indexOfSublist(List list,List sublist)</h4><p>查找sublist在list中首次出现位置的索引。返回指定源列表中第一次出现指定目标列表的起始位置。</p>
+<p>简单示例：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">class</span> <span class="keyword">Test</span> &#123;</span><br><span class="line">    public static void main(String[] <span class="keyword">args</span>) &#123;</span><br><span class="line">        <span class="keyword">List</span> <span class="keyword">list</span> = Arrays.asList(<span class="string">"one two three four five"</span>.<span class="keyword">split</span>(<span class="string">" "</span>));</span><br><span class="line">        <span class="keyword">List</span> subList=Arrays.asList(<span class="string">"three four five"</span>.<span class="keyword">split</span>(<span class="string">" "</span>));</span><br><span class="line">        System.<span class="keyword">out</span>.println(Collections.indexOfSubList(<span class="keyword">list</span>,subList));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果：</strong> </p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="9-lastIndexOfSublist-List-list-List-sublist"><a href="#9-lastIndexOfSublist-List-list-List-sublist" class="headerlink" title="(9)lastIndexOfSublist(List list,List sublist)"></a>(9)lastIndexOfSublist(List list,List sublist)</h4><p>返回指定列表中最后一次出现指定目标列表的起始位置。</p>
+<h4 id="10-swap-List-list-int-m-int-n"><a href="#10-swap-List-list-int-m-int-n" class="headerlink" title="(10)swap(List list,int m,int n)"></a>(10)swap(List list,int m,int n)</h4><p>交换集合中指定元素索引m,n的位置。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List <span class="built_in">list</span> = Arrays.asList(<span class="string">"one two three four five"</span>.split(<span class="string">" "</span>));</span><br><span class="line">        Collections.swap(<span class="built_in">list</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">        System.out.println(<span class="built_in">list</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[one, two, four, three, five]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p>Collection是最基本的集合接口，一个Collection代表一组Object，即Collection的元素。它的直接继承接口有List，Set和Queue。</p>
+<p>Collection接口，Set、List接口参考<br><a href>Java中集合类框架及基本接口</a></p>
+<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ul>
+<li><p><a href="http://www.360doc.com/content/14/0829/10/15242507_405537400.shtml" target="_blank" rel="noopener">Collections类常用方法总结</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/ymfwj/article/details/52117843" target="_blank" rel="noopener">Collection与Collections的区别</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Amy
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2017/12/04/The-difference-between-Collection-and-Collections-and-the-methods-commonly-used-in-Collections/" title="Collection和Collections的区别及Collections常用方法">http://yoursite.com/2017/12/04/The-difference-between-Collection-and-Collections-and-the-methods-commonly-used-in-Collections/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Collection/" rel="tag"># 集合</a>
+          
+            <a href="/tags/Collection-Collecions/" rel="tag"># Collection、Collecions</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/30/Parameter-passing-in-Java/" rel="next" title="Java中的参数传递">
+                <i class="fa fa-chevron-left"></i> Java中的参数传递
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/10/Analysis-of-ArrayList-Class-and-its-traversal-Mode/" rel="prev" title="ArrayList类详解与遍历方式">
+                ArrayList类详解与遍历方式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59a23d4837e48752" async="async"></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="gitalk-container"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/deppwang.png" alt="Amy">
+          <p class="site-author-name" itemprop="name">Amy</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/DeppWang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://jm.taobao.org/" title="阿里中间件团队博客" target="_blank">阿里中间件团队博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me/" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.liaoxuefeng.com/" title="廖雪峰个人网站" target="_blank">廖雪峰个人网站</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection和Collections的区别"><span class="nav-number">1.</span> <span class="nav-text">Collection和Collections的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Collections"><span class="nav-number">1.1.</span> <span class="nav-text">Collections</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-排序-sort-Collection"><span class="nav-number">1.1.1.</span> <span class="nav-text">(1)排序 sort(Collection)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-混排-shuffle-Collection"><span class="nav-number">1.1.2.</span> <span class="nav-text">(2)混排 shuffle(Collection)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-反转-reverse-Collection"><span class="nav-number">1.1.3.</span> <span class="nav-text">(3)反转 reverse(Collection)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-替换所有元素-fill-List-list-Object-o"><span class="nav-number">1.1.4.</span> <span class="nav-text">(4)替换所有元素 fill(List list,Object o)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-拷贝-copy-List-list1-List-list2"><span class="nav-number">1.1.5.</span> <span class="nav-text">(5)拷贝 copy(List list1,List list2)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-rotate-List-list-int-m"><span class="nav-number">1.1.6.</span> <span class="nav-text">(6)rotate(List list,int m)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-最小（大）元素-min-max"><span class="nav-number">1.1.7.</span> <span class="nav-text">(7)最小（大）元素 min(),max()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-indexOfSublist-List-list-List-sublist"><span class="nav-number">1.1.8.</span> <span class="nav-text">(8)indexOfSublist(List list,List sublist)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-lastIndexOfSublist-List-list-List-sublist"><span class="nav-number">1.1.9.</span> <span class="nav-text">(9)lastIndexOfSublist(List list,List sublist)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-swap-List-list-int-m-int-n"><span class="nav-number">1.1.10.</span> <span class="nav-text">(10)swap(List list,int m,int n)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">2.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料："><span class="nav-number">3.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Amy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp
+本站访客数<span id="busuanzi_value_site_uv"></span>人次
+
+</div>
+
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  
+   <script src="/js/src/md5.min.js"></script>
+   
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'b58b66e4ffae6a11e4ae',
+          clientSecret: '0a7632a9afef7e63fe9bf854bc04b52d2e531827',
+          repo: 'deppwang.github.io',
+          owner: 'DeppWang',
+          admin: ['DeppWang'],
+          id: md5(location.pathname)
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("TUz90ld4GOIFf4QNVMoS5bOL-gzGzoHsz", "6O4O958ETCIUpQylcG1Gc8wY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1013 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="google-site-verification" content="hOzwzcL7Td1p_evvLmRBasbQKy5-i5AgJwNLD2vHKJ8">
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="集合,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="本篇博文包含以下内容：   介绍Java中的Collection FrameWork。集合类框架的基本接口有哪些  List, Set, Map三个接口，存取元素时各有什么特点  List, Set, Map 是否继承自 Collection 接口   集合即存储对象的容器。 在程序中有可能无法预知需要多少对象。数组虽然也可以存储对象，但长度是固定的，不好定义。但集合类容器的长度可变。每一个容器对">
+<meta name="keywords" content="集合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中集合类框架及基本接口">
+<meta property="og:url" content="http://yoursite.com/2017/11/07/Java-collection-framework-and-the-basic-interface/index.html">
+<meta property="og:site_name" content="Amy&#39;s Blog">
+<meta property="og:description" content="本篇博文包含以下内容：   介绍Java中的Collection FrameWork。集合类框架的基本接口有哪些  List, Set, Map三个接口，存取元素时各有什么特点  List, Set, Map 是否继承自 Collection 接口   集合即存储对象的容器。 在程序中有可能无法预知需要多少对象。数组虽然也可以存储对象，但长度是固定的，不好定义。但集合类容器的长度可变。每一个容器对">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/1.png">
+<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/m.png">
+<meta property="og:updated_time" content="2019-08-02T03:27:06.527Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java中集合类框架及基本接口">
+<meta name="twitter:description" content="本篇博文包含以下内容：   介绍Java中的Collection FrameWork。集合类框架的基本接口有哪些  List, Set, Map三个接口，存取元素时各有什么特点  List, Set, Map 是否继承自 Collection 接口   集合即存储对象的容器。 在程序中有可能无法预知需要多少对象。数组虽然也可以存储对象，但长度是固定的，不好定义。但集合类容器的长度可变。每一个容器对">
+<meta name="twitter:image" content="http://ot8blk4sm.bkt.clouddn.com/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键字","hits_empty":"没有找到与 ${query} 相关的内容","hits_stats":"${hits}条相关记录，共耗时${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/07/Java-collection-framework-and-the-basic-interface/">
+
+
+
+
+
+  <title>Java中集合类框架及基本接口 | Amy's Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Amy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">这是副标题</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/07/Java-collection-framework-and-the-basic-interface/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Java中集合类框架及基本接口</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-07T12:53:53+08:00">
+                2017-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/11/07/Java-collection-framework-and-the-basic-interface/" class="leancloud_visitors" data-flag-title="Java中集合类框架及基本接口">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本篇博文包含以下内容：</p>
+<ul>
+<li><input checked disabled type="checkbox"> 介绍Java中的Collection FrameWork。集合类框架的基本接口有哪些</li>
+<li><input checked disabled type="checkbox"> List, Set, Map三个接口，存取元素时各有什么特点</li>
+<li><input checked disabled type="checkbox"> List, Set, Map 是否继承自 Collection 接口</li>
+</ul>
+<hr>
+<p><strong>集合即存储对象的容器</strong>。</p>
+<p>在程序中有可能无法预知需要多少对象。数组虽然也可以存储对象，但长度是固定的，不好定义。但集合类容器的长度可变。每一个容器对数据的存储方式（数据的存储结构）都有不同，所以有不同的集合类。</p>
+<hr>
+<h2 id="集合类框架-Java-Collection-Framework"><a href="#集合类框架-Java-Collection-Framework" class="headerlink" title="集合类框架(Java Collection Framework)"></a>集合类框架(Java Collection Framework)</h2><p>在java中有一套设计优良的接口和类组成了Java集合框架，通过集合可以方便地操作成批的数据或对象元素。</p>
+<p>所有的Java集合都在java.util包中。</p>
+<ul>
+<li><strong>Collection集合类</strong></li>
+</ul>
+<p><img src="http://ot8blk4sm.bkt.clouddn.com/1.png" alt="image"></p>
+<a id="more"></a>
+
+
+<ul>
+<li><strong>Map集合</strong></li>
+</ul>
+<p><img src="http://ot8blk4sm.bkt.clouddn.com/m.png" alt="image"></p>
+<h2 id="集合类框架的基本接口"><a href="#集合类框架的基本接口" class="headerlink" title="集合类框架的基本接口"></a>集合类框架的基本接口</h2><p>从以上可以看出，顶端有四个接口：Collection、List、Set、Map。其中，List和Set接口继承自Collection接口。</p>
+<ul>
+<li>Collection接口：  Collection是单列集合的根接口，<strong>是元素集合</strong>。定义了存取一组对象的方法，其子接口List、Set分别定义了存取方式。  </li>
+</ul>
+<p>Collection接口<strong>继承了Iterable接口</strong>，其中继承的最重要的方法是iterator()。</p>
+<ul>
+<li>List接口：<br>List是有序元素集合，可以包含重复元素。</li>
+</ul>
+<p>实现List接口的常用类有ArrayList，LinkedList，Vector，Stack四种，其中，Stack继承自Vector。</p>
+<ul>
+<li>Set接口：<br>Set是无序元素集合，不包含重复元素。即任意的两个元素都有e1.equals(e2)=false,Set最多有一个null元素。</li>
+</ul>
+<p>实现Set接口的类有HashSet，TreeSet，LinkedHashSet。</p>
+<ul>
+<li>Map接口：<br>Map是双列集合的根接口，用于存储具有键(key)、值(value)映射关系的元素。一个Map中的key不能重复。Map接口提供3种集合的视图，Map的内容可以被当作一组key组合、一组value组合、或一组key-value映射。</li>
+</ul>
+<p>实现Map接口的类有HashMap，HashTable，TreeMap，LinkedHashMap。</p>
+<h2 id="List-Set-Map三个接口，存取元素时的特点"><a href="#List-Set-Map三个接口，存取元素时的特点" class="headerlink" title="List, Set, Map三个接口，存取元素时的特点"></a>List, Set, Map三个接口，存取元素时的特点</h2><h3 id="1-List接口存取元素："><a href="#1-List接口存取元素：" class="headerlink" title="1.List接口存取元素："></a>1.List接口存取元素：</h3><p>List中有顺序，可重复。</p>
+<ul>
+<li><p>存元素：（1）调用add(Object)方法，多次调用时，每次加入的对象按先来后到的顺序排序。（2）调用add(int index,Object)，可以插队，指定当前对象在集合中的位置进行存放。</p>
+</li>
+<li><p>取元素：（1）Iterator方法取得所有元素，再逐一遍历各个元素。（2）调用get(index)来明确说明取第几个元素。</p>
+</li>
+</ul>
+<h3 id="2-Set接口存取元素："><a href="#2-Set接口存取元素：" class="headerlink" title="2.Set接口存取元素："></a>2.Set接口存取元素：</h3><p>Set无序，不可重复。</p>
+<ul>
+<li><p>存元素：add()，add方法有一个boolean的返回值，当集合中没有该元素时，可成功加入，返回true;当集合中存在于该元素equals相等的元素时，无法加入该元素，返回结果为false。</p>
+</li>
+<li><p>取元素：因为无序，不能说明取第几个。只能以Iterator方法取得所有元素，再逐一遍历各个元素。</p>
+</li>
+</ul>
+<h3 id="3-Map接口存取元素："><a href="#3-Map接口存取元素：" class="headerlink" title="3.Map接口存取元素："></a>3.Map接口存取元素：</h3><p>Map存放键值对，键不能重复。</p>
+<ul>
+<li><p>存元素：用put方法，put(obj key,obj value)。每次存储，要存储一对key,value，不能存放重复的key，判断是否重复，按equals来比较。</p>
+</li>
+<li><p>取元素：可以用get(Object key)根据key获得相应的value；也可以用keySet()获得所有的key的集合；也可以用valueSet()获得所有的value的集合；也可以用entrySet()获得key和value组合成的Map.Entry对象的集合。</p>
+</li>
+</ul>
+<p><strong>未完待续：</strong>  </p>
+<p>Iterable接口,Iterator方法<br>List、Set、Map的实现类详解</p>
+<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ul>
+<li><p><a href="http://blog.csdn.net/zhan_zehong/article/details/19935629" target="_blank" rel="noopener">Java_Collection Framework集合类详解</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/zolalad/article/details/11368561" target="_blank" rel="noopener">Java-Collection Framework学习要点</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Amy
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2017/11/07/Java-collection-framework-and-the-basic-interface/" title="Java中集合类框架及基本接口">http://yoursite.com/2017/11/07/Java-collection-framework-and-the-basic-interface/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Collection/" rel="tag"># 集合</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/30/ArrayList-dilatancy-analysis/" rel="next" title="ArrayList扩容分析">
+                <i class="fa fa-chevron-left"></i> ArrayList扩容分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/" rel="prev" title="字节流、字符流及其转换、比较与使用场景">
+                字节流、字符流及其转换、比较与使用场景 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59a23d4837e48752" async="async"></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="gitalk-container"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/deppwang.png" alt="Amy">
+          <p class="site-author-name" itemprop="name">Amy</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/DeppWang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://jm.taobao.org/" title="阿里中间件团队博客" target="_blank">阿里中间件团队博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me/" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.liaoxuefeng.com/" title="廖雪峰个人网站" target="_blank">廖雪峰个人网站</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#集合类框架-Java-Collection-Framework"><span class="nav-number">1.</span> <span class="nav-text">集合类框架(Java Collection Framework)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合类框架的基本接口"><span class="nav-number">2.</span> <span class="nav-text">集合类框架的基本接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-Set-Map三个接口，存取元素时的特点"><span class="nav-number">3.</span> <span class="nav-text">List, Set, Map三个接口，存取元素时的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-List接口存取元素："><span class="nav-number">3.1.</span> <span class="nav-text">1.List接口存取元素：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Set接口存取元素："><span class="nav-number">3.2.</span> <span class="nav-text">2.Set接口存取元素：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Map接口存取元素："><span class="nav-number">3.3.</span> <span class="nav-text">3.Map接口存取元素：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料："><span class="nav-number">4.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Amy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp
+本站访客数<span id="busuanzi_value_site_uv"></span>人次
+
+</div>
+
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  
+   <script src="/js/src/md5.min.js"></script>
+   
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'b58b66e4ffae6a11e4ae',
+          clientSecret: '0a7632a9afef7e63fe9bf854bc04b52d2e531827',
+          repo: 'deppwang.github.io',
+          owner: 'DeppWang',
+          admin: ['DeppWang'],
+          id: md5(location.pathname)
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("TUz90ld4GOIFf4QNVMoS5bOL-gzGzoHsz", "6O4O958ETCIUpQylcG1Gc8wY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

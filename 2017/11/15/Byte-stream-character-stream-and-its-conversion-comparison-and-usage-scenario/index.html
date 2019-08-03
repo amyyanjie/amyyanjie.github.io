@@ -1,0 +1,1256 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="google-site-verification" content="hOzwzcL7Td1p_evvLmRBasbQKy5-i5AgJwNLD2vHKJ8">
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="字节流、字符流,IO流,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="本文包含以下知识点：   字节流OutputStream和InputStream类及其子类  字符流Writer和Reader类及其子类  转换流OutputStreamWriter和InputStreamReader  代码示例  字节流、字符流的比较  各类的使用场景  流在程序中所有的数据都是以流的方式进行传输和保存的。程序需要数据的时候要使用输入流读取数据，而当程序需要将一些数据保存起来的">
+<meta name="keywords" content="字节流、字符流,IO流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字节流、字符流及其转换、比较与使用场景">
+<meta property="og:url" content="http://yoursite.com/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/index.html">
+<meta property="og:site_name" content="Amy&#39;s Blog">
+<meta property="og:description" content="本文包含以下知识点：   字节流OutputStream和InputStream类及其子类  字符流Writer和Reader类及其子类  转换流OutputStreamWriter和InputStreamReader  代码示例  字节流、字符流的比较  各类的使用场景  流在程序中所有的数据都是以流的方式进行传输和保存的。程序需要数据的时候要使用输入流读取数据，而当程序需要将一些数据保存起来的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/292.png">
+<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/211.png">
+<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/293.png">
+<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/212.png">
+<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/12201.png">
+<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/12202.png">
+<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/221.png">
+<meta property="og:updated_time" content="2019-08-02T03:27:06.528Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="字节流、字符流及其转换、比较与使用场景">
+<meta name="twitter:description" content="本文包含以下知识点：   字节流OutputStream和InputStream类及其子类  字符流Writer和Reader类及其子类  转换流OutputStreamWriter和InputStreamReader  代码示例  字节流、字符流的比较  各类的使用场景  流在程序中所有的数据都是以流的方式进行传输和保存的。程序需要数据的时候要使用输入流读取数据，而当程序需要将一些数据保存起来的">
+<meta name="twitter:image" content="http://ot8blk4sm.bkt.clouddn.com/292.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键字","hits_empty":"没有找到与 ${query} 相关的内容","hits_stats":"${hits}条相关记录，共耗时${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/">
+
+
+
+
+
+  <title>字节流、字符流及其转换、比较与使用场景 | Amy's Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Amy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">这是副标题</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">字节流、字符流及其转换、比较与使用场景</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T00:10:04+08:00">
+                2017-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/" class="leancloud_visitors" data-flag-title="字节流、字符流及其转换、比较与使用场景">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文包含以下知识点：</p>
+<ul>
+<li><input checked disabled type="checkbox"> 字节流OutputStream和InputStream类及其子类</li>
+<li><input checked disabled type="checkbox"> 字符流Writer和Reader类及其子类</li>
+<li><input checked disabled type="checkbox"> 转换流OutputStreamWriter和InputStreamReader</li>
+<li><input checked disabled type="checkbox"> 代码示例</li>
+<li><input checked disabled type="checkbox"> 字节流、字符流的比较</li>
+<li><input checked disabled type="checkbox"> 各类的使用场景</li>
+</ul>
+<h2 id="流"><a href="#流" class="headerlink" title="流"></a>流</h2><p>在程序中所有的数据都是以流的方式进行传输和保存的。程序需要数据的时候要使用<strong>输入流读取数据</strong>，而当程序需要将一些<strong>数据保存</strong>起来的时候，就要使用<strong>输出流完成</strong>。</p>
+<p>在java.io包中操作文件内容的主要有两大类：字节流、字符流。两类都分为输入和输出操作。<strong>输入流基本方法是读，输出流基本方法是写。</strong></p>
+<p><strong>大致操作流程：</strong>（以File为例）  </p>
+<ol>
+<li>使用File类打开一个文件；  </li>
+<li>通过字节流或字符流的子类，指定输出的位置；  </li>
+<li>进行读/写操作；  </li>
+<li>关闭输入/输出。</li>
+</ol>
+<a id="more"></a>
+
+<p>java中的流是对字节序列的抽象，流中保存的实际上全都是字节文件。</p>
+<h2 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h2><p>字节流处理的<strong>基本单元为1个字节(byte)</strong>，操作字节和字节数组，通常用来处理二进制数据。</p>
+<p>面向字节流的OutputStream和InputStream是一切的基础。均为<strong>抽象类</strong>，实际使用的是它们的一系列子类。</p>
+<h3 id="字节输出流OutputStream"><a href="#字节输出流OutputStream" class="headerlink" title="字节输出流OutputStream"></a>字节输出流OutputStream</h3><h4 id="类与方法定义"><a href="#类与方法定义" class="headerlink" title="类与方法定义"></a>类与方法定义</h4><p>抽象类，定义如下：</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">OutputStream</span></span></span><br><span class="line"><span class="class"><span class="keyword">implements</span> <span class="title">Closeable</span>, <span class="title">Flushable</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">//Closeable表示可关闭，Flushable表示刷新，清空内存中的数据</span></span><br></pre></td></tr></table></figure>
+
+<p>方法有：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>将一个字节数据写入数据流</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> b)</span> <span class="keyword">throws</span> IOException</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>.将一个<span class="keyword">byte</span>数组写入数据流</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">write</span>(<span class="keyword">byte</span> b[]) <span class="keyword">throws</span> IOException</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>.将指定<span class="keyword">byte</span>数组中从偏移量off开始的len个字节写入数据流</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">write</span>(<span class="keyword">byte</span> b[], <span class="keyword">int</span> off, <span class="keyword">int</span> len) <span class="keyword">throws</span> IOException</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4.</span>刷新缓冲区</span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">flush</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;&#125;</span><br><span class="line"><span class="number">5.</span>关闭输出流</span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>要想使用此类及以上方法，必须通过子类实例化对象。</p>
+<h4 id="继承OutputStream的子类"><a href="#继承OutputStream的子类" class="headerlink" title="继承OutputStream的子类"></a>继承OutputStream的子类</h4><p><img src="http://ot8blk4sm.bkt.clouddn.com/292.png" alt="images"></p>
+<p><strong>FileOutputStream</strong></p>
+<p>文件输出流，是向File或FileDescriptor输出数据的一个输出流。</p>
+<p>FileOutputStream类的构造方法有：</p>
+<p>1.创建一个文件输出流，向指定的File对象输出数据（写入）</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> FileOutputStream(<span class="keyword">File</span> <span class="keyword">file</span>) <span class="keyword">throws</span> FileNotFoundException </span><br><span class="line"><span class="comment">//字节写到文件的开始，输出会进行覆盖</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> FileOutputStream(<span class="keyword">File</span> <span class="keyword">file</span>, <span class="keyword">boolean</span> <span class="keyword">append</span>) <span class="keyword">throws</span> FileNotFoundException</span><br><span class="line"><span class="comment">//如果append设为true，字节将写到文件末尾</span></span><br></pre></td></tr></table></figure>
+
+<p>2.创建一个文件输出流，向指定名称的文件输出数据（写入到指定名称的文件中）</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> FileOutputStream(<span class="keyword">String</span> name) <span class="keyword">throws</span> FileNotFoundException</span><br><span class="line"><span class="comment">//输出会进行覆盖</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> FileOutputStream(<span class="keyword">String</span> name, <span class="built_in">boolean</span> <span class="built_in">append</span>)</span><br><span class="line"><span class="keyword">throws</span> FileNotFoundException</span><br><span class="line"><span class="comment">//如果append设为true，字节将写到文件末尾</span></span><br></pre></td></tr></table></figure>
+
+<p>3.创建一个文件输出流，向指定的文件描述器输出数据，该文件描述符表示文件系统中一个实际文件的现有连接。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public FileOutputStream(<span class="name">FileDescriptor</span> fdObj)</span><br></pre></td></tr></table></figure>
+
+<h4 id="OutputStream的其他子类"><a href="#OutputStream的其他子类" class="headerlink" title="OutputStream的其他子类"></a>OutputStream的其他子类</h4><p><strong>1.ObjectOutputStream（对象输出流）</strong></p>
+<p>对象输出流将Java对象的原始数据类型和对象图写入输出流。只有支持可序列化接口的对象才可以写入到输出流。</p>
+<p><strong>2.ByteArrayOutputStream（字节数组输出流）</strong></p>
+<p>该类实现了一个以字节数组形式写入数据的输出流，缓冲区会随着数据的写入而自动扩大。可以用toByteArray()和toString()检索数据。</p>
+<p>构造方法有：</p>
+<p>(1)创建一个新的字节数组输出流</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ByteArrayOutputStream</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(<span class="number">32</span>);&#125;</span><br><span class="line"><span class="comment">//缓冲区容量最初是32字节，如果需要，大小会增加</span></span><br></pre></td></tr></table></figure>
+
+<p>(2)创建一个新的字节数组输出流，并带有制定大小字节的缓冲区容量</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ByteArrayOutputStream(<span class="keyword">int</span> <span class="built_in">size</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.PipedOutputStream（管道输出流）</strong></p>
+<p>管道输出流可以连接到管道输入流来创建通信管道，它是这个管道的发送端。</p>
+<p>一个线程通过管道输出流写入（发送）数据，另一个线程通过管道输入流读取数据，这样可实现两个线程之间的通讯。</p>
+<p>不建议尝试从单个线程使用这两个管道流对象，因为它可能会造成线程死锁。</p>
+<p>构造方法有：</p>
+<p>(1)创建连接到指定管道输入流的管道输出流</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> PipedOutputStream(PipedInputStream snk)  <span class="keyword">throws</span> IOException</span><br></pre></td></tr></table></figure>
+
+<p>(2)创建一个管道输出流，该输出流尚未连接到管道输入流</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> PipedOutputStream()</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.FilterOutputStream</strong></p>
+<p>其子类有DataOutputStream、BufferedOutputStream、PrintStream。</p>
+<h4 id="代码示例：将序列化对象写入文件"><a href="#代码示例：将序列化对象写入文件" class="headerlink" title="代码示例：将序列化对象写入文件"></a>代码示例：将序列化对象写入文件</h4><p>创建文件，输出字节的代码示例：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class Test &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="built_in">try</span> &#123;</span><br><span class="line">            <span class="built_in">File</span> f = <span class="keyword">new</span> <span class="built_in">File</span>(<span class="string">"E:/test1.txt"</span>);</span><br><span class="line">            <span class="comment">//如果文件不存在，会自动创建出来</span></span><br><span class="line">            FileOutputStream fs = <span class="keyword">new</span> FileOutputStream(f);</span><br><span class="line">            <span class="comment">//如果想在文件中执行追加，构造方法中append设为true</span></span><br><span class="line">            <span class="keyword">String</span> str = <span class="string">"Hello World!"</span>;</span><br><span class="line">            <span class="keyword">byte</span>[] b = str.getBytes();</span><br><span class="line">            <span class="comment">//因为是字节流，先将字符串转化为字节数组</span></span><br><span class="line">            fs.<span class="built_in">write</span>(b);</span><br><span class="line">            <span class="comment">//这里也可以一个字节一个字节进行输出</span></span><br><span class="line">            <span class="comment">//for(int i=0;i&lt;b.length;i++)&#123;fs.write([i]);&#125;</span></span><br><span class="line">            fs.<span class="built_in">close</span>();</span><br><span class="line">        &#125; <span class="built_in">catch</span> (IOException ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>将序列化对象写入文件</strong>，会用到字节输出流：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 将序列化对象存储到文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> void main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="comment">//创建一个Use对象</span></span><br><span class="line">        User user = <span class="keyword">new</span> <span class="type">User</span>(<span class="number">1</span>, <span class="string">"amy"</span>);</span><br><span class="line">        <span class="comment">//创建一个List对象</span></span><br><span class="line">        List&lt;<span class="keyword">String</span>&gt; list = <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;<span class="keyword">String</span>&gt;();</span><br><span class="line">        list.add(<span class="string">"hello"</span>);</span><br><span class="line">        list.add(<span class="string">"I am"</span>);</span><br><span class="line">        list.add(<span class="string">"amy"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">            FileOutputStream fs = <span class="keyword">new</span> <span class="type">FileOutputStream</span>(<span class="string">"E:/test.ser"</span>);</span><br><span class="line">            <span class="comment">//如果文件不存在，会自动创建出来</span></span><br><span class="line">            ObjectOutputStream os = <span class="keyword">new</span> <span class="type">ObjectOutputStream</span>(fs);</span><br><span class="line">            <span class="comment">//ObjectOutputStream能让写入对象，但无法直接连接文件，所以需要参数指引</span></span><br><span class="line">            os.writeObject(user);</span><br><span class="line">            os.writeObject(list);</span><br><span class="line">            <span class="comment">//写入对象</span></span><br><span class="line">            os.close();</span><br><span class="line">            <span class="comment">//关闭ObjectOutputStream</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (ClassNotFoundException ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword"><span class="keyword">implements</span> <span class="type">Serializable</span></span> </span>&#123;</span><br><span class="line">    <span class="comment">//User类实现序列化</span></span><br><span class="line">    <span class="keyword">private</span> int id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">String</span> name;</span><br><span class="line">    <span class="keyword">public</span> User(int id, <span class="keyword">String</span> name) &#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>如下图所示</strong></p>
+<p><img src="http://ot8blk4sm.bkt.clouddn.com/211.png" alt="image"></p>
+<h3 id="字节输入流InputStream"><a href="#字节输入流InputStream" class="headerlink" title="字节输入流InputStream"></a>字节输入流InputStream</h3><h4 id="类与方法定义-1"><a href="#类与方法定义-1" class="headerlink" title="类与方法定义"></a>类与方法定义</h4><p>抽象类，定义如下：</p>
+<figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">InputStream</span> <span class="keyword">implements</span> <span class="title">Closeable</span></span></span><br></pre></td></tr></table></figure>
+
+<p>方法有：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>读取一个字节无符号填充到<span class="keyword">int</span>的低<span class="number">8</span>位，高<span class="number">8</span>位补零，读取到<span class="number">-1</span>结束</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line"><span class="comment">//read()返回读取的字节或-1（-1表示读取结束）</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>.将当前输入流中b.length个字节读入到<span class="keyword">byte</span>数组中，实际读取的字节数作为整数返回</span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">int</span> <span class="keyword">read</span>(<span class="keyword">byte</span> b[]) <span class="keyword">throws</span> IOException</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>.将输入流中<span class="built_in">len</span>个字节数据读入一个字节数组中，从数组的off位置开始存放<span class="built_in">len</span>长度的数据</span><br><span class="line">public <span class="keyword">int</span> <span class="keyword">read</span>(byte <span class="keyword">b</span>[], <span class="keyword">int</span> off, <span class="keyword">int</span> <span class="built_in">len</span>) throws IOException </span><br><span class="line">//带有参数的<span class="keyword">read</span>方法返回的是读取字节数或-<span class="number">1</span>，内部也在调用<span class="keyword">read</span>(),读取字节</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4.</span>从该输入流中跳过或忽略n字节</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">long</span> skip(<span class="keyword">long</span> n) <span class="keyword">throws</span> IOException </span><br><span class="line"></span><br><span class="line"><span class="number">5.</span>返回这个输入流中可读（或跳过）的字节数估计值，即可取得输入文件的大小</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> available() <span class="keyword">throws</span> IOException </span><br><span class="line"></span><br><span class="line"><span class="number">6.</span>关闭输入流</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> close() <span class="keyword">throws</span> IOException</span><br></pre></td></tr></table></figure>
+
+<p>要想使用此类及以上方法，必须通过子类实例化对象。</p>
+<h4 id="继承InputStream的子类"><a href="#继承InputStream的子类" class="headerlink" title="继承InputStream的子类"></a>继承InputStream的子类</h4><p><img src="http://ot8blk4sm.bkt.clouddn.com/293.png" alt="image"></p>
+<p><strong>FileInputStream</strong></p>
+<p>文件输入流，从文件系统中的文件读取输入字节。</p>
+<p>FileInputStream的构造方法有：</p>
+<p>1.创建一个输入文件流，从指定的File对象读取数据</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> FileInputStream(<span class="keyword">File</span> <span class="keyword">file</span>) <span class="keyword">throws</span> FileNotFoundException</span><br></pre></td></tr></table></figure>
+
+<p>2.创建一个输入文件流，从指定名称的文件读取数据</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> FileInputStream(<span class="keyword">String</span> <span class="keyword">name</span>) throws FileNotFoundException</span><br></pre></td></tr></table></figure>
+
+<p>3.创建一个输入文件流，从指定的文件描述器读取数据</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public FileInputStream(<span class="name">FileDescriptor</span> fdObj)</span><br></pre></td></tr></table></figure>
+
+<h4 id="InputStream的其他子类"><a href="#InputStream的其他子类" class="headerlink" title="InputStream的其他子类"></a>InputStream的其他子类</h4><p><strong>1.ObjectInputStream（对象输入流）</strong></p>
+<p><strong>2.ByteArrayInputStream（字节数组输入流）</strong></p>
+<p>把内存的一个缓冲区作为InputStream使用。</p>
+<p>构造方法有：</p>
+<p>(1)创建一个字节数组输入流，使用buf作为它的缓冲区数组，从缓冲区数组中读取数据</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ByteArrayInputStream(<span class="keyword">byte</span> buf[])</span><br></pre></td></tr></table></figure>
+
+<p>(2)创建一个字节数组输入流，从指定字节数组中读取数据</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ByteArrayInputStream(<span class="keyword">byte</span> buf[], <span class="keyword">int</span> offset, <span class="keyword">int</span> length)</span><br><span class="line"><span class="comment">//offset表示读取缓冲区中第一个字节的偏移</span></span><br><span class="line"><span class="comment">//length表示从缓冲区读取的最大字符数</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>3.PipedInputStream（管道输入流）</strong></p>
+<p>管道输入流是一个通讯管道的接收端。</p>
+<p>构造方法有：</p>
+<p>(1)创建连接到指定管道输出流的管道输入流</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> PipedInputStream(PipedOutputStream src) <span class="keyword">throws</span> IOException</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> PipedInputStream(PipedOutputStream src, <span class="keyword">int</span> pipeSize)</span><br><span class="line">        <span class="keyword">throws</span> IOException</span><br><span class="line">         <span class="comment">//使用指定的管道大小作为管道的缓冲</span></span><br></pre></td></tr></table></figure>
+
+<p>(2)创建一个管道输入流，该输出流尚未连接到管道输出流</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">PipedInputStream</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">PipedInputStream</span><span class="params">(<span class="keyword">int</span> pipeSize)</span></span></span><br><span class="line"><span class="function"><span class="comment">//使用指定的管道大小</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>4.SequenceInputStream（序列输入流）</strong></p>
+<p>此类允许应用程序把几个输入连续地合并起来，它从一个有序的输入流集合开始，每个输入流依次被读取到文件的末尾，直到到达最后一个输入流的文件末尾。</p>
+<p>构造方法有：</p>
+<p>(1)参数中枚举生成运行时类型为输入流的对象。新创建一个序列输入流，通过读取由枚举产生的输入流来初始化它。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> SequenceInputStream(Enumeration&lt;? <span class="keyword">extends</span> InputStream&gt; e)</span><br></pre></td></tr></table></figure>
+
+<p>(2)新创建一个序列输入流，按参数顺序读取输入流s1,s2来初始化它。</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">public</span> SequenceInputStream(InputStream <span class="built_in">s1</span>, InputStream <span class="built_in">s2</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>5.StringBufferInputStream</strong></p>
+<p>不推荐使用，此类不能将字符正确地转换为字节。从一个串创建一个流的最佳方法是采用StringReader类。</p>
+<p><strong>6.FilterInputStream</strong></p>
+<p>其子类有LineNumberInputStream(java8中已不建议使用)、DataInputStream、BufferedInputStream、PushbackInputStream。</p>
+<h4 id="代码示例：解序列化"><a href="#代码示例：解序列化" class="headerlink" title="代码示例：解序列化"></a>代码示例：解序列化</h4><p>读取文件test1.txt内容的代码示例：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class Test &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="built_in">try</span> &#123;</span><br><span class="line">            <span class="built_in">File</span> f = <span class="keyword">new</span> <span class="built_in">File</span>(<span class="string">"E:/test1.txt"</span>);</span><br><span class="line">            <span class="comment">//如果文件不存在，就会抛出异常</span></span><br><span class="line">            FileInputStream fs = <span class="keyword">new</span> FileInputStream(f);</span><br><span class="line">            <span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[(<span class="keyword">int</span>) f.length()];</span><br><span class="line">            <span class="comment">//文件中内容都读到此数组中，数组大小由文件决定</span></span><br><span class="line">            <span class="comment">//在不知道输入文件大小时，可用while循环</span></span><br><span class="line">            <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">            <span class="built_in">while</span> ((temp = fs.<span class="built_in">read</span>()) != <span class="number">-1</span>) &#123;</span><br><span class="line">                <span class="comment">//-1为文件读完的标志</span></span><br><span class="line">                b[len] = (<span class="keyword">byte</span>) temp;</span><br><span class="line">                len++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//可以直接fs.read(b);读取内容</span></span><br><span class="line">            <span class="comment">//也可以一个一个读取：for(int i=0;i&lt;b.length;i++)&#123;b[i]=(byte)fs.read()&#125;;</span></span><br><span class="line">            fs.<span class="built_in">close</span>();</span><br><span class="line">            <span class="comment">//关闭输出流</span></span><br><span class="line">        &#125; <span class="built_in">catch</span> (IOException ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>把序列化对象从文件中读取出来</strong>，会用到字节输入流（与上文把序列化对象写入文件关联）：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 把序列化对象从文件test.ser中读取出来</span></span><br><span class="line"><span class="comment"> * 读取的时候，读取顺序一定要与写入顺序相同</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            FileInputStream fs = <span class="keyword">new</span> FileInputStream(<span class="string">"E:/test.ser"</span>);</span><br><span class="line">            <span class="comment">//如果文件不存在，会抛出异常</span></span><br><span class="line">            ObjectInputStream os = <span class="keyword">new</span> ObjectInputStream(fs);</span><br><span class="line">            <span class="comment">//ObjectOutputStream知道如何提取对象，但是要靠链接的stream提供文件存取</span></span><br><span class="line">            User a1 = (User) os.readObject();</span><br><span class="line">            <span class="comment">//readObject()的返回类型是Object，要转换为原来的User类型</span></span><br><span class="line">            System.<span class="keyword">out</span>.println(<span class="string">"user的内容为"</span>);</span><br><span class="line">            System.<span class="keyword">out</span>.println(a1.getId());</span><br><span class="line">            System.<span class="keyword">out</span>.println(a1.getName());</span><br><span class="line">            List a2 = (List) os.readObject();</span><br><span class="line">            <span class="comment">//读取顺序与读入顺序一致</span></span><br><span class="line">            System.<span class="keyword">out</span>.println(<span class="string">"list的内容为"</span>);</span><br><span class="line">            System.<span class="keyword">out</span>.println(a2);</span><br><span class="line">            os.close();</span><br><span class="line">            <span class="comment">//关闭ObjectOutputStream，FileInputStream会自动跟着关闭</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>如下图所示:</strong></p>
+<p><img src="http://ot8blk4sm.bkt.clouddn.com/212.png" alt="image"></p>
+<h2 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h2><p>字符流处理的基本单元为2个字节的Unicode字符，操作字符、字符数组或字符串，它通常用来处理文本数据。</p>
+<p>java提供了Writer、Reader两个专门操作字符流的类。表示以Unicode字符为单位往stream中写入或读取信息。</p>
+<h3 id="字符输出流Writer"><a href="#字符输出流Writer" class="headerlink" title="字符输出流Writer"></a>字符输出流Writer</h3><h4 id="类与方法定义-2"><a href="#类与方法定义-2" class="headerlink" title="类与方法定义"></a>类与方法定义</h4><p>抽象类，定义如下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Writer</span> <span class="title">implements</span> <span class="title">Appendable</span>, <span class="type">Closeable</span>, <span class="type">Flushable</span></span></span><br></pre></td></tr></table></figure>
+
+<p>常用方法有：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.写一个字符</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">write</span>(<span class="keyword">int</span> c) <span class="keyword">throws</span> IOException</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>.写一个字符数组</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">write</span>(<span class="keyword">char</span> cbuf[]) <span class="keyword">throws</span> IOException </span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">write</span>(<span class="keyword">char</span> cbuf[], <span class="keyword">int</span> off, <span class="keyword">int</span> len) <span class="keyword">throws</span> IOException;</span><br><span class="line"><span class="comment">//从cbuf[]的off位置开始，写入字符数为len的字符数组</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.</span>写入一个字符串</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> write(<span class="keyword">String</span> <span class="built_in">str</span>) <span class="keyword">throws</span> IOException </span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">void</span> write(<span class="keyword">String</span> <span class="built_in">str</span>, <span class="built_in">int</span> off, <span class="built_in">int</span> len) <span class="keyword">throws</span> IOException </span><br><span class="line"> <span class="comment">//从字符串str的off位置开始，写入的字符数为len</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span>.将指定的字符序列caq追加到该writer</span><br><span class="line"><span class="keyword">public</span> Writer <span class="keyword">append</span>(CharSequence csq) <span class="keyword">throws</span> IOException </span><br><span class="line"></span><br><span class="line"><span class="comment">//追加从指定序列的start位置开始，至end位置的字符序列</span></span><br><span class="line"><span class="keyword">public</span> Writer <span class="keyword">append</span>(CharSequence csq, <span class="keyword">int</span> start, <span class="keyword">int</span> end) <span class="keyword">throws</span> IOException</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>.将指定字符追加到该writer</span><br><span class="line"><span class="keyword">public</span> Writer <span class="keyword">append</span>(<span class="keyword">char</span> c) <span class="keyword">throws</span> IOException</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6.</span>强制性清空缓存</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">flush</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7.</span>关闭输出流</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>;</span><br></pre></td></tr></table></figure>
+
+<p>要想使用此类，必须通过子类实例化对象，使用子类。</p>
+<h4 id="继承Writer的子类"><a href="#继承Writer的子类" class="headerlink" title="继承Writer的子类"></a>继承Writer的子类</h4><p><img src="http://ot8blk4sm.bkt.clouddn.com/12201.png" alt="image"></p>
+<p><strong>FileWriter</strong></p>
+<p>如果是向文件中写入内容，应该使用FileWriter子类。与FileOutputStream对应。</p>
+<p>++FileWriter继承自OutputStreamWriter，OutputStreamWriter继承自Writer++</p>
+<p>构造方法：</p>
+<p>1.构造给定File对象的FileWriter（文件写入器对象）</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> FileWriter(<span class="keyword">File</span> <span class="keyword">file</span>) <span class="keyword">throws</span> IOException</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果apped设为true，数据将写到文件的末尾而不是开始</span></span><br><span class="line"><span class="keyword">public</span> FileWriter(<span class="keyword">File</span> <span class="keyword">file</span>, <span class="keyword">boolean</span> <span class="keyword">append</span>) <span class="keyword">throws</span> IOException</span><br></pre></td></tr></table></figure>
+
+<p>2.构造给定文件名的FileWriter</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> FileWriter(<span class="keyword">String</span> fileName) <span class="keyword">throws</span> IOException</span><br><span class="line"> </span><br><span class="line"><span class="comment">//如果append设为true，数据将写到文件的末尾</span></span><br><span class="line"><span class="keyword">public</span> FileWriter(<span class="keyword">String</span> fileName, <span class="built_in">boolean</span> <span class="built_in">append</span>) <span class="keyword">throws</span> IOException</span><br></pre></td></tr></table></figure>
+
+<p>3.构造与文件描述器相关联的FileWriter</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public FileWriter(<span class="name">FileDescriptor</span> fd)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Writer的其他子类"><a href="#Writer的其他子类" class="headerlink" title="Writer的其他子类"></a>Writer的其他子类</h4><p>1.<strong>BufferedWriter</strong></p>
+<p>2.<strong>CharArrayWriter</strong><br>与ByteArrayOutputStream对应</p>
+<p>3.<strong>PipedWriter</strong><br>与PipedOutputStream对应</p>
+<p>4.<strong>FilterWriter</strong></p>
+<p>5.<strong>StringWriter</strong></p>
+<h4 id="代码示例：将字符串写入文本文件"><a href="#代码示例：将字符串写入文本文件" class="headerlink" title="代码示例：将字符串写入文本文件"></a>代码示例：将字符串写入文本文件</h4><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> void main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            FileWriter fw = <span class="keyword">new</span> <span class="type">FileWriter</span>(<span class="string">"E:/test2.txt"</span>);</span><br><span class="line">            <span class="comment">//文件如果不存在就会被创建</span></span><br><span class="line">            <span class="comment">//如果是在文件中追加内容，构造方法中append的值设为true</span></span><br><span class="line">            BufferedWriter bw = <span class="keyword">new</span> <span class="type">BufferedWriter</span>(fw);</span><br><span class="line">            bw.write(<span class="string">"Hello,World"</span>);</span><br><span class="line">            <span class="comment">//这里以字符作参数</span></span><br><span class="line">            bw.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符输入流Reader"><a href="#字符输入流Reader" class="headerlink" title="字符输入流Reader"></a>字符输入流Reader</h3><h4 id="类与方法定义-3"><a href="#类与方法定义-3" class="headerlink" title="类与方法定义"></a>类与方法定义</h4><p>抽象类，定义如下：</p>
+<figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Reader</span> <span class="keyword">implements</span> <span class="title">Readable</span>, <span class="title">Closeable</span></span></span><br></pre></td></tr></table></figure>
+
+<p>常用方法有：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.读取单个字符</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="keyword">read</span>() <span class="keyword">throws</span> IOException</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>.将内容读入字符数组，返回读入的长度，如果到达输入流末端，返回-<span class="number">1</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="keyword">read</span>(<span class="keyword">char</span> cbuf[]) <span class="keyword">throws</span> IOException </span><br><span class="line"></span><br><span class="line"><span class="comment">//len表示要读取的最大字符数</span></span><br><span class="line"><span class="comment">//将输入流中len个字符数据读入一个字符数组中，从数组的off位置开始存放len长度的数据</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">public</span> <span class="keyword">int</span> <span class="keyword">read</span>(<span class="keyword">char</span> cbuf[], <span class="keyword">int</span> off, <span class="keyword">int</span> len) <span class="keyword">throws</span> IOException;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.</span>关闭输入流，并释放与之关联的任何系统资源</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>;</span><br></pre></td></tr></table></figure>
+
+<p>要想使用此类，必须通过子类实例化对象，使用子类。</p>
+<h4 id="继承Reader的子类"><a href="#继承Reader的子类" class="headerlink" title="继承Reader的子类"></a>继承Reader的子类</h4><p><img src="http://ot8blk4sm.bkt.clouddn.com/12202.png" alt="image"></p>
+<p><strong>FileReader</strong></p>
+<p>如果要从文件中读取内容，可以直接使用FileReader子类。FileReader与FileInputStream对应。</p>
+<p>++FileReader继承自InputStreamReader，InputStreamReader继承自Reader++。</p>
+<p>构造方法：</p>
+<p>1.创建一个新的FileReader，从指定的File对象读取数据</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> FileReader(<span class="keyword">File</span> <span class="keyword">file</span>) <span class="keyword">throws</span> FileNotFoundException</span><br></pre></td></tr></table></figure>
+
+<p>2.创建一个新的FileReader，从指定名称的文件中读取数据</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> FileReader(<span class="keyword">String</span> fileName) <span class="keyword">throws</span> FileNotFoundException</span><br></pre></td></tr></table></figure>
+
+<p>3.创建一个新的FileReader，从指定的文件描述器读取数据</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public FileReader(<span class="name">FileDescriptor</span> fd)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Reader的其他子类"><a href="#Reader的其他子类" class="headerlink" title="Reader的其他子类"></a>Reader的其他子类</h4><p><strong>1.BufferedReader</strong></p>
+<p><strong>2.CharArrayReader</strong>  </p>
+<p>与ByteArrayInputStream对应。此类实现一个可用作字符输入流的字符缓冲区。子类有LineNumberReader</p>
+<p><strong>3.PipedReader</strong><br>与PipedInputStream对应</p>
+<p><strong>4.FilterReader</strong><br>子类有PushbackReader。</p>
+<p><strong>5.StringReader</strong></p>
+<h4 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h4><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class Test &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="built_in">try</span> &#123;</span><br><span class="line">            FileReader fw = <span class="keyword">new</span> FileReader(<span class="string">"E:/test2.txt"</span>);</span><br><span class="line">            BufferedReader bw = <span class="keyword">new</span> BufferedReader(fw);</span><br><span class="line">            <span class="comment">//它只会在缓冲区读空的时候才会回头去读取</span></span><br><span class="line">            <span class="comment">//以字符数组的形式读取数据</span></span><br><span class="line">            <span class="keyword">char</span>[] c = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="comment">//所有内容都读到此数组中</span></span><br><span class="line">            <span class="keyword">int</span> len = bw.<span class="built_in">read</span>(c);</span><br><span class="line">            <span class="comment">//read(char c[])返回读入长度</span></span><br><span class="line">            bw.<span class="built_in">close</span>();</span><br><span class="line">            System.out.<span class="built_in">println</span>(<span class="keyword">new</span> <span class="keyword">String</span>(c, <span class="number">0</span>, len));</span><br><span class="line">            <span class="comment">//把字符数组变成字符串输出</span></span><br><span class="line">        &#125; <span class="built_in">catch</span> (IOException ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//还可以以while循环判断是否读到底</span></span><br><span class="line"> <span class="keyword">int</span> len=<span class="number">0</span>;</span><br><span class="line"> <span class="keyword">int</span> temp=<span class="number">0</span>;</span><br><span class="line"> <span class="keyword">char</span>[] c = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">1024</span>];</span><br><span class="line"> <span class="built_in">while</span>((temp=bw.<span class="built_in">read</span>())!=<span class="number">-1</span>)&#123;</span><br><span class="line">     c[len]=(<span class="keyword">char</span>)temp;</span><br><span class="line">     len++;</span><br><span class="line"> &#125;</span><br><span class="line"> bw.<span class="built_in">close</span>();</span><br><span class="line"> System.out.<span class="built_in">println</span>(<span class="keyword">new</span> <span class="keyword">String</span>(c, <span class="number">0</span>, len));</span><br><span class="line"> <span class="comment">//把字符数组变成字符串输出</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//还可以用readLine()方法</span></span><br><span class="line"><span class="comment">//直接用String变量来承接所读取结果</span></span><br><span class="line"><span class="keyword">String</span> <span class="built_in">line</span>=<span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">while</span>((<span class="built_in">line</span>=bw.readLine())!=<span class="keyword">null</span>)&#123;</span><br><span class="line">    System.out.<span class="built_in">println</span>(<span class="built_in">line</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字节—字符转换"><a href="#字节—字符转换" class="headerlink" title="字节—字符转换"></a>字节—字符转换</h2><p>OutputStreamWriter和InputStreamReader是字节流与字符流的转换类。从源码中分析：</p>
+<p>++<strong>OutputStreamWriter是Writer的子类，将输出的字符流转换成字节流。</strong>++<br>++<strong>InputStreamReader是Reader的子类，将输入的字节流转换成字符流。</strong>++</p>
+<h3 id="OutputStreamWriter"><a href="#OutputStreamWriter" class="headerlink" title="OutputStreamWriter"></a>OutputStreamWriter</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">OutputStreamWriter</span> <span class="keyword">extends</span> <span class="title">Writer</span></span></span><br></pre></td></tr></table></figure>
+
+<p>OutputStreamWriter类是从字符流到字节流的桥梁。在OutputStreamWriter类中需要一个字节流的对象(OutputStream out)。</p>
+<p>OutputStreamWriter将多个字符写入到一个输出流，根据指定的字符编码将写入的字符编码成字节。实际负责编码的是StreamEncoder类，过程中必须使用指定的编码集。</p>
+<p>构造方法：</p>
+<p>1.可以通过名称指定支持的字符编码集：</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> OutputStreamWriter(OutputStream <span class="keyword">out</span>, <span class="keyword">String</span> charsetName)</span><br><span class="line">        throws UnsupportedEncodingException</span><br></pre></td></tr></table></figure>
+
+<p>2.构造器中指定Charset类型：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">public</span> OutputStreamWriter(OutputStream <span class="keyword">out</span>, Charset <span class="built_in">cs</span>)</span><br></pre></td></tr></table></figure>
+
+<p>3.也可以接受平台的默认编码集：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">OutputStreamWriter</span>(<span class="params">OutputStream <span class="keyword">out</span></span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>4.可以使用指定charset encoder:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">OutputStreamWriter</span>(<span class="params">OutputStream <span class="keyword">out</span>, CharsetEncoder enc</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>write()方法的每次调用都会在给定字符(或字符串)上调用编码转换器。<strong>在写入底层输出流之前，将在缓冲区中积累产生的字节</strong>。</p>
+<p>注意，<strong>传递给write()方法的字符没有缓冲</strong>。OutputStreamWriter的write()方法写入的是字符（或字符串），而非字节。写入字节的是输出字节流(OutputStream)。</p>
+<p>为了提高效率，可以考虑<strong>将OutputStreamWriter包装在一个BufferedWriter中</strong>，以避免频繁的转换。例如：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Writer <span class="keyword">out</span>  = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(System.<span class="keyword">out</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="InputStreamReader"><a href="#InputStreamReader" class="headerlink" title="InputStreamReader"></a>InputStreamReader</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">InputStreamReader</span> <span class="keyword">extends</span> <span class="title">Reader</span></span></span><br></pre></td></tr></table></figure>
+
+<p>InputStreamReader类是从字节流到字符流的桥梁。在InputStreamReader类中需要一个字节流的对象(InputStream in)。</p>
+<p>它使用的字符集可以通过名称指定，也可以明确Charset类型，也可接受平台的默认字符集。与OutputStreamWriter类似。</p>
+<p>构造函数：</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> InputStreamReader(InputStream <span class="keyword">in</span>, <span class="keyword">String</span> charsetName)</span><br><span class="line"><span class="keyword">public</span> InputStreamReader(InputStream <span class="keyword">in</span>, Charset cs)</span><br><span class="line"><span class="keyword">public</span> InputStreamReader(InputStream <span class="keyword">in</span>)</span><br></pre></td></tr></table></figure>
+
+<p>每次调用InputStreamReader的read()方法，都可能导致从底层字节输入流中读取一个或多个字节。为了能有效地将字节转化为字符，可从底层输入流中读取更多字节，而不只是满足当前读取操作所需的字节。</p>
+<p>注意，InputStreamReader是Reader的子类，其read()方法读取的是一个或多个字符。读取字节的是字节输入流(InputStream)。</p>
+<p>为了提高效率，可以考虑<strong>将InputStreamReader包装在一个BufferedReader中</strong>，比如：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BufferedReader <span class="keyword">in</span> = <span class="keyword">new</span> <span class="type">BufferedReader</span>(<span class="keyword">new</span> <span class="type">InputStreamReader</span>(System.<span class="keyword">in</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="代码示例：用Buffered从Socket上读取数据"><a href="#代码示例：用Buffered从Socket上读取数据" class="headerlink" title="代码示例：用Buffered从Socket上读取数据"></a>代码示例：用Buffered从Socket上读取数据</h4><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *从Socket上读取数据</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> void main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Socket chatSocket = <span class="keyword">new</span> <span class="type">Socket</span>(<span class="string">"127.0.0.1"</span>, <span class="number">5000</span>);</span><br><span class="line">            <span class="comment">//建立对服务器的Socket连接</span></span><br><span class="line">            InputStreamReader stream = <span class="keyword">new</span> <span class="type">InputStreamReader</span>(chatSocket.getInputStream());</span><br><span class="line">            <span class="comment">//从Socket取得输入串流</span></span><br><span class="line">            <span class="comment">//建立连接到Socket上的输入串流InputStreamReader（转换字节成字符的桥梁）</span></span><br><span class="line">            BufferedReader reader = <span class="keyword">new</span> <span class="type">BufferedReader</span>(stream);</span><br><span class="line">            <span class="keyword">String</span> message = reader.readLine();</span><br><span class="line">            reader.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>如下图所示：</strong></p>
+<p><img src="http://ot8blk4sm.bkt.clouddn.com/221.png" alt="image"></p>
+<h2 id="字节流与字符流的比较"><a href="#字节流与字符流的比较" class="headerlink" title="字节流与字符流的比较"></a>字节流与字符流的比较</h2><ol>
+<li><p>字节流操作的基本单元是字节；字符流操作的基本单元为Unicode码元。</p>
+</li>
+<li><p>字节流在操作的时候本身不会用到缓冲区的，是与文件本身直接操作的；而字符流在操作的时候使用到缓冲区的。</p>
+</li>
+</ol>
+<p>所有文件的存储都是字节(byte)的存储，在磁盘上保留的是字节。</p>
+<ol start="3">
+<li>在使用字节流操作中，即使没有关闭资源（close方法），也能输出；而字符流不使用close方法的话，不会输出任何内容。</li>
+</ol>
+<p>说明字符流用到了缓冲区，如果执行关闭输出流的话会刷新缓冲区，所以可以把内容输出。如果没有关闭，可以调用flush()方法强制刷新缓冲区，这样可以在不使用close()的情况下输出内容。</p>
+<h2 id="输入流、输出流相关类的使用判断"><a href="#输入流、输出流相关类的使用判断" class="headerlink" title="输入流、输出流相关类的使用判断"></a>输入流、输出流相关类的使用判断</h2><p>根据使用场景决定使用哪个类。参考[<a href="http://blog.csdn.net/zj8692286/article/details/12650731" target="_blank" rel="noopener">字符流和字节流的区别，使用场景，相关类</a>]。如下（不考虑特殊需要）：</p>
+<p><strong>1.考虑最原始的数据格式是什么：</strong></p>
+<p>(1)二进制格式（只要不能确定是纯文本的）：InputStream,OutputStream及其子类（字节流）。</p>
+<p>(2)纯文本格式（含纯英文与汉字或其他编码方式）：Reader,Writer及其子类（字符流）。</p>
+<p><strong>2.是输入还是输出：</strong></p>
+<p>(1)输入：Reader,InputStream类型的子类。</p>
+<p>(2)输出：Writer,OutputStream类型的子类。</p>
+<p><strong>3.是否需要转换流：</strong></p>
+<p>字节到字符：InputStreamReader</p>
+<p>字符到字节：OutputStreamWriter</p>
+<p><strong>4.数据来源（去向）是什么：</strong></p>
+<p>(1)是文件：FileInputStream,FileOutputStream ; FileReader,FileWriter</p>
+<p>(2)是byte[]： ByteArrayInputStream, ByteArrayOutputStream</p>
+<p>(3)是Char[]：CharArrayReader,CharArrayWriter</p>
+<p>(4)是String：StringBufferInputStream,StringBufferOutputStream;StringReader,StringWriter</p>
+<p>(5)是网络数据流：InputStream,OutputStream;Reader,Writer</p>
+<p><strong>5.是否要缓冲：</strong>（要注意readLine()是否有定义，有什么比read(),writer()更特殊的输入或输出方法）</p>
+<p>要缓冲：BufferedInputStream, BufferedOutputStream； BufferedReader, BufferedWriter</p>
+<p><strong>6.是否要格式化输出：</strong></p>
+<p>要格式化输出：PrintStream, PrintWriter</p>
+<p>PrintStream是FilterOutputStream的子类。<br>PrintWriter是Writer的子类。可用PrintWriter写数据到Socket上。</p>
+<p><strong>还有如下特殊需要的情景：</strong></p>
+<p>(1)对象输入输出：ObjectInputStream, ObjectOutputStream</p>
+<p>(2)进程间通信：PipedInputStream, PipedOutputStream, PipedReader, PipedWriter</p>
+<p>(3)合并输入： SequenceInputStream</p>
+<p>(4)更特殊的需要：</p>
+<p>PushbackInputStream(FilterInputStream的子类)，LineNumberInputStream(FilterInputStream的子类，java8中已不建议使用);</p>
+<p>LineNumberReader(BufferedReader的子类)，PushbackReader(FilterReader的子类)</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Amy
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/" title="字节流、字符流及其转换、比较与使用场景">http://yoursite.com/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ByteCharStream/" rel="tag"># 字节流、字符流</a>
+          
+            <a href="/tags/IOStream/" rel="tag"># IO流</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/07/Java-collection-framework-and-the-basic-interface/" rel="next" title="Java中集合类框架及基本接口">
+                <i class="fa fa-chevron-left"></i> Java中集合类框架及基本接口
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/22/binary-tree-traversal-note/" rel="prev" title="二叉树遍历笔记  (先序、中序、后序)">
+                二叉树遍历笔记  (先序、中序、后序) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59a23d4837e48752" async="async"></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="gitalk-container"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/deppwang.png" alt="Amy">
+          <p class="site-author-name" itemprop="name">Amy</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/DeppWang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://jm.taobao.org/" title="阿里中间件团队博客" target="_blank">阿里中间件团队博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me/" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.liaoxuefeng.com/" title="廖雪峰个人网站" target="_blank">廖雪峰个人网站</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#流"><span class="nav-number">1.</span> <span class="nav-text">流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字节流"><span class="nav-number">2.</span> <span class="nav-text">字节流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字节输出流OutputStream"><span class="nav-number">2.1.</span> <span class="nav-text">字节输出流OutputStream</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类与方法定义"><span class="nav-number">2.1.1.</span> <span class="nav-text">类与方法定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承OutputStream的子类"><span class="nav-number">2.1.2.</span> <span class="nav-text">继承OutputStream的子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OutputStream的其他子类"><span class="nav-number">2.1.3.</span> <span class="nav-text">OutputStream的其他子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码示例：将序列化对象写入文件"><span class="nav-number">2.1.4.</span> <span class="nav-text">代码示例：将序列化对象写入文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字节输入流InputStream"><span class="nav-number">2.2.</span> <span class="nav-text">字节输入流InputStream</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类与方法定义-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">类与方法定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承InputStream的子类"><span class="nav-number">2.2.2.</span> <span class="nav-text">继承InputStream的子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#InputStream的其他子类"><span class="nav-number">2.2.3.</span> <span class="nav-text">InputStream的其他子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码示例：解序列化"><span class="nav-number">2.2.4.</span> <span class="nav-text">代码示例：解序列化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符流"><span class="nav-number">3.</span> <span class="nav-text">字符流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符输出流Writer"><span class="nav-number">3.1.</span> <span class="nav-text">字符输出流Writer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类与方法定义-2"><span class="nav-number">3.1.1.</span> <span class="nav-text">类与方法定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承Writer的子类"><span class="nav-number">3.1.2.</span> <span class="nav-text">继承Writer的子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Writer的其他子类"><span class="nav-number">3.1.3.</span> <span class="nav-text">Writer的其他子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码示例：将字符串写入文本文件"><span class="nav-number">3.1.4.</span> <span class="nav-text">代码示例：将字符串写入文本文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符输入流Reader"><span class="nav-number">3.2.</span> <span class="nav-text">字符输入流Reader</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类与方法定义-3"><span class="nav-number">3.2.1.</span> <span class="nav-text">类与方法定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承Reader的子类"><span class="nav-number">3.2.2.</span> <span class="nav-text">继承Reader的子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reader的其他子类"><span class="nav-number">3.2.3.</span> <span class="nav-text">Reader的其他子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码示例："><span class="nav-number">3.2.4.</span> <span class="nav-text">代码示例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字节—字符转换"><span class="nav-number">4.</span> <span class="nav-text">字节—字符转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OutputStreamWriter"><span class="nav-number">4.1.</span> <span class="nav-text">OutputStreamWriter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InputStreamReader"><span class="nav-number">4.2.</span> <span class="nav-text">InputStreamReader</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码示例：用Buffered从Socket上读取数据"><span class="nav-number">4.2.1.</span> <span class="nav-text">代码示例：用Buffered从Socket上读取数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字节流与字符流的比较"><span class="nav-number">5.</span> <span class="nav-text">字节流与字符流的比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入流、输出流相关类的使用判断"><span class="nav-number">6.</span> <span class="nav-text">输入流、输出流相关类的使用判断</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Amy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp
+本站访客数<span id="busuanzi_value_site_uv"></span>人次
+
+</div>
+
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  
+   <script src="/js/src/md5.min.js"></script>
+   
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'b58b66e4ffae6a11e4ae',
+          clientSecret: '0a7632a9afef7e63fe9bf854bc04b52d2e531827',
+          repo: 'deppwang.github.io',
+          owner: 'DeppWang',
+          admin: ['DeppWang'],
+          id: md5(location.pathname)
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("TUz90ld4GOIFf4QNVMoS5bOL-gzGzoHsz", "6O4O958ETCIUpQylcG1Gc8wY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
