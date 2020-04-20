@@ -25,6 +25,9 @@ private static final Object[] EMPTY_ELEMENTDATA = {};
 private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
 
 ```
+
+<!--more-->
+
 再有，定义了一个未被序列化的数组elementData，用来存储ArrayList对象列表
 ```
 /**
