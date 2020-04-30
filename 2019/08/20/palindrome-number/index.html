@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="Java基础,">
+  <meta name="keywords" content="LeetCode,">
 
 
 
@@ -89,18 +89,18 @@
 
 
 
-<meta name="description" content="本篇博文主要讲解以下内容：   基础类型(Primitives)与封装类型(Wrappers)的区别在哪里  一、传递方式不同封装类是引用类型。  基本类型（原始数据类型）在传递参数时都是按值传递，而封装类型是按引用传递的(其实“引用也是按值传递的”，传递的是对象的地址)。由于包装类型都是不可变量，因此没有提供改变它值的方法，增加了对“按引用传递”的理解难度。 int是基本类型，直接存放数值；In">
-<meta name="keywords" content="Java基础">
+<meta name="description" content="题目判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。 例：121 -&amp;gt; true，-121 -&amp;gt; false 题解一、字符串的反转12345678public boolean isPalindrome(int x) &amp;#123;    String str = String.valueOf(x);    String reserveStr = n">
+<meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅析Java基础类型与封装类型的区别">
-<meta property="og:url" content="http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/index.html">
+<meta property="og:title" content="5.回文数-判断">
+<meta property="og:url" content="http://yoursite.com/2019/08/20/palindrome-number/index.html">
 <meta property="og:site_name" content="Amy&#39;s Blog">
-<meta property="og:description" content="本篇博文主要讲解以下内容：   基础类型(Primitives)与封装类型(Wrappers)的区别在哪里  一、传递方式不同封装类是引用类型。  基本类型（原始数据类型）在传递参数时都是按值传递，而封装类型是按引用传递的(其实“引用也是按值传递的”，传递的是对象的地址)。由于包装类型都是不可变量，因此没有提供改变它值的方法，增加了对“按引用传递”的理解难度。 int是基本类型，直接存放数值；In">
+<meta property="og:description" content="题目判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。 例：121 -&amp;gt; true，-121 -&amp;gt; false 题解一、字符串的反转12345678public boolean isPalindrome(int x) &amp;#123;    String str = String.valueOf(x);    String reserveStr = n">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T03:27:06.526Z">
+<meta property="og:updated_time" content="2019-08-20T06:52:09.086Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅析Java基础类型与封装类型的区别">
-<meta name="twitter:description" content="本篇博文主要讲解以下内容：   基础类型(Primitives)与封装类型(Wrappers)的区别在哪里  一、传递方式不同封装类是引用类型。  基本类型（原始数据类型）在传递参数时都是按值传递，而封装类型是按引用传递的(其实“引用也是按值传递的”，传递的是对象的地址)。由于包装类型都是不可变量，因此没有提供改变它值的方法，增加了对“按引用传递”的理解难度。 int是基本类型，直接存放数值；In">
+<meta name="twitter:title" content="5.回文数-判断">
+<meta name="twitter:description" content="题目判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。 例：121 -&amp;gt; true，-121 -&amp;gt; false 题解一、字符串的反转12345678public boolean isPalindrome(int x) &amp;#123;    String str = String.valueOf(x);    String reserveStr = n">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/20/palindrome-number/">
 
 
 
 
 
-  <title>浅析Java基础类型与封装类型的区别 | Amy's Blog</title>
+  <title>5.回文数-判断 | Amy's Blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/palindrome-number/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Amy">
@@ -272,7 +272,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">浅析Java基础类型与封装类型的区别</h2>
+          <h2 class="post-title" itemprop="name headline">5.回文数-判断</h2>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T12:55:46+08:00">
-                2017-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T19:00:02+08:00">
+                2019-08-20
               </time>
             
 
@@ -307,8 +307,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/Algorithms-DataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms/DataStructure</span>
                   </a>
                 </span>
 
@@ -324,7 +324,7 @@
 
           
           
-             <span id="/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/" class="leancloud_visitors" data-flag-title="浅析Java基础类型与封装类型的区别">
+             <span id="/2019/08/20/palindrome-number/" class="leancloud_visitors" data-flag-title="5.回文数-判断">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -352,33 +352,42 @@
       
 
       
-        <p>本篇博文主要讲解以下内容：</p>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
+<p>例：121 -&gt; true，-121 -&gt; false</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="一、字符串的反转"><a href="#一、字符串的反转" class="headerlink" title="一、字符串的反转"></a>一、字符串的反转</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    String str = String.valueOf(x);</span><br><span class="line">    String reserveStr = <span class="keyword">new</span> StringBuilder(str).reverse().toString();</span><br><span class="line">    <span class="keyword">if</span> (str.equals(reserveStr)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、数学：去首去尾，首尾比较"><a href="#二、数学：去首去尾，首尾比较" class="headerlink" title="二、数学：去首去尾，首尾比较"></a>二、数学：去首去尾，首尾比较</h3><p>例：x = 12321</p>
 <ul>
-<li><input checked disabled type="checkbox"> 基础类型(Primitives)与封装类型(Wrappers)的区别在哪里</li>
+<li>得到首位left： 12321 / 10000 = 1; (此处div=10000为计算得出)</li>
+<li>得到末位right：12321 % 10 =1; (此处10为定值，用来取个位上的数)</li>
+<li>若left=right，去首尾缩减，x -&gt; 232 ：(12321 % 10000) / 10 。即(x % div) / 10。</li>
+<li>x已缩减两位数-&gt; div减小。div -&gt; div / 100。</li>
 </ul>
-<h2 id="一、传递方式不同"><a href="#一、传递方式不同" class="headerlink" title="一、传递方式不同"></a>一、传递方式不同</h2><p>封装类是引用类型。</p>
-<p> <strong>基本类型（原始数据类型）在传递参数时都是按值传递，而封装类型是按引用传递的</strong>(其实“引用也是按值传递的”，传递的是对象的地址)。由于包装类型都是不可变量，因此没有提供改变它值的方法，增加了对“按引用传递”的理解难度。</p>
-<p>int是基本类型，直接存放数值；Integer是类，产生对象时用一个引用指向这个对象。</p>
-<h2 id="二、封装类可以有方法和属性"><a href="#二、封装类可以有方法和属性" class="headerlink" title="二、封装类可以有方法和属性"></a>二、封装类可以有方法和属性</h2><p>封装类可以有方法和属性，利用这些方法和属性来处理数据，如Integer.parseInt(Strings)。<strong>基本数据类型都是final修饰的</strong>，不能继承扩展新的类、新的方法。</p>
-<h2 id="三、默认值不同"><a href="#三、默认值不同" class="headerlink" title="三、默认值不同"></a>三、默认值不同</h2><p> <strong>基本类型跟封装类型的默认值是不一样的</strong>。如int i,i的预设为0；Integer j，j的预设为null,因为封装类产生的是对象，对象默认值为null。</p>
-<a id="more"></a>
+<p><strong>代码实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>) &#123; <span class="comment">//若&lt;0 ，直接返回</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> div = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (x / div &gt;= <span class="number">10</span>) &#123; <span class="comment">//此处是&gt;=10，若&lt;10，表示已为个位数，div无需再扩大。</span></span><br><span class="line">        div *= <span class="number">10</span>; <span class="comment">//计算出除数div</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (x &gt; <span class="number">0</span>) &#123; <span class="comment">//直到x-&gt;0</span></span><br><span class="line">        <span class="keyword">int</span> left = x / div;</span><br><span class="line">        <span class="keyword">int</span> right = x % <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">if</span> (left != right) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        x = (x % div) / <span class="number">10</span>;</span><br><span class="line">        div = div / <span class="number">100</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="四、存储位置"><a href="#四、存储位置" class="headerlink" title="四、存储位置"></a>四、存储位置</h2><p> <strong>基本类型在内存中是存储在栈中，引用类型的引用（值的地址）存储在栈中，而实际的对象（值）是存在堆中</strong>。</p>
-<p>虽然基本类型在栈上分配内存效率高，但是在堆栈上分配内存可能有内存泄漏的问题。</p>
-<hr>
-<p><strong>基本数据类型的好处就是速度快（不涉及到对象的构造和回收），封装类的目的主要是更好的处理数据之间的转换。</strong></p>
-<p>JDK5.0开始可以自动封包了，<strong>基本数据类型可以自动封装成封装类</strong>。<br>比如集合List，往里添加对象Object，需要将数字封装成封装类型对象，再存到List中。</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">List</span> <span class="built_in">list</span>=<span class="literal">new</span> ArreyList();</span><br><span class="line"><span class="built_in">list</span>.add(<span class="literal">new</span> <span class="built_in">Integer</span>(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-
-<p>在JDK5.0 以后可以自动封包，简写成</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">List</span> <span class="built_in">list</span>=<span class="literal">new</span> ArrayList();</span><br><span class="line"><span class="built_in">list</span>.add(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="相关推荐："><a href="#相关推荐：" class="headerlink" title="相关推荐："></a>相关推荐：</h2><ul>
-<li><a href="https://amyyanjie.github.io/2017/10/15/Analyze-the-difference-between-int-and-Integer/" target="_blank" rel="noopener">分析int和Integer的区别</a></li>
+<p><strong>思考：</strong><br>若是121，10021第二次循环时x都为2。怎么判断的？</p>
+<ul>
+<li>10021： 第二次循环时x=2,div=100 -&gt;<br> left=2 / 100=0；right=2 % 10=2; -&gt; left!=right -&gt; return false</li>
+<li>121：第二次循环时x=2,div=1 -&gt; left=2 /1 =2；right=2 % 10=2；x=(2 % 1) / 10=0 -&gt; 结束循环 -&gt; return true</li>
 </ul>
-<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ul>
-<li><a href="http://m.blog.csdn.net/oLaoHuBuChiRen1/article/details/51079738" target="_blank" rel="noopener">Java中九种基本数据类型以及他们的封装类</a></li>
+<h3 id="三、巧妙数学-对折比较"><a href="#三、巧妙数学-对折比较" class="headerlink" title="三、巧妙数学-对折比较"></a>三、巧妙数学-对折比较</h3><p>取后半段，进行翻转 -&gt; 就是取x个位数并组装rightPart&gt; x不断缩减个位数</p>
+<p>例x=12321，初始rightPart = 0;</p>
+<ul>
+<li>取x的个位数lastNum = 12321 % 10 -&gt;1;</li>
+<li>将lastNum组装：rightPart = rightPart*10 + lastNum -&gt;1；</li>
+<li>x缩减成-&gt;1232：x=x/10;</li>
+<li>循环上面操作。直到x &lt;= rightPart（此时说明已经对折到半或过半了）</li>
 </ul>
+<p><strong>思考：</strong></p>
+<ul>
+<li>若数字长度为奇数(如12321)，rightPart(123)位数会比x最后值多一位。12!=123,但也应返回true -&gt; 将rightPart去一位(12==123/10) -&gt; x ==rightPart/10</li>
+<li>若是70、7，最后x都为0，rightPart都为7。70-&gt;false，7-&gt;true；因此循环前若x个位是0 -&gt; 直接返回false</li>
+</ul>
+<p><strong>代码实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span> || (x != <span class="number">0</span> &amp;&amp; x % <span class="number">10</span> == <span class="number">0</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> rightPart = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//rightPart为后半部分反转后的数</span></span><br><span class="line">    <span class="keyword">while</span> (x &gt; rightPart) &#123;</span><br><span class="line">        rightPart = rightPart * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">        x = x / <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//当原数字长度为奇数时，x == rightPart / 10</span></span><br><span class="line">    <span class="keyword">if</span> (x == rightPart || x == rightPart / <span class="number">10</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>题目：<a href="https://leetcode-cn.com/problems/palindrome-number/" target="_blank" rel="noopener">力扣No.9-回文数</a></p>
 
       
     </div>
@@ -407,7 +416,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/" title="浅析Java基础类型与封装类型的区别">http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</a>
+      <a href="http://yoursite.com/2019/08/20/palindrome-number/" title="5.回文数-判断">http://yoursite.com/2019/08/20/palindrome-number/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -423,7 +432,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java-Foundation/" rel="tag"># Java基础</a>
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
         </div>
       
@@ -436,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/01/Execution-of-finally-code-block/" rel="next" title="finally代码块的执行情况">
-                <i class="fa fa-chevron-left"></i> finally代码块的执行情况
+              <a href="/2019/08/15/reverse-integer/" rel="next" title="4.整数反转">
+                <i class="fa fa-chevron-left"></i> 4.整数反转
               </a>
             
           </div>
@@ -445,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/15/Analyze-the-difference-between-int-and-Integer/" rel="prev" title="分析int和Integer的区别">
-                分析int和Integer的区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -616,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、传递方式不同"><span class="nav-number">1.</span> <span class="nav-text">一、传递方式不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、封装类可以有方法和属性"><span class="nav-number">2.</span> <span class="nav-text">二、封装类可以有方法和属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、默认值不同"><span class="nav-number">3.</span> <span class="nav-text">三、默认值不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、存储位置"><span class="nav-number">4.</span> <span class="nav-text">四、存储位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关推荐："><span class="nav-number">5.</span> <span class="nav-text">相关推荐：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number">6.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、字符串的反转"><span class="nav-number">2.1.</span> <span class="nav-text">一、字符串的反转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、数学：去首去尾，首尾比较"><span class="nav-number">2.2.</span> <span class="nav-text">二、数学：去首去尾，首尾比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、巧妙数学-对折比较"><span class="nav-number">2.3.</span> <span class="nav-text">三、巧妙数学-对折比较</span></a></li></ol></li></ol></div>
             
 
           </div>

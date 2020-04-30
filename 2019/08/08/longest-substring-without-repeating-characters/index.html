@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="Java基础,">
+  <meta name="keywords" content="LeetCode,">
 
 
 
@@ -89,18 +89,18 @@
 
 
 
-<meta name="description" content="本篇博文主要讲解以下内容：   基础类型(Primitives)与封装类型(Wrappers)的区别在哪里  一、传递方式不同封装类是引用类型。  基本类型（原始数据类型）在传递参数时都是按值传递，而封装类型是按引用传递的(其实“引用也是按值传递的”，传递的是对象的地址)。由于包装类型都是不可变量，因此没有提供改变它值的方法，增加了对“按引用传递”的理解难度。 int是基本类型，直接存放数值；In">
-<meta name="keywords" content="Java基础">
+<meta name="description" content="题目给定一个字符串，请你找出其中不含有重复字符的最长子串的长度。如”abcabcbb”-&amp;gt;3。 题解1、使用List list.contains()  list.add()：遍历每个字符，若list中不存在，加入进列表。 list.indexOf()：若list中已存在此字符，获取此字符的index，需要将&amp;lt;=该index的字符们从list中移除。 list.subList(int f">
+<meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅析Java基础类型与封装类型的区别">
-<meta property="og:url" content="http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/index.html">
+<meta property="og:title" content="3.无重复字符的最长子串">
+<meta property="og:url" content="http://yoursite.com/2019/08/08/longest-substring-without-repeating-characters/index.html">
 <meta property="og:site_name" content="Amy&#39;s Blog">
-<meta property="og:description" content="本篇博文主要讲解以下内容：   基础类型(Primitives)与封装类型(Wrappers)的区别在哪里  一、传递方式不同封装类是引用类型。  基本类型（原始数据类型）在传递参数时都是按值传递，而封装类型是按引用传递的(其实“引用也是按值传递的”，传递的是对象的地址)。由于包装类型都是不可变量，因此没有提供改变它值的方法，增加了对“按引用传递”的理解难度。 int是基本类型，直接存放数值；In">
+<meta property="og:description" content="题目给定一个字符串，请你找出其中不含有重复字符的最长子串的长度。如”abcabcbb”-&amp;gt;3。 题解1、使用List list.contains()  list.add()：遍历每个字符，若list中不存在，加入进列表。 list.indexOf()：若list中已存在此字符，获取此字符的index，需要将&amp;lt;=该index的字符们从list中移除。 list.subList(int f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T03:27:06.526Z">
+<meta property="og:updated_time" content="2019-08-16T03:55:12.392Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅析Java基础类型与封装类型的区别">
-<meta name="twitter:description" content="本篇博文主要讲解以下内容：   基础类型(Primitives)与封装类型(Wrappers)的区别在哪里  一、传递方式不同封装类是引用类型。  基本类型（原始数据类型）在传递参数时都是按值传递，而封装类型是按引用传递的(其实“引用也是按值传递的”，传递的是对象的地址)。由于包装类型都是不可变量，因此没有提供改变它值的方法，增加了对“按引用传递”的理解难度。 int是基本类型，直接存放数值；In">
+<meta name="twitter:title" content="3.无重复字符的最长子串">
+<meta name="twitter:description" content="题目给定一个字符串，请你找出其中不含有重复字符的最长子串的长度。如”abcabcbb”-&amp;gt;3。 题解1、使用List list.contains()  list.add()：遍历每个字符，若list中不存在，加入进列表。 list.indexOf()：若list中已存在此字符，获取此字符的index，需要将&amp;lt;=该index的字符们从list中移除。 list.subList(int f">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/08/longest-substring-without-repeating-characters/">
 
 
 
 
 
-  <title>浅析Java基础类型与封装类型的区别 | Amy's Blog</title>
+  <title>3.无重复字符的最长子串 | Amy's Blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/longest-substring-without-repeating-characters/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Amy">
@@ -272,7 +272,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">浅析Java基础类型与封装类型的区别</h2>
+          <h2 class="post-title" itemprop="name headline">3.无重复字符的最长子串</h2>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T12:55:46+08:00">
-                2017-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T12:14:00+08:00">
+                2019-08-08
               </time>
             
 
@@ -307,8 +307,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/Algorithms-DataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms/DataStructure</span>
                   </a>
                 </span>
 
@@ -324,7 +324,7 @@
 
           
           
-             <span id="/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/" class="leancloud_visitors" data-flag-title="浅析Java基础类型与封装类型的区别">
+             <span id="/2019/08/08/longest-substring-without-repeating-characters/" class="leancloud_visitors" data-flag-title="3.无重复字符的最长子串">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -352,33 +352,38 @@
       
 
       
-        <p>本篇博文主要讲解以下内容：</p>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，请你找出其中不含有重复字符的<strong>最长子串</strong>的长度。如”abcabcbb”-&gt;3。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="1、使用List"><a href="#1、使用List" class="headerlink" title="1、使用List"></a>1、使用List</h3><ul>
+<li>list.contains() </li>
+<li>list.add()：遍历每个字符，若list中不存在，加入进列表。</li>
+<li>list.indexOf()：若list中已存在此字符，获取此字符的index，需要将&lt;=该index的字符们从list中移除。</li>
+<li>list.subList(int fromIndex, int toIndex)</li>
+<li>list.removeAll()</li>
+</ul>
+<p><strong>示例</strong></p>
 <ul>
-<li><input checked disabled type="checkbox"> 基础类型(Primitives)与封装类型(Wrappers)的区别在哪里</li>
+<li>s=”advdf”；</li>
+<li>list变化：(a)-&gt;(a,d)-&gt;(a,d,v)-&gt;(v,d)-&gt;(v,d,f)</li>
 </ul>
-<h2 id="一、传递方式不同"><a href="#一、传递方式不同" class="headerlink" title="一、传递方式不同"></a>一、传递方式不同</h2><p>封装类是引用类型。</p>
-<p> <strong>基本类型（原始数据类型）在传递参数时都是按值传递，而封装类型是按引用传递的</strong>(其实“引用也是按值传递的”，传递的是对象的地址)。由于包装类型都是不可变量，因此没有提供改变它值的方法，增加了对“按引用传递”的理解难度。</p>
-<p>int是基本类型，直接存放数值；Integer是类，产生对象时用一个引用指向这个对象。</p>
-<h2 id="二、封装类可以有方法和属性"><a href="#二、封装类可以有方法和属性" class="headerlink" title="二、封装类可以有方法和属性"></a>二、封装类可以有方法和属性</h2><p>封装类可以有方法和属性，利用这些方法和属性来处理数据，如Integer.parseInt(Strings)。<strong>基本数据类型都是final修饰的</strong>，不能继承扩展新的类、新的方法。</p>
-<h2 id="三、默认值不同"><a href="#三、默认值不同" class="headerlink" title="三、默认值不同"></a>三、默认值不同</h2><p> <strong>基本类型跟封装类型的默认值是不一样的</strong>。如int i,i的预设为0；Integer j，j的预设为null,因为封装类产生的是对象，对象默认值为null。</p>
-<a id="more"></a>
+<p><strong>代码实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] arr = s.toCharArray();</span><br><span class="line">        List&lt;Character&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> lengthOfLongest = <span class="number">0</span>; <span class="comment">//所记长度-初始0</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            Character word = arr[i];</span><br><span class="line">            <span class="keyword">if</span> (list.contains(word)) &#123;</span><br><span class="line">                <span class="comment">// 获取list中该字符的index</span></span><br><span class="line">                <span class="keyword">int</span> indexOfRepeatedChar = list.indexOf(word);</span><br><span class="line">                <span class="comment">// 截取list中该字符的index及之前索引的字符列表</span></span><br><span class="line">                List&lt;Character&gt; needToRemoveChars = list.subList(<span class="number">0</span>, indexOfRepeatedChar + <span class="number">1</span>);</span><br><span class="line">                <span class="comment">// 从list中去除</span></span><br><span class="line">                list.removeAll(needToRemoveChars);</span><br><span class="line">                <span class="comment">// 注：此处不用更新lengthOfLongest，因为删除数量 &gt;= 增加数量(为1)</span></span><br><span class="line">                list.add(word);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                list.add(word);</span><br><span class="line">                <span class="comment">// 若所记长度&lt;列表长度，取列表长度。否则，所记长度不变</span></span><br><span class="line">                lengthOfLongest = lengthOfLongest &lt; list.size() ? list.size() : lengthOfLongest;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lengthOfLongest;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="四、存储位置"><a href="#四、存储位置" class="headerlink" title="四、存储位置"></a>四、存储位置</h2><p> <strong>基本类型在内存中是存储在栈中，引用类型的引用（值的地址）存储在栈中，而实际的对象（值）是存在堆中</strong>。</p>
-<p>虽然基本类型在栈上分配内存效率高，但是在堆栈上分配内存可能有内存泄漏的问题。</p>
-<hr>
-<p><strong>基本数据类型的好处就是速度快（不涉及到对象的构造和回收），封装类的目的主要是更好的处理数据之间的转换。</strong></p>
-<p>JDK5.0开始可以自动封包了，<strong>基本数据类型可以自动封装成封装类</strong>。<br>比如集合List，往里添加对象Object，需要将数字封装成封装类型对象，再存到List中。</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">List</span> <span class="built_in">list</span>=<span class="literal">new</span> ArreyList();</span><br><span class="line"><span class="built_in">list</span>.add(<span class="literal">new</span> <span class="built_in">Integer</span>(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n)，空间复杂度：O(n,m):取决于字符串 n 的大小以及字符集/字母 m 的大小。</p>
+<h2 id="2、滑动窗口-HashMap"><a href="#2、滑动窗口-HashMap" class="headerlink" title="2、滑动窗口+HashMap"></a>2、滑动窗口+HashMap</h2><p><strong>滑动窗口</strong>是数组/字符串问题中常用的抽象概念。窗口[i,j)：由i和j两个索引边界定义的元素集合，若都向右滑动一个元素-&gt;[i+1,j+1)。</p>
+<p><strong>代码实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>, result = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// map用来装不重复的字符，并不做remove操作，用来记录字符-索引映射关系以及使用containsKey()</span></span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> end = <span class="number">0</span>; end &lt; s.length(); end++) &#123;</span><br><span class="line">            Character currentChar = s.charAt(end);</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(currentChar)) &#123;</span><br><span class="line">                <span class="comment">// 若有重复元素，窗口左区间需判断：是否需要右移至重复元素的索引后一位</span></span><br><span class="line">                start = Math.max(map.get(currentChar) + <span class="number">1</span>, start);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 每次遍历都会将currentChar放进map</span></span><br><span class="line">            map.put(currentChar, end);</span><br><span class="line">            <span class="comment">// end-start+1为当前窗口字符数量</span></span><br><span class="line">            result = Math.max(result, end - start + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在JDK5.0 以后可以自动封包，简写成</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">List</span> <span class="built_in">list</span>=<span class="literal">new</span> ArrayList();</span><br><span class="line"><span class="built_in">list</span>.add(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="相关推荐："><a href="#相关推荐：" class="headerlink" title="相关推荐："></a>相关推荐：</h2><ul>
-<li><a href="https://amyyanjie.github.io/2017/10/15/Analyze-the-difference-between-int-and-Integer/" target="_blank" rel="noopener">分析int和Integer的区别</a></li>
+<p><strong>关键点</strong></p>
+<ul>
+<li><p>滑动窗口[start,end]，初始[0,0],每次遍历end+1，窗口长度=end-start+1;</p>
+</li>
+<li><p>若map中存在重复元素，start要做判断：若map中重复元素的索引后一位在当前start向左，并不移动窗口,start不变。</p>
+<p>例如：”qwefewjk”，遍历至第二个w时，此时start=f处索引3，start并不会变成map中w索引1。</p>
+</li>
+<li><p>每次遍历都要将遍历字符做key，索引做value放进map。map主要用来判断字符是否有重复，并获取最近重复的索引。</p>
+</li>
 </ul>
-<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ul>
-<li><a href="http://m.blog.csdn.net/oLaoHuBuChiRen1/article/details/51079738" target="_blank" rel="noopener">Java中九种基本数据类型以及他们的封装类</a></li>
-</ul>
+<p>题目：<a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener">力扣No.3-无重复字符的最长子串</a></p>
 
       
     </div>
@@ -407,7 +412,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/" title="浅析Java基础类型与封装类型的区别">http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</a>
+      <a href="http://yoursite.com/2019/08/08/longest-substring-without-repeating-characters/" title="3.无重复字符的最长子串">http://yoursite.com/2019/08/08/longest-substring-without-repeating-characters/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -423,7 +428,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java-Foundation/" rel="tag"># Java基础</a>
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
         </div>
       
@@ -436,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/01/Execution-of-finally-code-block/" rel="next" title="finally代码块的执行情况">
-                <i class="fa fa-chevron-left"></i> finally代码块的执行情况
+              <a href="/2019/08/01/add-two-numbers/" rel="next" title="2.两数相加（链表）">
+                <i class="fa fa-chevron-left"></i> 2.两数相加（链表）
               </a>
             
           </div>
@@ -446,8 +451,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/15/Analyze-the-difference-between-int-and-Integer/" rel="prev" title="分析int和Integer的区别">
-                分析int和Integer的区别 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/15/reverse-integer/" rel="prev" title="4.整数反转">
+                4.整数反转 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -616,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、传递方式不同"><span class="nav-number">1.</span> <span class="nav-text">一、传递方式不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、封装类可以有方法和属性"><span class="nav-number">2.</span> <span class="nav-text">二、封装类可以有方法和属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、默认值不同"><span class="nav-number">3.</span> <span class="nav-text">三、默认值不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、存储位置"><span class="nav-number">4.</span> <span class="nav-text">四、存储位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关推荐："><span class="nav-number">5.</span> <span class="nav-text">相关推荐：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number">6.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、使用List"><span class="nav-number">2.1.</span> <span class="nav-text">1、使用List</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、滑动窗口-HashMap"><span class="nav-number">3.</span> <span class="nav-text">2、滑动窗口+HashMap</span></a></li></ol></div>
             
 
           </div>

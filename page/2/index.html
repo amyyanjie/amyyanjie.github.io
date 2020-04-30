@@ -255,6 +255,639 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/16/HTML-study-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/16/HTML-study-notes/" itemprop="url">HTML学习笔记</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-16T15:14:04+08:00">
+                2018-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/16/HTML-study-notes/" class="leancloud_visitors" data-flag-title="HTML学习笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>HTML(Hyper Text Markup Language)，即超文本标记语言，定义了网页的内容。HTML文档也叫做web页面，包含了HTML标签及文本内容。</p>
+<p>HTML运行在浏览器上，由浏览器来解析。只有<body>区域才会在浏览器中显示。</body></p>
+<hr>
+<p>HTML链接是通过标签<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">&lt;a href=&quot;http://www.runoob.com&quot; target=&quot;_blank&quot;&gt;这是一个链接&lt;/a&gt;  </span><br><span class="line"></span><br><span class="line">如果将 target 属性设置为 &quot;_blank&quot;, 链接将在新窗口打开。</span><br></pre></td></tr></table></figure></p>
+<p>HTML图像是通过标签<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">&lt;img src=&quot;/images/logo.png&quot; width=&quot;258&quot; height=&quot;39&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```&lt;hr/&gt;```标签在HTML页面中创建水平线，可用于分隔内容。</span><br><span class="line"></span><br><span class="line">    &lt;!--这是一个注释&gt;</span><br><span class="line">    &lt;h1&gt;这是一个标题&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;这是一个段落&lt;/p&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​    </span><br><span class="line">-----</span><br><span class="line">可以添加在头部区域&lt;head&gt;的元素标签为: &lt;title&gt;, &lt;style&gt;, &lt;meta&gt;, &lt;link&gt;, &lt;script&gt;, &lt;noscript&gt;, and &lt;base&gt;.</span><br><span class="line"></span><br><span class="line">-----</span><br><span class="line">#### HTML CSS</span><br><span class="line">CSS可以通过以下方式添加到HTML中：</span><br><span class="line"></span><br><span class="line">1.内联样式：在HTML元素中使用&quot;style&quot;属性。当特殊的样式需要应用到个别元素时，就可以使用内联样式。</span><br><span class="line"></span><br><span class="line">如定义style=&quot;background-color:green;&quot;    </span><br><span class="line">font-family(字体)，color,font-size(字体大小)，text-align(文字对齐)</span><br><span class="line"></span><br><span class="line">2.内部样式表：在HTML文档头部&lt;head&gt;区域使用&lt;style&gt;元素来包含CSS。当单个文件需要特别样式事，可使用内部样式表。</span><br><span class="line"></span><br><span class="line">3.外部引用：使用外部CSS文件。当样式需要被应用到很多页面时，可使用外部样式表。</span><br><span class="line"></span><br><span class="line">```html</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="图像由标签定义"><a href="#图像由标签定义" class="headerlink" title="图像由标签定义"></a>图像由<img>标签定义</h4><p>要在页面上显示图像，要使用源属性(src，指”source”)，源属性的值是图像的URL地址。alt属性是替换文本属性（无法载入图像时，显示替代性的文本）</p>
+<h4 id="表格由标签来定义"><a href="#表格由标签来定义" class="headerlink" title="表格由标签来定义"></a>表格由<table>标签来定义</table></h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">由<span class="tag">&lt;<span class="name">tr</span>&gt;</span>标签定义行，</span><br><span class="line"><span class="tag">&lt;<span class="name">th</span>&gt;</span>标签定义表头，</span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>标签定义表格数据。</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">thead</span>&gt;</span>,</span><br><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span>,</span><br><span class="line">t<span class="tag">&lt;<span class="name">foot</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">无序列表使用<span class="tag">&lt;<span class="name">ul</span>&gt;</span>标签</span><br><span class="line">有序列表使用<span class="tag">&lt;<span class="name">ol</span>&gt;</span>标签</span><br><span class="line">每个列表项使用<span class="tag">&lt;<span class="name">li</span>&gt;</span>标签</span><br></pre></td></tr></table></figure>
+
+<h4 id="区块和内联元素"><a href="#区块和内联元素" class="headerlink" title="区块和内联元素"></a>区块和内联元素</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HTML可以通过<span class="tag">&lt;<span class="name">div</span>&gt;</span>和<span class="tag">&lt;<span class="name">span</span>&gt;</span>将元素组合起来</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>定义了文档的区域，块级</span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>用来组合文档中的行内元素，内联元素</span><br><span class="line"></span><br><span class="line">块级元素在浏览器显示时，通常会以新行来开始（结束）。实例：<span class="tag">&lt;<span class="name">h1</span>&gt;</span>,<span class="tag">&lt;<span class="name">p</span>&gt;</span>,<span class="tag">&lt;<span class="name">ul</span>&gt;</span>,<span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line">内联元素在显示时通常不会以新行开始。实例：<span class="tag">&lt;<span class="name">b</span>&gt;</span>,<span class="tag">&lt;<span class="name">td</span>&gt;</span>,<span class="tag">&lt;<span class="name">a</span>&gt;</span>,<span class="tag">&lt;<span class="name">img</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">表单元素时允许用户在表单中输入内容，</span><br><span class="line">如：文本域、下拉列表、单选框、复选框等</span><br><span class="line">1.文本域</span><br><span class="line">&lt;<span class="keyword">form</span>&gt;</span><br><span class="line">    First name:&lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"text"</span> name=<span class="string">"firstname"</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br><span class="line">2.密码字段</span><br><span class="line">&lt;<span class="keyword">form</span>&gt;</span><br><span class="line">    Password:&lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"password"</span> name=<span class="string">"pwd"</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br><span class="line">3.单选按钮</span><br><span class="line">&lt;<span class="keyword">form</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"radio"</span> name=<span class="string">"sex"</span> value=<span class="string">"male"</span>&gt;Male&lt;<span class="keyword">br</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"radio"</span> name=<span class="string">"sex"</span> value=<span class="string">"female"</span>&gt;Female</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br><span class="line">4.复选框</span><br><span class="line">&lt;<span class="keyword">form</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"checkbox"</span> name=<span class="string">"vehicle"</span> value=<span class="string">"Bike"</span>&gt;I have a bike&lt;<span class="keyword">br</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"checkbox"</span> name=<span class="string">"vehicle"</span> value=<span class="string">"Car"</span>&gt;I have a car</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br><span class="line">5.提交按钮</span><br><span class="line">&lt;<span class="keyword">form</span> name=<span class="string">"input"</span> action=<span class="string">"html_form_action.php"</span> method=<span class="string">"get"</span>&gt;</span><br><span class="line">    Username:&lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"text"</span> name=<span class="string">"user"</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"submit"</span> valur=<span class="string">"Submit"</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用框架，可以在同一个浏览器窗口中显示不止一个页面。</span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"demo_iframe.html name="</span><span class="attr">iframe_a</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.runoob.com</span></span></span><br><span class="line"><span class="tag"><span class="string">target="</span><span class="attr">iframe_a</span>"&gt;</span>RUNOOB.COM<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JavaScript最常用于图片操作、表单验证以及内容动态更新。</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span>元素既可包含脚本语句，也可通过src属性指向外部脚本文件</span><br><span class="line"><span class="handlebars"><span class="xml"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span>标签提供无法使用脚本时的替代内容</span></span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/15/jQuery-study-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/15/jQuery-study-notes/" itemprop="url">jQuery学习笔记</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T13:10:04+08:00">
+                2018-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/15/jQuery-study-notes/" class="leancloud_visitors" data-flag-title="jQuery学习笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>jQuery是一个JavaScript函数库，是目前最流行的JS框架，jQuery库可以通过一行简单的标记被添加到网页中。</p>
+<p>jQuery库包含以下功能：HTML元素选取；HTML元素操作；CSS操作；HTML事件函数；JavaScript特效和动画；HTML DOM遍历和修改；AJAX；Utilities。</p>
+<h2 id="jQuery语法"><a href="#jQuery语法" class="headerlink" title="jQuery语法"></a>jQuery语法</h2><p>jQuery使用的语法是XPath与CSS选择器语法的组合。</p>
+<h3 id="文档就绪事件"><a href="#文档就绪事件" class="headerlink" title="文档就绪事件"></a>文档就绪事件</h3><p>文档就绪后执行jQuery方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="comment">//jQuery代码 </span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//简洁写法：</span></span><br><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="jQuery选择器"><a href="#jQuery选择器" class="headerlink" title="jQuery选择器"></a>jQuery选择器</h3><p>jQuery选择器基于元素的id、类、类型、属性、属性值等查找或选择HTML元素。都以$()开头。</p>
+<p>元素选择器：$(“p”)</p>
+<h3 id="jQuery事件"><a href="#jQuery事件" class="headerlink" title="jQuery事件"></a>jQuery事件</h3><p>页面对不同访问者的相应叫做事件。</p>
+<h2 id="jQuery效果"><a href="#jQuery效果" class="headerlink" title="jQuery效果"></a>jQuery效果</h2><p>隐藏和显示：hide(),show() </p>
+<p>淡入淡出： fadeIn(),fadeOut(),fadeToggle(),fedeTo()</p>
+<p>滑动：slideDown(),slideUp(),slideToggle()</p>
+<p>动画：animate()</p>
+<p>停止效果：stop()</p>
+<p>Chainning允许可以在一条语句中（相同元素上）运行多个jQuery方法。</p>
+<h2 id="jQuery-HTML"><a href="#jQuery-HTML" class="headerlink" title="jQuery HTML"></a>jQuery HTML</h2><p>jQuery DOM操作，使访问和操作元素和属性变得容易。</p>
+<p>DOM（Document Object Model），即文档对象模型，定义访问HTML和XML文档的标准。</p>
+<h3 id="获取、设置内容和属性"><a href="#获取、设置内容和属性" class="headerlink" title="获取、设置内容和属性"></a>获取、设置内容和属性</h3><p>获取或设置内容：text(),html(),val()</p>
+<p>获取或设置属性：attr()</p>
+<p>方法提供回调函数，毁掉函数有两个参数，function(i, origValue)</p>
+<h2 id="jQuery-添加元素-内容"><a href="#jQuery-添加元素-内容" class="headerlink" title="jQuery 添加元素/内容"></a>jQuery 添加元素/内容</h2><p>append(),prepend()：在被选元素的结尾/开头插入内容。是在选择元素内部嵌入</p>
+<p>after(),before()：在备选元素之后/之前插入内容。是在元素外面追加。</p>
+<h2 id="jQuery-删除元素"><a href="#jQuery-删除元素" class="headerlink" title="jQuery 删除元素"></a>jQuery 删除元素</h2><p>remove()，删除备选元素及其子元素（可接受参数，进行过滤）。</p>
+<p>empty()，从被选元素中删除子元素。</p>
+<h2 id="jQuery操作CSS类"><a href="#jQuery操作CSS类" class="headerlink" title="jQuery操作CSS类"></a>jQuery操作CSS类</h2><p>addClass(),removeClass(),toggleClass()</p>
+<h2 id="jQuery-css-方法"><a href="#jQuery-css-方法" class="headerlink" title="jQuery css()方法"></a>jQuery css()方法</h2><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回css属性</span></span><br><span class="line"><span class="symbol">$</span>(<span class="string">"p"</span>).css(<span class="string">"background-color"</span>);</span><br><span class="line"><span class="comment">//设置css属性</span></span><br><span class="line"><span class="symbol">$</span>(<span class="string">"p"</span>).css(<span class="string">"background-color"</span>,<span class="string">"yellow"</span>);<span class="comment">//注意：中间是逗号</span></span><br><span class="line"><span class="comment">//设置多个css属性</span></span><br><span class="line"><span class="symbol">$</span>(<span class="string">"p"</span>).css(&#123;<span class="string">"background-color"</span>:<span class="string">"yellow"</span>,<span class="string">"font-size"</span>:<span class="string">"200%"</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="jQuery遍历"><a href="#jQuery遍历" class="headerlink" title="jQuery遍历"></a>jQuery遍历</h2><ul>
+<li><p>向上遍历：patrent(),parents(),parentsUntil()</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="variable">$(</span><span class="string">"span"</span>).parentsUntil(<span class="string">"div"</span>);</span><br><span class="line">/<span class="regexp">/返回介于&lt;span&gt;与&lt;div&gt;元素之间的所有祖先元素。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>向下遍历：children()返回直接字元素  ,find()返回所有后代</p>
+</li>
+<li><p>水平遍历：siblings()返回被选元素的所有同胞元素，next()返回下一个同胞元素，nextAll()返回所有跟随的同胞元素，nextUntil()</p>
+ <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"h2"</span>).nextUntil(<span class="string">"h6"</span>);</span><br><span class="line"><span class="regexp">//</span>返回介于<span class="regexp">/&lt;h2/</span>&gt;与<span class="regexp">/&lt;h6/</span>&gt;元素之间的所有同胞元素</span><br></pre></td></tr></table></figure>
+
+<p>  prev(),prevAll(),prevUntil()类似，向前遍历。</p>
+</li>
+<li><p>过滤<br> first(),last(),eq()返回被选元素中带有指定索引号（从0开始）的元素。</p>
+<p> filter(),not()</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/10/JavaScript-study-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/10/JavaScript-study-notes/" itemprop="url">JavaScript学习笔记</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-10T00:10:04+08:00">
+                2018-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/10/JavaScript-study-notes/" class="leancloud_visitors" data-flag-title="JavaScript学习笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>HTML(Hyper Text Markup Language)，即超文本标记语言，定义了网页的内容；   </p>
+<p>CSS(Cascading Style Sheet)，即层叠样式表，描述了网页的布局；  </p>
+<p>JavaScript网页的行为；</p>
+<p>DOM(Document Object Model)文档对象模型，是用于访问HTML元素的正式W3C标准。</p>
+<hr>
+<p>如果把值赋给尚未声明的变量，该变量将被自动作为全局变量声明，即使是在函数内执行。</p>
+<p>在HTML中，全局变量是window对象，所有数据变量都属于window对象。</p>
+<hr>
+<p>===为绝对相等，即数据类型与值都必须相等。</p>
+<p>!==不绝对等于（值和类型有一个不相等，或两个都不相等）<br>x+=y等同于x=x+y,类推，x%=y等同于x=x%y。</p>
+<p>字符串和数字相加，数字转成字符串。</p>
+<p>数字和布尔值相加，布尔值false转成0，true转成1</p>
+<p>字符串和布尔值相加，布尔值转化成字符串</p>
+<p>数字与null（空值）相加，null转成数字0</p>
+<p>字符串与null（空值）相加，null转为字符串</p>
+<hr>
+<p>条件运算符：</p>
+<p>voteable=(age&lt;18)?”年龄太小”：“年龄已达到”；</p>
+<hr>
+<p>switch语句</p>
+<p>swirch语句会使用恒等计算符(===)进行比较</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>菜鸟教程<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>点击下面的按钮来显示今天是周几：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"myfunction()"</span>&gt;</span>点击这里<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">myfunction</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> x;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>().getDate();</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">switch</span> (d) &#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">case</span> <span class="number">6</span>:</span></span><br><span class="line"><span class="actionscript">                x = <span class="string">"今天是周六"</span>;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">case</span> <span class="number">0</span>:</span></span><br><span class="line"><span class="actionscript">                x = <span class="string">"今天是周日"</span>;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">default</span>:</span></span><br><span class="line"><span class="actionscript">                x = <span class="string">"期待周末"</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>).innerHTML = x;</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>do/while循环，该循环至少会执行一次，即使条件为false，因为代码块会在条件被测试前执行。</p>
+<p>continue语句中断循环中的迭代，如果出现了指定的条件，继续循环中的下一个迭代。即跳过循环中的一个迭代。</p>
+<p>通过标签引用，break语句可以跳出任何JavaScript代码块。不带标签引用break语句只能用在循环或switch中。continue语句只能用在循环中。</p>
+<hr>
+<hr>
+<p>#### </p>
+<ul>
+<li><p>5种不同的数据类型：string、number、boolean、object、function</p>
+</li>
+<li><p>3种对象类型：Object、Date、Array</p>
+</li>
+<li><p>2个不包含任何值的数据类型：null、undefined</p>
+</li>
+<li><p>typeof一般只能返回如下几个结果：number，boolean,string,function,object(NULL，数组，对象),undefined.</p>
+<p> 可以使用if(typeof a!=”undefined”){}获取一个变量是否存在</p>
+</li>
+<li><p>可通过instance来判断对象的具体类型。（因为typeof遇到null,数组，对象时都返回object类型）。如if(arr instanceof Array).</p>
+</li>
+</ul>
+<p>数组是一种特殊的对象类型，用typeof返回object.</p>
+<p>null是一个只有一个值的特殊类型，表示一个空对象引用。用typeof检测null返回是object。</p>
+<p>undefined是一个没有设置值的变量，typeof返回undefined。</p>
+<p>null与undefined的值相等，类型不等。</p>
+<p>typeof NaN  //返回number<br>typeof Array //返回object<br>typeof Date   //返回object</p>
+<p>JavaScript只有一种数字类型。对象和函数也是变量。</p>
+<hr>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><ul>
+<li><p>将数字、布尔值、日期转换为字符串：全局方法String();或者toString()方法。</p>
+</li>
+<li><p>全局方法Number()可将字符串、布尔值、日期转换为数字。</p>
+<p> 空字符串转换为0；其他的字符串（不含数字）会转换为NaN(不是个数字)。</p>
+<p> 字符串parseInt()、日期getTime()都可以转换为数字。</p>
+</li>
+<li><p>一元运算符(+)可用于将变量转换为数字。  如果变量不能转换，它仍然会是一个数字，但值为NaN（不是一个数字）。 </p>
+</li>
+<li><p>“5”+1  //返回”51”<br>“5”-1  //返回4</p>
+</li>
+</ul>
+<hr>
+<h4 id="正则表达式（Regular-Exception-regex、regexp、RE。"><a href="#正则表达式（Regular-Exception-regex、regexp、RE。" class="headerlink" title="正则表达式（Regular Exception),regex、regexp、RE。"></a>正则表达式（Regular Exception),regex、regexp、RE。</h4><ul>
+<li><p>在JavaScript中，正则表达式通常用于两个字符串方法：search()和replace()。</p>
+</li>
+<li><p>test()，如果字符串含有匹配的文本，返回true,否则false。</p>
+</li>
+<li><p>exec()。该函数返回一个数组，存放匹配的结果。如果未找到匹配，返回值为null。</p>
+</li>
+</ul>
+<hr>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var x = <span class="number">0.1</span>;</span><br><span class="line">var y = <span class="number">0.2</span>;</span><br><span class="line">var z = x + y; <span class="comment">//z的结果为0.30000000000000004</span></span><br><span class="line">if(z == <span class="number">0.3</span>)  <span class="comment">//返回false</span></span><br><span class="line">var z = (x * <span class="number">10</span> + y * <span class="number">10</span>) /<span class="number">10</span>;<span class="comment">//z的结果为0.3</span></span><br></pre></td></tr></table></figure>
+
+<p>因为JavaScript中的所有数据都是以浮点型数据(float)来存储,对浮点型的精确度难确定。</p>
+<hr>
+<h4 id="javascript-void-0-含义"><a href="#javascript-void-0-含义" class="headerlink" title="javascript:void(0)含义"></a>javascript:void(0)含义</h4><p>javascript:void(0)仅仅表示一个死链接。void(0)计算为0，但javascript上没有任何效果。void仅仅是表示不返回任何值，但是括号内的表达式还是要运行。</p>
+<hr>
+<h4 id="对象定义的规则"><a href="#对象定义的规则" class="headerlink" title="对象定义的规则"></a>对象定义的规则</h4><p> 冒号与属性值间有个空格；字符串使用双引号（数字不需要）；最后一个属性-值对后面不要加分号；右花括号独立一行，分号结束。短的对象代码直接写一行，每行代码字符小于80个。</p>
+<hr>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>JSON(Java Script Object Notation)，即JavaScript对象表示法，是用于存储和传输数据的格式，通常用于服务端向网页传递数据。</p>
+<p>JSON是一种轻量级的数据交换格式，但JSON格式仅仅是一个文本，文本可以被任何编程语言读取及作为数据格式传递。</p>
+<p>通常我们从服务器中读取JSON数据，并在网页中显示数据。</p>
+<ul>
+<li><p>JSON.parse(),用于将一个JSON字符串转换为为JavaScript对象。</p>
+</li>
+<li><p>JSON.stringify(),用于将JavaScript值转换为JSON字符串。</p>
+</li>
+<li><p>JSON文本格式在语法上与创建JavaScript对象的代码相同。所以，无需解析器，JavaScript程序能够使用內建的eval()函数，用JSON数据类生成原生的JavaScript对象。</p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建包含JSON语法的JavaScript字符串</span></span><br><span class="line">var txt = <span class="string">'&#123;"</span>sites<span class="string">" : ['</span>+</span><br><span class="line"><span class="string">'&#123;"</span>name':<span class="string">"谷歌"</span>,<span class="string">"url"</span>:<span class="string">"www.google.com"</span>&#125;,<span class="string">'+</span></span><br><span class="line"><span class="string">'</span>&#123;<span class="string">"name"</span>:<span class="string">"微博"</span>,<span class="string">"url"</span>:<span class="string">"www.weibo.com"</span>&#125;]&#125;<span class="string">'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">var obj = eval("</span>(<span class="string">" + txt + "</span>)<span class="string">");</span></span><br></pre></td></tr></table></figure>
+
+<p> eval(String)函数可计算某个字符串，并执行其中的JavaScript代码。但存在安全问题</p>
+</li>
+</ul>
+<p>对于AJAX应用程序来说，JSON比XML更快更易使用：</p>
+<ul>
+<li><p>使用XML:读取XML文档；使用XML DOM来循环遍历文档；读取值并存储在变量中。</p>
+</li>
+<li><p>使用JSON：读取JSON字符串；用eval()处理JSON字符串。</p>
+</li>
+</ul>
+<h3 id="JSON语法"><a href="#JSON语法" class="headerlink" title="JSON语法"></a>JSON语法</h3><p>JSON使用JavaScript语法。</p>
+<ul>
+<li><p>JSON数据格式为键/值对，就像JavaScript对象属性，键/值对包括字段名称（双引号中）、冒号、值。数据由逗号分隔。</p>
+<p> JavaScript语句键值对中用的=，JSON中(name: “教程”)与JavaScript中(name= “教程”)是等价的。</p>
+</li>
+<li><p>JSON对象保存在大括号内，对象可以保存多个键值对。</p>
+</li>
+<li><p>JSON数组保存在中括号内，数组可以包含对象。</p>
+</li>
+</ul>
+<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>JSON对象和JSON字符串的区别：</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JSON对象</span></span><br><span class="line"><span class="built_in">var</span> obj = &#123;<span class="string">"name"</span>: <span class="string">"amy"</span>,<span class="string">"sex"</span>: <span class="string">"female"</span>&#125;;</span><br><span class="line"><span class="comment">//JSON字符串</span></span><br><span class="line"><span class="built_in">var</span> str='&#123;<span class="string">"name"</span>: <span class="string">"amy"</span>,<span class="string">"sex"</span>: <span class="string">"female"</span>&#125;';</span><br></pre></td></tr></table></figure>
+
+<p>对象属性的值可以是一个数组，数组中可以包含另一个数组，或者是另一个JSON对象。</p>
+<ul>
+<li><p>访问、修改对象值：可用点号(.)；也可用中括号[]来访问或修改。</p>
+<p> 可用delete关键字来删除对象的属性。</p>
+</li>
+<li><p>循环对象：可用for-in循环对象的属性，用[]来访问对象的值。</p>
+</li>
+<li><p>嵌套JSON对象：可以使用(.)或([])来访问嵌套的JSON对象。</p>
+</li>
+</ul>
+<h3 id="JSON-parse"><a href="#JSON-parse" class="headerlink" title="JSON.parse()"></a>JSON.parse()</h3><p>在接收服务器数据时一般是字符串，用JSON.parse()方法吧数据转换为JavaScript对象。</p>
+<p>JSON.parse(text[,reviver])。text:有效的字符串。reviver:可选，一个转换结果的函数，将为对象的每个成员调用此函数，如JSON.parse(text,function(key,value){})。</p>
+<ul>
+<li><p>JSON不能存储Date对象，可将其转换为字符串。解析后之后再将字符串转换为Date对象。</p>
+</li>
+<li><p>JSON不允许包含函数。可以将函数作为字符串存储，解析后再将字符串转换为函数。</p>
+</li>
+</ul>
+<h3 id="JSON-stringify"><a href="#JSON-stringify" class="headerlink" title="JSON.stringify()"></a>JSON.stringify()</h3><p>在向服务器发送数据时一般是字符串，用JSON.stringify()方法将JavaScript对象（含数组）转换为字符串。</p>
+<p>JOSN.stringify(value[,repalcer[, space]])。value:有效的JSON字符串。replacer：可选，用于转换结果的函数或数组。space：可选，文本添加缩进、空格和换行符。</p>
+<ul>
+<li><p>JSON不能存储Date对象，JSON.stringify()会将所有日期转换为字符串。</p>
+</li>
+<li><p>JSON不允许包含函数，JSON.stringify()会删除JavaScript对象的函数，包括key和value。可以在执行JSON.stringify()之前转换为字符串tostring()来避免。</p>
+</li>
+</ul>
+<p>不建议在JSON中使用函数。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/10/Analysis-of-ArrayList-Class-and-its-traversal-Mode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1379,475 +2012,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/22/Java-how-to-retain-two-decimal-places/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/deppwang.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/22/Java-how-to-retain-two-decimal-places/" itemprop="url">Java中如何保留小数点后两位</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-22T12:53:53+08:00">
-                2017-10-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/22/Java-how-to-retain-two-decimal-places/" class="leancloud_visitors" data-flag-title="Java中如何保留小数点后两位">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>java中四舍五入后并保留两位小数的方法</strong>(以double为例)</p>
-<h2 id="String-format打印"><a href="#String-format打印" class="headerlink" title="String.format打印"></a>String.format打印</h2><p>数字格式化说明的格式：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%[<span class="string">argument number</span>][<span class="symbol">flags</span>][<span class="string">width</span>][<span class="symbol">.precision</span>]type</span><br></pre></td></tr></table></figure>
-
-<p>argument number:若参数大于1，指定哪一个；<br>flags:符号，如(+、-、;、.)；width:最小字符数；.precision:精确度；type:类型，如f:浮点。 </p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *方案一：String.format()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">double</span> d = <span class="number">3.1415926</span>;</span><br><span class="line">        <span class="comment">//直接输出结果</span></span><br><span class="line">        System.<span class="keyword">out</span>.println(String.format(<span class="string">"%.2f"</span>, d))；</span><br><span class="line">        <span class="comment">//输出结果：3.14</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/22/Java-how-to-retain-two-decimal-places/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/15/Analyze-the-difference-between-int-and-Integer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/deppwang.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/15/Analyze-the-difference-between-int-and-Integer/" itemprop="url">分析int和Integer的区别</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T12:54:51+08:00">
-                2017-10-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/15/Analyze-the-difference-between-int-and-Integer/" class="leancloud_visitors" data-flag-title="分析int和Integer的区别">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本篇博文包含以下内容：</p>
-<ul>
-<li><input checked disabled type="checkbox"> int 和 Integer 哪个会占用更多的内存？ int 和 Integer 有什么区别？相等吗？</li>
-</ul>
-<h2 id="int和Integer所占内存比较："><a href="#int和Integer所占内存比较：" class="headerlink" title="int和Integer所占内存比较："></a>int和Integer所占内存比较：</h2><p>Integer对象会占用更多的内存。Integer是一个对象，需要存储对象的元数据。但是int是一个原始类型的数据，所以占用的空间更少。</p>
-<h2 id="int和Integer的更多区别："><a href="#int和Integer的更多区别：" class="headerlink" title="int和Integer的更多区别："></a>int和Integer的更多区别：</h2><p>除了之前写的通用的<a href="https://amyyanjie.github.io/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/" target="_blank" rel="noopener">基本数据类型与包装类的区别</a>之外,还有以下方面的比较：</p>
-<p>(注：对于引用类型变量，==操作符比较的是两个引用是否指向同一个对象；对于基本类型变量，==操作符比较的是两个变量的值是否相等。)</p>
-<h3 id="1-两个通过new出来的Integer变量比较，结果为false。"><a href="#1-两个通过new出来的Integer变量比较，结果为false。" class="headerlink" title="1.两个通过new出来的Integer变量比较，结果为false。"></a>1.两个通过new出来的Integer变量比较，结果为false。</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 比较两个new出来的Integer</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">        Integer i = <span class="keyword">new</span> Integer(<span class="number">200</span>);</span><br><span class="line">        Integer j = <span class="keyword">new</span> Integer(<span class="number">200</span>);</span><br><span class="line">        System.<span class="keyword">out</span>.print(i == j);</span><br><span class="line">        <span class="comment">//输出：false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Integer变量实际上是对一个Integer对象的引用。当new一个Integer时，实际上是生成一个指针指向此对象，两次new Integer生成的是两个对象，其内存地址不同，所以两个new出来的Integer变量不等。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/15/Analyze-the-difference-between-int-and-Integer/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/deppwang.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/" itemprop="url">浅析Java基础类型与封装类型的区别</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T12:55:46+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/" class="leancloud_visitors" data-flag-title="浅析Java基础类型与封装类型的区别">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本篇博文主要讲解以下内容：</p>
-<ul>
-<li><input checked disabled type="checkbox"> 基础类型(Primitives)与封装类型(Wrappers)的区别在哪里</li>
-</ul>
-<h2 id="一、传递方式不同"><a href="#一、传递方式不同" class="headerlink" title="一、传递方式不同"></a>一、传递方式不同</h2><p>封装类是引用类型。</p>
-<p> <strong>基本类型（原始数据类型）在传递参数时都是按值传递，而封装类型是按引用传递的</strong>(其实“引用也是按值传递的”，传递的是对象的地址)。由于包装类型都是不可变量，因此没有提供改变它值的方法，增加了对“按引用传递”的理解难度。</p>
-<p>int是基本类型，直接存放数值；Integer是类，产生对象时用一个引用指向这个对象。</p>
-<h2 id="二、封装类可以有方法和属性"><a href="#二、封装类可以有方法和属性" class="headerlink" title="二、封装类可以有方法和属性"></a>二、封装类可以有方法和属性</h2><p>封装类可以有方法和属性，利用这些方法和属性来处理数据，如Integer.parseInt(Strings)。<strong>基本数据类型都是final修饰的</strong>，不能继承扩展新的类、新的方法。</p>
-<h2 id="三、默认值不同"><a href="#三、默认值不同" class="headerlink" title="三、默认值不同"></a>三、默认值不同</h2><p> <strong>基本类型跟封装类型的默认值是不一样的</strong>。如int i,i的预设为0；Integer j，j的预设为null,因为封装类产生的是对象，对象默认值为null。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1895,7 +2059,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1992,7 +2156,7 @@
         <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
