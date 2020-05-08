@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/04/21/computer-number/</loc>
+    
+    <lastmod>2020-05-08T09:49:27.630Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/04/20/positional-operator/</loc>
+    
+    <lastmod>2020-05-08T09:49:18.123Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/01/16/HTML-study-notes/</loc>
     
     <lastmod>2020-04-30T07:29:50.502Z</lastmod>
@@ -44,6 +58,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2019-08-02T03:27:06.532Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/google5209950f9d289a8d.html</loc>
     
     <lastmod>2019-08-02T03:27:06.532Z</lastmod>
@@ -52,13 +73,6 @@
   
   <url>
     <loc>http://yoursite.com/categories/index.html</loc>
-    
-    <lastmod>2019-08-02T03:27:06.532Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2019-08-02T03:27:06.532Z</lastmod>
     
@@ -79,7 +93,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/01/25/SpringMVC-technique/</loc>
+    <loc>http://yoursite.com/2018/02/10/Common-Git-commands/</loc>
     
     <lastmod>2019-08-02T03:27:06.531Z</lastmod>
     
@@ -93,16 +107,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/02/10/Common-Git-commands/</loc>
+    <loc>http://yoursite.com/2018/01/25/SpringMVC-technique/</loc>
     
     <lastmod>2019-08-02T03:27:06.531Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/01/15/jQuery-study-notes/</loc>
-    
-    <lastmod>2019-08-02T03:27:06.530Z</lastmod>
     
   </url>
   
@@ -114,16 +121,16 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/12/10/Analysis-of-ArrayList-Class-and-its-traversal-Mode/</loc>
+    <loc>http://yoursite.com/2018/01/15/jQuery-study-notes/</loc>
     
-    <lastmod>2019-08-02T03:27:06.529Z</lastmod>
+    <lastmod>2019-08-02T03:27:06.530Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/30/Parameter-passing-in-Java/</loc>
+    <loc>http://yoursite.com/2017/12/10/Analysis-of-ArrayList-Class-and-its-traversal-Mode/</loc>
     
-    <lastmod>2019-08-02T03:27:06.528Z</lastmod>
+    <lastmod>2019-08-02T03:27:06.529Z</lastmod>
     
   </url>
   
@@ -149,7 +156,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/30/ArrayList-dilatancy-analysis/</loc>
+    <loc>http://yoursite.com/2017/11/30/Parameter-passing-in-Java/</loc>
+    
+    <lastmod>2019-08-02T03:27:06.528Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/22/Java-how-to-retain-two-decimal-places/</loc>
     
     <lastmod>2019-08-02T03:27:06.527Z</lastmod>
     
@@ -163,14 +177,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/22/Java-how-to-retain-two-decimal-places/</loc>
+    <loc>http://yoursite.com/2017/10/30/ArrayList-dilatancy-analysis/</loc>
     
     <lastmod>2019-08-02T03:27:06.527Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
+    <loc>http://yoursite.com/2017/10/15/Analyze-the-difference-between-int-and-Integer/</loc>
     
     <lastmod>2019-08-02T03:27:06.526Z</lastmod>
     
@@ -184,7 +198,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/15/Analyze-the-difference-between-int-and-Integer/</loc>
+    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
     
     <lastmod>2019-08-02T03:27:06.526Z</lastmod>
     

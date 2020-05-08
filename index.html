@@ -255,6 +255,369 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/21/computer-number/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/21/computer-number/" itemprop="url">原码反码补码</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-21T21:22:04+08:00">
+                2020-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/04/21/computer-number/" class="leancloud_visitors" data-flag-title="原码反码补码">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="关于原码、反码和补码"><a href="#关于原码、反码和补码" class="headerlink" title="关于原码、反码和补码"></a>关于原码、反码和补码</h2><p>首先了解机器数和机器数的真值。</p>
+<h3 id="机器数和机器数的真值"><a href="#机器数和机器数的真值" class="headerlink" title="机器数和机器数的真值"></a>机器数和机器数的真值</h3><h4 id="1、机器数"><a href="#1、机器数" class="headerlink" title="1、机器数"></a>1、机器数</h4><p>数字在计算机中的二进制表现形式。</p>
+<ul>
+<li>符号数值化：数据的正负号，在机器里用一位二进制的0或1来区别。通常这个符号放在二进制数的最高位（称符号位），用0代表符号“+”，用1代表符号“-”。</li>
+<li>二进制的位数受机器设备的限制。机器内部设备一次能表示的二进制位数叫机器字长。一台机器的字长是固定的（如8位、16位、32位、64位）。<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">比如在字长为<span class="number">8</span>的计算机中。</span><br><span class="line">十进制的+<span class="number">5</span>，其机器数为：<span class="number">00000101</span></span><br><span class="line">十进制的<span class="number">-5</span>，其机器数为：<span class="number">10000101</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="2、机器数的真值"><a href="#2、机器数的真值" class="headerlink" title="2、机器数的真值"></a>2、机器数的真值</h4><p>机器数有符号占据一位，所以机器数的形式值就不等于真值。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">例如机器数：<span class="number">10000101</span></span><br><span class="line">最高位<span class="number">1</span>表示“-”，则真值数为<span class="number">-0000101</span>，十进制真值为<span class="number">-5</span>。</span><br><span class="line">真值是不计算符号位的（第一位不表示值，只表示正负）。</span><br></pre></td></tr></table></figure>
+
+<h3 id="机器数的三种形式"><a href="#机器数的三种形式" class="headerlink" title="机器数的三种形式"></a>机器数的三种形式</h3><h4 id="1、原码"><a href="#1、原码" class="headerlink" title="1、原码"></a>1、原码</h4><p>原码：将数的真值形式中“+”用0表示，“-”用1表示。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+<span class="number">5</span>原码：<span class="number">00000101</span></span><br><span class="line"><span class="number">-5</span>原码：<span class="number">10000101</span></span><br></pre></td></tr></table></figure>
+
+<p>加减法运算复杂。</p>
+<h4 id="2、反码"><a href="#2、反码" class="headerlink" title="2、反码"></a>2、反码</h4><p>正数的反码与原码相同；负数的反码是对其原码数值位（不包含符号位）逐一取反。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+<span class="number">5</span>原码：<span class="number">00000101</span>   反码：<span class="number">00000101</span></span><br><span class="line"><span class="number">-5</span>原码：<span class="number">10000101</span>   反码：<span class="number">11111010</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3、补码"><a href="#3、补码" class="headerlink" title="3、补码"></a>3、补码</h4><p>正数的补码与原码相同；负数的补码是符号位不变，其余位取反，再末位+1（相当于反码末位+1）。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+<span class="number">5</span>原码：<span class="number">00000101</span>   反码：<span class="number">00000101</span>    补码：<span class="number">00000101</span></span><br><span class="line"><span class="number">-5</span>原码：<span class="number">10000101</span>   反码：<span class="number">11111010</span>    补码：<span class="number">11111011</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>数据在计算机中是以其补码形式存储和运算的。</strong></p>
+<ul>
+<li>补码运算时，其符号位与数值部分一起参与运算。</li>
+<li>补码运算时，其运算结果仍为补码。（在转换为真值时，若符号位为 0，数位不变；若符号位为 1，应将结果求补才是其真值。）</li>
+</ul>
+<p>java转换二进制：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Integer.toBinaryString()</span></span><br><span class="line"><span class="keyword">System</span>.out.println(<span class="keyword">Integer</span>.toBinaryString(<span class="number">5</span>));  <span class="comment">//输出101</span></span><br><span class="line"><span class="keyword">System</span>.out.println(<span class="keyword">Integer</span>.toBinaryString(<span class="number">-5</span>)); <span class="comment">//输出11111111111111111111111111111011</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="二进制数的四则运算"><a href="#二进制数的四则运算" class="headerlink" title="二进制数的四则运算"></a>二进制数的四则运算</h2><ul>
+<li>加运算：0+0=0；1+0=1；0+1=1；1+1=10（逢2进1）。</li>
+<li>减运算：1-1=0；1-0=1；0-0=0；0-1=1（向高位借1当2）。</li>
+<li>乘运算：0 * 0=0；0 * 1=0；1 * 1=1。</li>
+<li>除运算：1除以1=1；0除以1=0。</li>
+</ul>
+<h2 id="推荐文章"><a href="#推荐文章" class="headerlink" title="推荐文章"></a>推荐文章</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2009/08/twos_complement.html" target="_blank" rel="noopener">阮一峰的网络日志：关于2的补码</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/20/positional-operator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/20/positional-operator/" itemprop="url">位运算符</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-20T21:22:04+08:00">
+                2020-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/04/20/positional-operator/" class="leancloud_visitors" data-flag-title="位运算符">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><blockquote>
+<p>java定义了位运算符，应用于<strong>short（短整型）、int（整数类型）、long（长整型）、byte（字节型）、char（字符型）</strong>。位运算表示对每个二进制位(bit)进行计算，其操作数和运算结果都是整数型。</p>
+</blockquote>
+<p>位运算符主要针对二进制（补码），按照低位到高位一一对齐运算。</p>
+<ul>
+<li>位逻辑运算符包括：<code>&amp;</code>（与）、<code>|</code>（或）、<code>~</code>（非）、<code>^</code>（异或）。除了<code>~</code>为单目运算符外，其余都为双目运算符。</li>
+<li>位移运算符包括&lt;&lt;（左移运算符）、&gt;&gt;（右移运算符）、&gt;&gt;&gt;（无符号右移运算符）。</li>
+</ul>
+<h3 id="amp-运算"><a href="#amp-运算" class="headerlink" title="&amp;运算"></a>&amp;运算</h3><p>”与“运算符：相对应位都为1，结果才为1。否则为0。</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> &amp; <span class="number">0</span> = <span class="number">0</span>;</span><br><span class="line"><span class="number">1</span> &amp; <span class="number">0</span> = <span class="number">0</span>;</span><br><span class="line"><span class="number">1</span> &amp; <span class="number">1</span> = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运算"><a href="#运算" class="headerlink" title="|运算"></a>|运算</h3><p>”或“运算符：相对应位只要有一个为1，结果就为1。否则为0。</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> | <span class="number">0</span> = <span class="number">0</span>;</span><br><span class="line"><span class="number">1</span> | <span class="number">0</span> = <span class="number">1</span>;</span><br><span class="line"><span class="number">1</span> | <span class="number">1</span> = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p> 逻辑运算符”&amp;&amp;”和”||”与位运算符”&amp;”和”|”的区别：”&amp;&amp;”和”||”运算具有短路计算功能。</p>
+<h3 id="运算-1"><a href="#运算-1" class="headerlink" title="~运算"></a>~运算</h3><p>”非“运算符：取反，1变成0，0变成1；</p>
+<h3 id="异或运算"><a href="#异或运算" class="headerlink" title="^异或运算"></a>^异或运算</h3><p>”异或“运算符：用符号 XOR 或 ^ 表示。两个操作数进行异或运算时，对于同一位上，如果相同为0，不同则为1。<br>   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> ^ <span class="number">0</span> = <span class="number">0</span>;</span><br><span class="line"><span class="number">1</span> ^ <span class="number">0</span> = <span class="number">1</span>;   </span><br><span class="line"><span class="number">1</span> ^ <span class="number">1</span> = <span class="number">0</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>性质：</strong></p>
+<ul>
+<li>任何数，与自己异或运算，结果为0。 a^a=0。</li>
+<li>任何数，与0做异或运算，结果不变。 a^0=a。</li>
+<li>满足交换律和结合律。(a^b)^a=(a^a)^b=0^b=b。</li>
+<li>根据以上可得，自反性。a ^ b ^ b=a。a与b做两次异或运算，可得原始数据a。</li>
+</ul>
+<h3 id="lt-lt-运算"><a href="#lt-lt-运算" class="headerlink" title="&lt;&lt;运算"></a>&lt;&lt;运算</h3><p>左移位运算：按二进制形式把操作数向左移动指定位数。<strong>高位移出（舍弃）、低位的空位补零</strong>。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> &lt;&lt; <span class="number">2</span></span><br><span class="line"><span class="number">3</span>转换为二进制数字：<span class="number">00000000</span> <span class="number">00000000</span> <span class="number">00000000</span> <span class="number">00000011</span></span><br><span class="line">左移<span class="number">2</span>位后为：     <span class="number">00000000</span> <span class="number">00000000</span> <span class="number">00000000</span> <span class="number">00001100</span>（十进制<span class="number">12</span>）</span><br><span class="line"></span><br><span class="line"><span class="number">-3</span> &lt;&lt; <span class="number">2</span></span><br><span class="line"><span class="number">-3</span>转换为二进制为： <span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11111101</span>（取补码）</span><br><span class="line">左移<span class="number">2</span>位后为：      <span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11110100</span>（为补码，十进制为<span class="number">-12</span>）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>数学意义：在数字没有溢出的前提下，左移一位相当于乘以2的一次方。左移n位相当于乘以2的n次方。</li>
+</ul>
+<h3 id="gt-gt-运算"><a href="#gt-gt-运算" class="headerlink" title="&gt;&gt;运算"></a>&gt;&gt;运算</h3><p>右移位运算：按二进制形式把操作数向右移动指定位数。<br><strong>低位移出（丢弃）、高位的空位补符号位（正数补0、负数补1）</strong>。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">16</span> &gt;&gt; <span class="number">2</span></span><br><span class="line"><span class="number">16</span>转换为二进制为：<span class="number">00000000</span> <span class="number">00000000</span> <span class="number">00000000</span> <span class="number">00010000</span></span><br><span class="line">右移两位后     <span class="number">00000000</span> <span class="number">00000000</span> <span class="number">00000000</span> <span class="number">00000100</span>（十进制<span class="number">4</span>）</span><br><span class="line"></span><br><span class="line"><span class="number">-16</span> &gt;&gt; <span class="number">2</span></span><br><span class="line"><span class="number">-16</span> 原码：<span class="number">10000000</span> <span class="number">00000000</span> <span class="number">00000000</span> <span class="number">00010000</span>（<span class="number">16</span>的原码基础上将符号位改为<span class="number">1</span>）</span><br><span class="line"><span class="number">-16</span> 反码：<span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11101111</span>（符号位不变，数值部分取反）</span><br><span class="line"><span class="number">-16</span> 补码：<span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11110000</span>（在反码基础上，末位+<span class="number">1</span>）</span><br><span class="line"><span class="number">-16</span>转换为二进制为：<span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11110000</span>（取补码）（在计算机系统中，数值一律用补码来表示和存储）</span><br><span class="line">右移两位后        <span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11111100</span>（为补码，十进制<span class="number">-4</span>）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>数学意义：右移一位相当于除以2的一次方。右移n位相当于除以2的n次方。</li>
+</ul>
+<h3 id="gt-gt-gt-运算"><a href="#gt-gt-gt-运算" class="headerlink" title="&gt;&gt;&gt;运算"></a>&gt;&gt;&gt;运算</h3><p>无符号右移运算符：按二进制形式把操作数向右移动指定位数。**低位移出（丢弃）、高位的空位补零。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">16</span> &lt;&lt;&lt; <span class="number">2</span></span><br><span class="line"><span class="number">16</span>转换为二进制为：<span class="number">00000000</span> <span class="number">00000000</span> <span class="number">00000000</span> <span class="number">00010000</span></span><br><span class="line">无符号右移两位后     <span class="number">00000000</span> <span class="number">00000000</span> <span class="number">00000000</span> <span class="number">00000100</span>（十进制<span class="number">4</span>）</span><br><span class="line"></span><br><span class="line"><span class="number">-16</span> &lt;&lt;&lt; <span class="number">2</span></span><br><span class="line"><span class="number">-16</span>转换为二进制为：<span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11110000</span>（取补码）</span><br><span class="line">右移两位后        <span class="number">00111111</span> <span class="number">11111111</span> <span class="number">11111111</span> <span class="number">11111100</span>（高位的空位补<span class="number">0</span>）</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/palindrome-number/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1823,576 +2186,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/25/Reflection-and-summary-of-the-second-killing-system/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/deppwang.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/25/Reflection-and-summary-of-the-second-killing-system/" itemprop="url">秒杀系统思考与总结</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-25T10:10:40+08:00">
-                2018-01-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/项目/" itemprop="url" rel="index">
-                    <span itemprop="name">项目</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/01/25/Reflection-and-summary-of-the-second-killing-system/" class="leancloud_visitors" data-flag-title="秒杀系统思考与总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="DAO层"><a href="#DAO层" class="headerlink" title="DAO层"></a>DAO层</h2><h4 id="1-数据库设计与编码"><a href="#1-数据库设计与编码" class="headerlink" title="1.数据库设计与编码"></a>1.数据库设计与编码</h4><p>在sql中增/插</p>
-<p>create database,use database;create table;inset into····</p>
-<h4 id="2-DAO实体与接口编码"><a href="#2-DAO实体与接口编码" class="headerlink" title="2.DAO实体与接口编码"></a>2.DAO实体与接口编码</h4><p>（1）entity编码</p>
-<p>编写相应属性，getter、setter、toString</p>
-<p>table中列对应–&gt;entity属性。</p>
-<p>（2）DAO接口</p>
-<p>编写抽象方法，增删改查对应的抽象方法。</p>
-<p>参数中要用@Param(“”)，因为java没有保存形参的记录queryAll(int offset,int limit)–&gt;queryAll(arg0,arg1)</p>
-<p>当有多个参数时，用myBatis提供的注解@Param()。</p>
-<p>注意参数和返回类型</p>
-<h4 id="3-基于myBatis实现DAO"><a href="#3-基于myBatis实现DAO" class="headerlink" title="3.基于myBatis实现DAO"></a>3.基于myBatis实现DAO</h4><p>只写接口， 不写实现类。mybatis来实现接口。</p>
-<p>在resources下实现</p>
-<p>（1）mybatis-config.xml配置myBatis全局属性</p>
-<p>（2）Dao.xml</p>
-<p>为DAO接口方法提供sql语句配置。 在mapper下xml中提供SQL.</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"cn.seckill.dao.SeckillDao"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--增删改查insert/update/select标签--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">""</span> <span class="attr">parameterType</span>=<span class="string">""</span> &gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--具体sql--&gt;</span></span><br><span class="line">UPDATE seckill SET····WHERE···AND···</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>xml中&lt;=用标签<!--[CDATA[<=]]-->表示。</p>
-<p>Dao中的参数在sql中<strong>用#{}表示</strong>。</p>
-<p>主键冲突时，会报错。用insert ignore into .忽略错误，返回0。</p>
-<hr>
-<p>根据id查询SuccessKilled并携带Seckill实体。queryByIdWithSeckill():</p>
-<p>若不写连接，写两条sql。先查出SuccessKill,再根据seckillId查出Seckill。</p>
-<p>若在一个实体中完成，通过连接的形式inner join，把结果映射到SuccessKilled。</p>
-<p>SuccessKilled.java实体中有Seckill seckill属性，如何告诉myBatis把结果映射到SuccessKilled同时映射到seckill属性：seckill表中查找的属性通过列别名的形式(as “”)（as可忽略，要加双引号）赋给seckill属性。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">            sk<span class="selector-class">.seckill_id</span>,</span><br><span class="line">            sk<span class="selector-class">.user_phone</span>,</span><br><span class="line">            sk<span class="selector-class">.create_time</span>,</span><br><span class="line">            sk<span class="selector-class">.state</span>,</span><br><span class="line">            s<span class="selector-class">.seckill_id</span> <span class="string">"seckill.seckill_id"</span>,</span><br><span class="line">            s<span class="selector-class">.name</span> <span class="string">"seckill.name"</span>,</span><br><span class="line">            s<span class="selector-class">.number</span> <span class="string">"seckill.number"</span>,</span><br><span class="line">            s<span class="selector-class">.start_time</span> <span class="string">"seckill.start_time"</span>,</span><br><span class="line">            s<span class="selector-class">.end_time</span> <span class="string">"seckill.end_time"</span>,</span><br><span class="line">            s<span class="selector-class">.create_time</span> <span class="string">"seckill.create_time"</span></span><br><span class="line">        FROM success_killed sk</span><br><span class="line">        INNER JOIN seckill s ON sk.seckill_id=s.seckill_id</span><br><span class="line">        WHERE sk.seckill_id=#&#123;seckillId&#125; and sk.user_phone=#&#123;userPhone&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="mybatis整合spring"><a href="#mybatis整合spring" class="headerlink" title="mybatis整合spring"></a>mybatis整合spring</h4><p>配置spring-dao.xml</p>
-<p>配置整合mybatis过程：</p>
-<p>（1）配置数据库相关参数properties的属性：<a href="context:/" target="_blank" rel="noopener">context:/</a></p>
-<p>（2）数据库连接池<br><bean id class></bean></p>
-<p>连接池属性driver、url、username、password：&lt;property name=”” value=”${}”</p>
-<p>（3）配置SqlSessionFactory对象</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sqlSessionFactory"</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.SqlSessionFactoryBean"</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--往下才是mybatis和spring真正整合的配置--&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--注入数据库连接池--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>/&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--配置mybatis全局配置文件:mybatis-config.xml--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"configLocation"</span> <span class="attr">value</span>=<span class="string">"classpath:mybatis-config.xml"</span>/&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--扫描sql配置文件:mapper需要的xml文件--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mapperLocations"</span> <span class="attr">value</span>=<span class="string">"classpath:mapper/*.xml"</span>/&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--扫描entity包,使用别名,多个用;隔开--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"typeAliasesPackage"</span> <span class="attr">value</span>=<span class="string">"cn.seckill-master.entity"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>（4）配置扫描Dao接口包,动态实现DAO接口,注入到spring容器</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--注入SqlSessionFactory--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sqlSessionFactoryBeanName"</span> <span class="attr">value</span>=<span class="string">"sqlSessionFactory"</span>/&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 给出需要扫描的Dao接口--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"basePackage"</span> <span class="attr">value</span>=<span class="string">"cn.seckill-master.dao"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>约定大于配置</p>
-<h4 id="DAO层单元测试编码"><a href="#DAO层单元测试编码" class="headerlink" title="DAO层单元测试编码"></a>DAO层单元测试编码</h4><p>找到DAO，ctrl+shift+T,生成相应Test。</p>
-<ol>
-<li>要配置spring和junit整合，使junit自动启动时加载springIOC容器</li>
-</ol>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//junit依赖，junit自动启动时加载springIOC容器</span></span><br><span class="line"><span class="variable">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="comment">//告诉junit spring配置文件</span></span><br><span class="line"><span class="variable">@ContextConfiguration</span>(&#123;<span class="string">"classpath:spring/spring-dao.xml"</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>注：没有分号(;)。ContextConfiguration括号内有花括号{}。</p>
-<ol start="2">
-<li>注入DAO实现类依赖   </li>
-</ol>
-<p>在Test类中</p>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Resource</span></span><br><span class="line"><span class="keyword">private</span> SeckillDao seckillDao;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>编写test方法代码</li>
-</ol>
-<p>测试方法内是直接调用对应Dao的相应方法，注意返回类型。若是该方法需要参数，则自定义。</p>
-<p>然后将结果System.out.println();</p>
-<h2 id="Service层"><a href="#Service层" class="headerlink" title="Service层"></a>Service层</h2><p>DAO层：接口设计+SQL编写，代码与SQL分离。</p>
-<p>DAO拼接等逻辑在Service层完成。</p>
-<h4 id="Service接口设计"><a href="#Service接口设计" class="headerlink" title="Service接口设计"></a>Service接口设计</h4><p>业务接口：站在使用者角度设计接口。</p>
-<p>三个方面：1.方法定义粒度；2.参数，越简练越好；3.返回类型（return类型一定要友好/或者return异常，我们允许的异常）</p>
-<ol>
-<li><p>Service接口内定义抽象方法。</p>
-</li>
-<li><p>在一些重要的行为的接口方法，其返回类型不一定是entity。dto。</p>
-</li>
-</ol>
-<p>dto与entity不同。dto(Data Transfer Object)是数据传输对象，在service和web之间传递数据，封装数据对象。dto内定义属性，constructor,getter,setter。</p>
-<ol start="3">
-<li>执行秒杀操作，可能失败/成功，要抛出允许的异常</li>
-</ol>
-<h4 id="Service接口实现"><a href="#Service接口实现" class="headerlink" title="Service接口实现"></a>Service接口实现</h4><p>使用注解@Service</p>
-<ol>
-<li><p>创建实现类，implements相应Service，alt+Insert快捷键implements Methods。</p>
-</li>
-<li><p>将日志的对象写出来</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Logger logger= LoggerFactory.getLogger(<span class="keyword">this</span>.getClass());</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将要用到的DAO定义（private），不用初始化，其实现类都在spring的容器中。让spring依赖注入实例。</p>
-<p>注入Service依赖@Autowired</p>
-</li>
-<li><p>编码实现方法。能运用到DAO的相关方法直接用dao调用方法。return。</p>
-</li>
-</ol>
-<p>.getTime()换成毫秒后再进行比较。</p>
-<ol start="5">
-<li>执行秒杀方法：减库存，增加购买明细。</li>
-</ol>
-<p>（1）使用注解@Transactional控制事务方法</p>
-<p>（2）执行秒杀方法的实现：将用户传过来的md5与生成的md5对比，若不等，抛出异常。</p>
-<p>（3）所有编译期异常，转化为运行期异常。一旦有错，rollback。</p>
-<p>对于声明式事务，抛出运行期异常时才会回滚。</p>
-<p>（4）在运行期异常catch前显示地抛出允许的异常，对不同的类型做catch，如秒杀关闭、重复秒杀。</p>
-<ol start="6">
-<li>state,stateInfo。<br>数据字典，用<strong>枚举</strong>表示常量数据。</li>
-</ol>
-<h4 id="Service相关配置（IOC、事务）"><a href="#Service相关配置（IOC、事务）" class="headerlink" title="Service相关配置（IOC、事务）"></a>Service相关配置（IOC、事务）</h4><p>配置spring-service.xml</p>
-<ol>
-<li><p>使用Spring托管Service</p>
-<p>Service层Spring-IOC依赖注入方式的配置</p>
-</li>
-</ol>
-<p>扫描service包下所有使用注解的类型（如@Service,@Autowired）</p>
-<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">context</span>:<span class="keyword">component</span>-scan base-<span class="keyword">package</span>=<span class="string">"cn.codingxiaxw.service"</span>/&gt;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>Spring声明式事务配置</li>
-</ol>
-<p>（1）配置事务管理器</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=<span class="string">"transactionManager"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span><br><span class="line">       &lt;!--注入数据库连接池--&gt;</span><br><span class="line">       &lt;property name=<span class="string">"dataSource"</span> ref=<span class="string">"dataSource"</span>/&gt;</span><br><span class="line"></span><br><span class="line">   &lt;<span class="regexp">/bean&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>（2）配置基于注解的声明式事务</p>
-<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认使用注解来管理事务行为</span></span><br><span class="line">    &lt;tx:<span class="keyword">annotation</span>-driven transaction-manager=<span class="string">"transactionManager"</span>/&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="集成测试Service逻辑"><a href="#集成测试Service逻辑" class="headerlink" title="集成测试Service逻辑"></a>集成测试Service逻辑</h4><p>在service类 ctrl+shift+T自动生成测试类。</p>
-<ol>
-<li>要配置spring和junit整合，使junit自动启动时加载springIOC容器<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//junit依赖，junit自动启动时加载springIOC容器</span></span><br><span class="line"><span class="variable">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="comment">//告诉junit spring配置文件</span></span><br><span class="line"><span class="variable">@ContextConfiguration</span>(&#123;</span><br><span class="line">        <span class="string">"classpath:spring/spring-dao.xml"</span>,</span><br><span class="line">        <span class="string">"classpath:spring/spring-service.xml"</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>加载两个是因为测试Service，要依赖Dao的配置。</p>
-<ol start="2">
-<li><p>日志对象logger</p>
-</li>
-<li><p>依赖注入service@Autowired</p>
-</li>
-</ol>
-<p>3.编写测试代码</p>
-<h2 id="Web层"><a href="#Web层" class="headerlink" title="Web层"></a>Web层</h2><h4 id="秒杀API的URL设计"><a href="#秒杀API的URL设计" class="headerlink" title="秒杀API的URL设计"></a>秒杀API的URL设计</h4> <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET<span class="regexp">/seckill/</span>list</span><br><span class="line">GET<span class="regexp">/seckill/</span>&#123;id&#125;/detail</span><br><span class="line">GET<span class="regexp">/seckill/</span>time/now</span><br><span class="line">POST<span class="regexp">/seckill/</span>&#123;id&#125;/exposer</span><br><span class="line">POST<span class="regexp">/seckill/</span>&#123;id&#125;<span class="regexp">/&#123;md5&#125;/</span>execution</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置SpringMVC框架"><a href="#配置SpringMVC框架" class="headerlink" title="配置SpringMVC框架"></a>配置SpringMVC框架</h4><ol>
-<li>web.xml:配置DispatcherSerclet。</li>
-</ol>
-<p>加载SpringMVC 需要配置的文件<br>spring-dao.xml，spring-service.xml,spring-web.xml</p>
-<ol start="2">
-<li><p>spring-web.xml:  配置SpringMVC</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--1,开启springmvc注解模式</span></span><br><span class="line"><span class="comment">   a.自动注册DefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter</span></span><br><span class="line"><span class="comment">   b.默认提供一系列的功能:数据绑定，数字和日期的format@NumberFormat,@DateTimeFormat</span></span><br><span class="line"><span class="comment">   c:xml,json的默认读写支持--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">mvc:annotation-driven</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">&lt;!--2.静态资源默认servlet配置--&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">       1).加入对静态资源处理：js,gif,png</span></span><br><span class="line"><span class="comment">       2).允许使用 "/" 做整体映射</span></span><br><span class="line"><span class="comment">   --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">mvc:default-servlet-handler</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">&lt;!--3：配置JSP 显示ViewResolver--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"viewClass"</span> <span class="attr">value</span>=<span class="string">"org.springframework.web.servlet.view.JstlView"</span>/&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/jsp/"</span>/&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">&lt;!--4:扫描web相关的controller--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"cn.codingxiaxw.web"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="使用SpringMVC实现Restful接口-Controller"><a href="#使用SpringMVC实现Restful接口-Controller" class="headerlink" title="使用SpringMVC实现Restful接口(Controller)"></a>使用SpringMVC实现Restful接口(Controller)</h4><ol>
-<li>@Controller</li>
-</ol>
-</li>
-</ol>
-<ol start="2">
-<li><p>@RequsetMapping(“/seckill”)//代表模块。之后的RequsetMapping中直接写资源/{}/细分。如”/list”。</p>
-<ol start="3">
-<li>Controller类中依赖注入相应Service。<br>@Autowired<br>private SeckillService seckillService;</li>
-</ol>
-</li>
-<li><p>针对每个方法：<br>方法外@RequestMapping(value = “/list”,method = RequestMethod.GET)</p>
-</li>
-</ol>
-<p>若是json格式。@ResponseBody</p>
-<p>方法内：调用Service，处理数据。将处理结果封装成json ，return。</p>
-<p>(1) 若是jsp格式。方法参数中需要加入Model model。model用来存放所有渲染list.jsp的数据。list.jsp提供页面的模板，model是数据。list.jsp+model=ModelAndView.</p>
-<p> return “lisit”;//WEB-INF/jsp/“list”.jsp</p>
-<p>(2) 若是json格式，VO用来封装所有的数据结果。</p>
-<p>将所有的ajax请求返回类型(为SeckillResult)，全部封装成json数据。直接输出json，不需要model。</p>
-<p>@RequestMapping中加入 produces = {“application/json;charset=UTF-8”})//contentType</p>
-<h4 id="基于bootstrap开发页面结构-jsp"><a href="#基于bootstrap开发页面结构-jsp" class="headerlink" title="基于bootstrap开发页面结构(jsp)"></a>基于bootstrap开发页面结构(jsp)</h4><p> 在webapp下。WEB-INF下放jsp文件。<br> 将通用或重复的部分提取出来，再采用jsp静态包含的方式</p>
- <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//静态包含：会将包含的comon/tag.jap合并到list.jsp中来，作为整个servlet输出..一个servlet</span></span><br><span class="line"><span class="comment">//动态包含：包含的jsp会作为独立的servlet，运行完之后会将运行结果与list.jsp的运行结果，也就是最后的静态HTML做合并..多个servlet</span></span><br><span class="line">&lt;%@include <span class="keyword">file</span>=<span class="string">"common/tag.jsp"</span>%&gt;<span class="comment">//静态包含</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="交互"><a href="#交互" class="headerlink" title="交互"></a>交互</h4><p> 创建JavaScript文件seckill.js。存放主要交互逻辑js代码。javascript模块化。</p>
-<p> 在详情页jsp的HTML中引入js文件。<br> <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/resources/script/seckill.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p> 初始化函数，使用EL表达式传入参数</p>
-<h5 id="cookie登录交互"><a href="#cookie登录交互" class="headerlink" title="cookie登录交互"></a>cookie登录交互</h5><p> 手机验证和登录，在cookie中查找手机号。</p>
-<h5 id="计时交互"><a href="#计时交互" class="headerlink" title="计时交互"></a>计时交互</h5><h5 id="秒杀交互"><a href="#秒杀交互" class="headerlink" title="秒杀交互"></a>秒杀交互</h5><hr>
-<hr>
-<p> 在seviceImpl，Controller中会private static Logger logger = Logger.getLogger(this.class); </p>
-<h2 id="高并发优化"><a href="#高并发优化" class="headerlink" title="高并发优化"></a>高并发优化</h2><p> 高并发发生在详情页上（做静态化，放到CDN中）、访问系统时间不用优化、计时在js端，浏览器中，对服务器不会有影响。</p>
-<p> 要优化的有秒杀地址接口、秒杀操作</p>
-<h4 id="redis优化“地址暴露接口”"><a href="#redis优化“地址暴露接口”" class="headerlink" title="redis优化“地址暴露接口”"></a>redis优化“地址暴露接口”</h4><p> 地址暴露接口是根据秒杀单的时间来计算是否秒杀，不方便作为固定的内容放到CSN中作为缓存。要放到服务器端，通过服务器端的逻辑来控制。</p>
-<ol>
-<li><p>在porm中引入redis客户端：jedis的依赖</p>
-</li>
-<li><p>创建RedisDao。</p>
-<p>对serviceImpl中方法优化。</p>
-<p>seckillImpl中暴露秒杀地址用redis缓存起来。DAO数据访问对象，放数据库或者其他存储访问的类所在的包。</p>
-<p>redis操作逻辑不应该放在service代码中，是数据访问层的逻辑。放在RedisDao中。</p>
-<p>Dao中编码构造方法、getSeckill()方法、putSeckill()方法</p>
-</li>
-<li><p>引入prostuff序列化依赖，采用自定义序列化 。</p>
-<p>把对象转换成二进制数组，传递给redis,缓存起来。通过jedis拿Seckill对象，先拿到的是字节数组，再按照schema反序列化成对象。</p>
-<p>序列化的本质：通过字节码，通过字节码所对应对象有哪些属性，把字节码的数据传给那些属性，这样就可以序列化好那些对象。 </p>
-<ol start="4">
-<li>写完DAO–&gt;建立junit编码测试。全局测试testSeckill()</li>
-</ol>
-<p>在spring-dao.xml中注入RedisDao。</p>
-</li>
-<li><p>把RedisDao注入到serviceImpl中–&gt;bi编码</p>
-<h4 id="java控制事务行为分析："><a href="#java控制事务行为分析：" class="headerlink" title="java控制事务行为分析："></a>java控制事务行为分析：</h4></li>
-</ol>
-<p>同一个id执行update减库存：一条update压力测试（约4wQPS）。但是执行Update并不低效。</p>
-<ol>
-<li><p>若都对同一商品id执行减库存：</p>
-<p>一个用户执行update减库存—&gt;inset购买明细<br>这时另一个用户执行update减库存–&gt;会等待行锁block</p>
-<p>因为当一个事务开启的时候，另一个事务进来的时候发现锁住的是同一行，当之前的事务不去提交或回滚的话，这个行级锁是不会释放的。</p>
-<p>当第一个用户insert执行完后，commit/rollback后。等待行锁的才可能获得锁lock。当很多用户都去执行该id的减库存，都会等待—&gt;形成串行化的操作。阻塞操作。</p>
-<ol start="2">
-<li>瓶颈分析</li>
-</ol>
-<p>update减库存–&gt;insert购买明细–&gt;commit/rollback</p>
-</li>
-</ol>
-<p>每一步都会有网络延迟，以及可能出现的GC。<br>   java客户端去执行SQL，等待SQL的结果再去做判断，再去执行SQL。这一长串事务在java客户端执行，但java和数据库通信之间有网络延迟或GC。这些时间会加在事务的执行周期中。而同一行的事务是做串行化的。</p>
-<ol start="3">
-<li>优化分析：</li>
-</ol>
-<p>行级锁rowback是在Commit之后释放—&gt;优化方向减少行级锁持有时间。</p>
-<p>优化思路：把客户端逻辑放到MySQL服务端，避免网络延迟和GC影响。</p>
-<p> 如何放到MySQL服务端:使用存储过程：整个事务在MySQL端完成</p>
-<h4 id="秒杀操作-并发优化"><a href="#秒杀操作-并发优化" class="headerlink" title="秒杀操作-并发优化"></a>秒杀操作-并发优化</h4><ol>
-<li><p>简单优化:</p>
-<p>insert购买明细–&gt;update减库存–&gt;commit/rollback</p>
-<p>insert通过insert ignore，会挡住一部分重复秒杀。update拿到行级锁rowback。update减库存，热点商品竞争，拿到结果后，根据结果rollback/commit。只有一步的网络延迟、GC，减少一倍时间。</p>
-</li>
-<li><p>深度优化：事务SQL在MySQL端执行（存储过程）</p>
-<p>（1）存储过程优化：减少事务行级锁持有时间<br>（2）不要过度依赖存储过程（在银行用的多）<br>（3）简单的逻辑可以应用存储过程<br>（4）QPS：一个秒杀单6000/qps</p>
-</li>
-</ol>
-<p>通过java客户端（seckill项目）调用存储过程：</p>
-<p>在service中定义新接口；serviceImpl中实现方法；serviceTest中单元测试<br>在dao中定义新接口；在Dao.xml中mybatis调用存储过程；</p>
-<p>Controller中改用存储过程调用秒杀操作</p>
-<h4 id="大型系统部署架构"><a href="#大型系统部署架构" class="headerlink" title="大型系统部署架构"></a>大型系统部署架构</h4><ol>
-<li><p>部署可能用到哪些服务？</p>
-<p>（1） CDN ：jQuery、Bootstrap一些依赖直接使用公网的CDN；自己开发的js、详情页做静态化处理，推送到CDN。用户在CDN获取到的数据，不需要再访问服务器</p>
-<p>（2）WebServer：Nginx+Jetty<br>一般不直接把java的WebServer直接对外访问；Nginx可能是集群化的，部署在多个服务器上，用来作http服务器，同时会帮后端的Jetty、Tomcat的应用服务器做反向代理</p>
-<p>（3）Redis：做服务器端的缓存，可以通过redis提供的API来达到热点数据的快速存取的过程</p>
-<p>（4）MySQL：借助MySQL的事务来达到秒杀数据的一致性、完整性  </p>
-</li>
-</ol>
-<ol start="2">
-<li>部署架构;</li>
-</ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Dao–&gt;Dao.xml–&gt;test–&gt;Service–&gt;srviceImpl—&gt;test</p>
-<p>Controller–&gt;jsp–&gt;js</p>
-<ol>
-<li><p>ajax异步请求.JavaScript发送AJAX请求,URL域名和当前页面一致。<br>$.post(URL，{}，function(result){});</p>
-</li>
-<li><p>Controller接收用户请求，@RequestMapping映射URL，请求参数绑定到方法上。Controller内依赖注入Service，调用service方法处理数据，注意其返回类型，得到数据结果。</p>
-</li>
-</ol>
-<p>VO用来封装所有的数据结果，可以新建dto类（如SeckillResult），为所有的ajax请求返回类型，全部封装成json数据。定义变量及所需的不同构造函数（参数有data，即是sevice处理得到的数据结果）。</p>
-<p>result=new SeckillResult&lt;service方法返回类&gt;（构造函数参数） 。泛型。最后return result;</p>
-<ol start="3">
-<li>在js中通过ajax拿到data。<br>$.get()，$.post():使用AJAX的HTTP GET或POST请求从服务器加载数据。</li>
-</ol>
-<p>回调函数function(result){})是一种以参数形式传递给另一个函数的函数。拿到result之后。通过result[data]可以取得相应数据。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/19/AJAX-study-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/deppwang.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/19/AJAX-study-notes/" itemprop="url">AJAX学习笔记</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T11:14:04+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/01/19/AJAX-study-notes/" class="leancloud_visitors" data-flag-title="AJAX学习笔记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>(Asynchronous JavaScript and XML)，异步的JavaScript和XML。是一种用于创建快速动态网页的技术。</p>
-<p>最大的优点是在不需要重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。</p>
-<p>通过AJAX，JavaScript无需等待服务器的响应，而是：在等待服务器响应时执行其他脚本；当响应就绪后对响应进行处理。</p>
-<h3 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h3><p>如需获得来自服务器的响应，使用XMLHttpRequest对象的reponseText（获得字符串形式的响应数据）或responceXML（获得XML形式的响应数据）。</p>
-<h3 id="jQuery-AJAX方法"><a href="#jQuery-AJAX方法" class="headerlink" title="jQuery AJAX方法"></a>jQuery AJAX方法</h3><p>jQuery使用$符号作为jQuery的简写。</p>
-<h5 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h5><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.ajax():执行异步AJAX请求</span><br><span class="line">$.get():使用AJAX的HTTP GET请求从服务器加载数据</span><br><span class="line">$.getJSON():使用HTTP GET请求从服务器加载JSON编码的数据</span><br><span class="line">$.getScript():使用AJAX的HTTP GET请求从服务器加载数据并执行JavaScript</span><br><span class="line">$.post():使用AJAX的HTTP POST请求从服务器加载数据</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">ajaxSend</span><span class="params">()</span></span>：规定AJAX请求发送之前运行的函数</span><br><span class="line"><span class="function"><span class="title">ajaxSuccess</span><span class="params">()</span></span>：规定AJAX请求成功完成时运行的函数</span><br><span class="line"><span class="function"><span class="title">ajaxError</span><span class="params">()</span></span>：规定AJAX请求失败时运行的函数</span><br></pre></td></tr></table></figure>
-
-<h5 id="AJAX-load-方法"><a href="#AJAX-load-方法" class="headerlink" title="AJAX load()方法"></a>AJAX load()方法</h5><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">load</span>()：从服务器加载数据，并把返回的数据放置到指定的元素中</span><br><span class="line"></span><br><span class="line">语法：</span><br><span class="line">$(selector).<span class="keyword">load</span>(URL,data,callback);</span><br></pre></td></tr></table></figure>
-
-<p>URL参数（必需）规定希望加载的URL；<br>data参数（可选）规定与请求一同发送的查询字符串键/值对集合；<br>callback参数（可选）规定当load()方法完成之后所执行的回调函数。</p>
-<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>是一种以参数形式传递给另一个函数的函数。回调函数可以设置不同的参数：</p>
-<p>responseTxt：包含调用成功时的结果内容；<br>statusTxt：包含调用的状态；<br>xhr：包含XMLHttpRequest对象。</p>
-<h3 id="HTTP请求：POST-GET"><a href="#HTTP请求：POST-GET" class="headerlink" title="HTTP请求：POST/GET"></a>HTTP请求：POST/GET</h3><p>HTTP（超文本传输协议）的工作方式是客户端与服务器之间的请求-应答协议。<br>这是两种从客户端和服务器端进行请求-响应的常用方法。</p>
-<ul>
-<li><p>GET：基本用于从服务器获得（取回）数据，GET方法可能返回缓存数据。</p>
-<p> <strong>注意</strong>：查询字符串（名称/值对）是在GET请求的URL中发送的</p>
-</li>
-<li><p>POST：向指定资源提交要处理的数据。也可用于从服务器获取数据。不过，POST方法不会缓存数据，并且常用于连同请求一起发送数据。</p>
-<p>  <strong>注意</strong>：查询字符串（名称/值对）是在POST请求的HTTP消息主体中发送的。</p>
-</li>
-</ul>
-<p>在以下情况中，使用POST请求：</p>
-<p>(1)无法使用缓存文件(更新服务器上的文件或数据库)<br>(2)向服务器发送大量数据(POST没有数据量限制)<br>(3)发送包含未知字符的用户输入时，POST比GET更稳定更可靠。</p>
-<h3 id="AJAX-get-和post-方法"><a href="#AJAX-get-和post-方法" class="headerlink" title="AJAX get()和post()方法"></a>AJAX get()和post()方法</h3><p>用于通过HTTP GET或POST请求从服务器请求数据。</p>
-<h5 id="jQuery-get-方法"><a href="#jQuery-get-方法" class="headerlink" title="jQuery $.get() 方法"></a>jQuery $.get() 方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法：</span></span><br><span class="line">$.<span class="keyword">get</span>(URL,callback);</span><br></pre></td></tr></table></figure>
-
-<p>URL（必需）规定希望请求的URL，callback（可选）是请求成功后所执行的函数名。</p>
-<p>回调函数的第一个参数存有被请求页面的内容，第二个参数存有请求的状态。</p>
-<h5 id="jQuery-post-方法"><a href="#jQuery-post-方法" class="headerlink" title="jQuery $.post() 方法"></a>jQuery $.post() 方法</h5><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法：</span></span><br><span class="line"><span class="symbol">$</span>.post(URL,data,callback);</span><br></pre></td></tr></table></figure>
-
-<p>data参数（可选）规定连同请求发送的数据。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2440,7 +2233,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2462,7 +2255,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
