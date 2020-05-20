@@ -255,6 +255,183 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/25/SpringMVC-technique/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/25/SpringMVC-technique/" itemprop="url">SpringMVC技巧</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-25T12:10:40+08:00">
+                2018-01-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/25/SpringMVC-technique/" class="leancloud_visitors" data-flag-title="SpringMVC技巧">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="注解映射技巧"><a href="#注解映射技巧" class="headerlink" title="注解映射技巧"></a>注解映射技巧</h2><p>@RequestMapping注解：</p>
+<p>(1)支持标准的URL，<br>(2)支持Ant风格的URL（?表示匹配一个字符，<em>表示匹配任一字符，*</em>表示匹配任一的URL的路径）<br>(3)占{xxx}占位符的URL。占位符可以通过类似于参数的方式，提前占到一个URL映射。后面可以用对应的用户提交的具体的值来替换掉对应的占位符。如/user/{userId}匹配user/123、user/abc等URL，123和abc可以在方法中以参数的方式传入，对应的{userId}。</p>
+<h2 id="请求方法细节处理"><a href="#请求方法细节处理" class="headerlink" title="请求方法细节处理"></a>请求方法细节处理</h2><p>1.请求参数绑定<br>2.请求方式限制<br>3.请求转发和重定向<br>4.数据模型赋值<br>5.返回json数据<br>6.cookie访问</p>
+<h5 id="例：1、2、3、4点体现如下"><a href="#例：1、2、3、4点体现如下" class="headerlink" title="例：1、2、3、4点体现如下"></a>例：1、2、3、4点体现如下</h5><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@RequestMapping(value = <span class="meta-string">"/&#123;seckillId&#125;/detail"</span>,method = RequestMethod.GET)</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//@RequestMapping映射URL，绑定到方法上。</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//seckillId通过注解@PathVariable()绑定方法的参数，对应URL的占位符。</span></span><br><span class="line"><span class="comment">//当用户传入对应URL时,它会把URL中的seckillId部分获取到传入到detail方法中。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//method = RequestMethod.GET  这个请求只允许GET方法访问，若是POST方法访问，SpringMVC将不作映射</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String detail(<span class="meta">@PathVariable(<span class="meta-string">"seckillId"</span>)</span> <span class="built_in">Long</span> seckillId, Model model)</span><br><span class="line">    <span class="comment">//Model model，用来承载最终要返回给用户的数据。</span></span><br><span class="line">    </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (seckillId == <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"redirect:/seckill/list"</span>;</span><br><span class="line">            <span class="comment">//请求的重定向</span></span><br><span class="line">        &#125;</span><br><span class="line">       Seckill seckill=seckillService.getById(seckillId);</span><br><span class="line">        <span class="keyword">if</span> (seckill==<span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"forward:/seckill/list"</span>;</span><br><span class="line">            <span class="comment">//请求的转发</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        model.addAttribute(<span class="string">"seckill"</span>,seckill);</span><br><span class="line">        <span class="comment">//传入seckill，通过key/value形式映射，在页面中可以通过seckill去拿到对应的model中的数据。</span></span><br><span class="line">       </span><br><span class="line">        <span class="keyword">return</span> <span class="string">"detail"</span>;</span><br><span class="line">        <span class="comment">//return "detail"字符串，根据配置，默认的字符串是返回的对应的jsp页面。即detail.jsp。会把model数据传给detail.jsp做相应的数据的替换，最终输出这张jsp的html。</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="返回json数据"><a href="#返回json数据" class="headerlink" title="返回json数据"></a>返回json数据</h5><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">@RequestMapping(value = <span class="meta-string">"/&#123;seckillId&#125;/&#123;md5&#125;/execution"</span>,</span></span><br><span class="line"><span class="meta">          method = RequestMethod.POST,</span></span><br><span class="line"><span class="meta">          produces = &#123;<span class="meta-string">"application/json;charset=UTF-8"</span>&#125;)</span></span><br><span class="line">          <span class="comment">//在RequestMapping传入produces，用来返回httpResponse的tagger，告诉浏览器这是一个application/json    </span></span><br><span class="line">      </span><br><span class="line">  <span class="meta">@ResponseBody</span></span><br><span class="line">  <span class="comment">//告诉返回数据类型是json</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> SeckillResult&lt;SeckillExecution&gt; execute(<span class="meta">@PathVariable(<span class="meta-string">"seckillId"</span>)</span> <span class="built_in">Long</span> seckillId,</span><br><span class="line">                                                 <span class="meta">@PathVariable(<span class="meta-string">"md5"</span>)</span> String md5,</span><br><span class="line">                                                 <span class="meta">@CookieValue(value = <span class="meta-string">"userPhone"</span>,required = false)</span> <span class="built_in">Long</span> userPhone)</span><br><span class="line">&#123;</span><br><span class="line">  SeckilResult&lt;Exposer&gt;result;</span><br><span class="line">  <span class="comment">//SeckilResult对象会把里面的数据封装成json，返回给浏览器</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">try</span>&#123;</span><br><span class="line">      Exposer exposer=·····</span><br><span class="line">  &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">      logger.error(e.getMessage(),e);</span><br><span class="line">      result=new SeckillResult&lt;Exposer&gt;(<span class="literal">false</span>,e.getMessage());</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Cookie访问"><a href="#Cookie访问" class="headerlink" title="Cookie访问"></a>Cookie访问</h5> <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@CookieValue(<span class="attr">value</span> = <span class="string">"userPhone"</span>,<span class="attr">required</span> = <span class="literal">false</span>) Long userPhone)</span><br><span class="line">//<span class="attr">required</span> = <span class="literal">false</span>表示不强制传入对应的cookie。当没有对应的userPhone这个cookie时，不做相应拦截。也进入到这个方法。</span><br></pre></td></tr></table></figure>
+
+<h2 id="前后端交互思考"><a href="#前后端交互思考" class="headerlink" title="前后端交互思考"></a>前后端交互思考</h2><h5 id="get-，-post"><a href="#get-，-post" class="headerlink" title="$.get()，$.post()"></a>$.get()，$.post()</h5><ol>
+<li>ajax异步请求.JavaScript发送AJAX请求,URL域名和当前页面一致。</li>
+</ol>
+<ol start="2">
+<li>Controller接收用户请求，@RequestMapping映射URL，请求参数绑定到方法上。Controller内依赖注入Service，调用service方法处理数据，注意其返回类型，得到数据结果。</li>
+</ol>
+<p>VO用来封装所有的数据结果，可以新建dto类（如SeckillResult），为所有的ajax请求返回类型，全部封装成json数据。定义变量及所需的不同构造函数（参数有data，即是sevice处理得到的数据结果）。</p>
+<p>result=new SeckillResult&lt;service方法返回类&gt;（构造函数参数） 。泛型。最后return result;</p>
+<ol start="3">
+<li>在js中通过ajax拿到data。<br>$.get()，$.post():使用AJAX的HTTP GET或POST请求从服务器加载数据。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="keyword">get</span>(seckill.URL.now(), &#123;&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (result &amp;&amp; result[<span class="string">'success'</span>]) &#123;</span><br><span class="line">                    <span class="keyword">var</span> nowTime = result[<span class="string">'data'</span>];</span><br><span class="line">                    <span class="comment">//时间判断,计时交互</span></span><br><span class="line">                    countdown(seckillId, nowTime, startTime, endTime)</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">'result:'</span> + result);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>回调函数function(result){})是一种以参数形式传递给另一个函数的函数。拿到result之后。通过result[data]可以取得相应数据。</p>
+<h5 id="ajax"><a href="#ajax" class="headerlink" title="$.ajax()"></a>$.ajax()</h5> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">getAllAccusedNames:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       $.ajax(&#123;</span><br><span class="line">           <span class="keyword">async</span> :<span class="literal">true</span>,</span><br><span class="line">           method:<span class="string">'get'</span>,</span><br><span class="line">           dataType:<span class="string">'json'</span>,</span><br><span class="line">           data:&#123;<span class="attr">processId</span>:commonReport.processId&#125;,</span><br><span class="line">           url:Global.rootPath+<span class="string">"/verdictReport/getTlParseAccusedList"</span>,</span><br><span class="line"></span><br><span class="line">           success:<span class="function"><span class="keyword">function</span> (<span class="params">parseAccusedList</span>)</span>&#123;</span><br><span class="line">               <span class="comment">//回调函数内代码</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p>可先将$.ajax()进行封装，成一个函数。在js中用到ajax()时，直接调动.getByAjax(参数)。参数则是对应的settings。</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">getByAjax: <span class="function"><span class="keyword">function</span></span> (async, methodType, returnType, url, <span class="keyword">data</span>, </span><br><span class="line">callbackMethod_success, callbackMethod_false) &#123;</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            async: async,</span><br><span class="line">            <span class="keyword">type</span>: methodType,</span><br><span class="line">            dataType: returnType,</span><br><span class="line">            url: Global.rootPath + url,</span><br><span class="line">            <span class="keyword">data</span>: <span class="keyword">data</span>,</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span></span> (<span class="keyword">data</span>) &#123;</span><br><span class="line">                callbackMethod_success(<span class="keyword">data</span>);</span><br><span class="line">            &#125;,</span><br><span class="line">            error: <span class="function"><span class="keyword">function</span></span> (xhr) &#123;</span><br><span class="line">                //可在此处新增权限提示，或者超时重登录提示</span><br><span class="line">                callbackMethod_false();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>调用时：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">getAllAccusedNames: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">        common.ajax.getByAjax(<span class="literal">true</span>, <span class="string">"get"</span>, <span class="string">"json"</span>,</span><br><span class="line">        <span class="string">"/verdictReport/getTlParseAccusedList"</span>,</span><br><span class="line">            &#123;</span><br><span class="line">                processId: commonReport.processId</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="params">(parseAccusedList)</span> </span>&#123;</span><br><span class="line">                <span class="comment">//代码</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">            &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/25/Reflection-and-summary-of-the-second-killing-system/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2086,172 +2263,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/deppwang.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/" itemprop="url">字节流、字符流及其转换、比较与使用场景</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T00:10:04+08:00">
-                2017-11-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/" class="leancloud_visitors" data-flag-title="字节流、字符流及其转换、比较与使用场景">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文包含以下知识点：</p>
-<ul>
-<li><input checked disabled type="checkbox"> 字节流OutputStream和InputStream类及其子类</li>
-<li><input checked disabled type="checkbox"> 字符流Writer和Reader类及其子类</li>
-<li><input checked disabled type="checkbox"> 转换流OutputStreamWriter和InputStreamReader</li>
-<li><input checked disabled type="checkbox"> 代码示例</li>
-<li><input checked disabled type="checkbox"> 字节流、字符流的比较</li>
-<li><input checked disabled type="checkbox"> 各类的使用场景</li>
-</ul>
-<h2 id="流"><a href="#流" class="headerlink" title="流"></a>流</h2><p>在程序中所有的数据都是以流的方式进行传输和保存的。程序需要数据的时候要使用<strong>输入流读取数据</strong>，而当程序需要将一些<strong>数据保存</strong>起来的时候，就要使用<strong>输出流完成</strong>。</p>
-<p>在java.io包中操作文件内容的主要有两大类：字节流、字符流。两类都分为输入和输出操作。<strong>输入流基本方法是读，输出流基本方法是写。</strong></p>
-<p><strong>大致操作流程：</strong>（以File为例）  </p>
-<ol>
-<li>使用File类打开一个文件；  </li>
-<li>通过字节流或字符流的子类，指定输出的位置；  </li>
-<li>进行读/写操作；  </li>
-<li>关闭输入/输出。</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2299,7 +2310,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

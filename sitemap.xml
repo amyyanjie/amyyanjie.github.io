@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/05/10/object-oriented-in-Java/</loc>
+    
+    <lastmod>2020-05-20T04:41:59.431Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/04/21/computer-number/</loc>
     
     <lastmod>2020-05-08T09:49:27.630Z</lastmod>
@@ -58,14 +65,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
+    <loc>http://yoursite.com/google5209950f9d289a8d.html</loc>
     
     <lastmod>2019-08-02T03:27:06.532Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/google5209950f9d289a8d.html</loc>
+    <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2019-08-02T03:27:06.532Z</lastmod>
     
@@ -86,14 +93,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/01/25/Reflection-and-summary-of-the-second-killing-system/</loc>
+    <loc>http://yoursite.com/2018/01/25/SpringMVC-technique/</loc>
     
     <lastmod>2019-08-02T03:27:06.531Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/02/10/Common-Git-commands/</loc>
+    <loc>http://yoursite.com/2018/01/25/Reflection-and-summary-of-the-second-killing-system/</loc>
     
     <lastmod>2019-08-02T03:27:06.531Z</lastmod>
     
@@ -107,7 +114,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/01/25/SpringMVC-technique/</loc>
+    <loc>http://yoursite.com/2018/02/10/Common-Git-commands/</loc>
     
     <lastmod>2019-08-02T03:27:06.531Z</lastmod>
     
@@ -135,7 +142,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/</loc>
+    <loc>http://yoursite.com/2017/11/22/binary-tree-traversal-note/</loc>
+    
+    <lastmod>2019-08-02T03:27:06.528Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/11/30/Parameter-passing-in-Java/</loc>
     
     <lastmod>2019-08-02T03:27:06.528Z</lastmod>
     
@@ -149,14 +163,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/22/binary-tree-traversal-note/</loc>
-    
-    <lastmod>2019-08-02T03:27:06.528Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/11/30/Parameter-passing-in-Java/</loc>
+    <loc>http://yoursite.com/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/</loc>
     
     <lastmod>2019-08-02T03:27:06.528Z</lastmod>
     
@@ -184,6 +191,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
+    
+    <lastmod>2019-08-02T03:27:06.526Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/15/Analyze-the-difference-between-int-and-Integer/</loc>
     
     <lastmod>2019-08-02T03:27:06.526Z</lastmod>
@@ -192,13 +206,6 @@
   
   <url>
     <loc>http://yoursite.com/2017/10/01/Execution-of-finally-code-block/</loc>
-    
-    <lastmod>2019-08-02T03:27:06.526Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
     
     <lastmod>2019-08-02T03:27:06.526Z</lastmod>
     
