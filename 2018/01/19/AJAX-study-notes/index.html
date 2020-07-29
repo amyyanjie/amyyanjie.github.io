@@ -89,18 +89,18 @@
 
 
 
-<meta name="description" content="AJAX简介(Asynchronous JavaScript and XML)，异步的JavaScript和XML。是一种用于创建快速动态网页的技术。 最大的优点是在不需要重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。 通过AJAX，JavaScript无需等待服务器的响应，而是：在等待服务器响应时执行其他脚本；当响应就绪后对响应进行处理。 服务器响应如需获得来自服务器的响应，">
+<meta name="description" content="AJAX简介(Asynchronous JavaScript and XML)，异步的JavaScript和XML。是一种用于创建快速动态网页的技术。 最大的优点是在不需要重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。 通过AJAX，JavaScript无需等待服务器的响应，而是：在等待服务器响应时执行其他脚本；当响应就绪后对响应进行处理。">
 <meta name="keywords" content="AJAX">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AJAX学习笔记">
 <meta property="og:url" content="http://yoursite.com/2018/01/19/AJAX-study-notes/index.html">
 <meta property="og:site_name" content="Amy&#39;s Blog">
-<meta property="og:description" content="AJAX简介(Asynchronous JavaScript and XML)，异步的JavaScript和XML。是一种用于创建快速动态网页的技术。 最大的优点是在不需要重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。 通过AJAX，JavaScript无需等待服务器的响应，而是：在等待服务器响应时执行其他脚本；当响应就绪后对响应进行处理。 服务器响应如需获得来自服务器的响应，">
+<meta property="og:description" content="AJAX简介(Asynchronous JavaScript and XML)，异步的JavaScript和XML。是一种用于创建快速动态网页的技术。 最大的优点是在不需要重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。 通过AJAX，JavaScript无需等待服务器的响应，而是：在等待服务器响应时执行其他脚本；当响应就绪后对响应进行处理。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T03:27:06.531Z">
+<meta property="og:updated_time" content="2020-07-29T08:27:27.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX学习笔记">
-<meta name="twitter:description" content="AJAX简介(Asynchronous JavaScript and XML)，异步的JavaScript和XML。是一种用于创建快速动态网页的技术。 最大的优点是在不需要重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。 通过AJAX，JavaScript无需等待服务器的响应，而是：在等待服务器响应时执行其他脚本；当响应就绪后对响应进行处理。 服务器响应如需获得来自服务器的响应，">
+<meta name="twitter:description" content="AJAX简介(Asynchronous JavaScript and XML)，异步的JavaScript和XML。是一种用于创建快速动态网页的技术。 最大的优点是在不需要重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。 通过AJAX，JavaScript无需等待服务器的响应，而是：在等待服务器响应时执行其他脚本；当响应就绪后对响应进行处理。">
 
 
 
@@ -355,6 +355,8 @@
         <h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>(Asynchronous JavaScript and XML)，异步的JavaScript和XML。是一种用于创建快速动态网页的技术。</p>
 <p>最大的优点是在不需要重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。</p>
 <p>通过AJAX，JavaScript无需等待服务器的响应，而是：在等待服务器响应时执行其他脚本；当响应就绪后对响应进行处理。</p>
+<a id="more"></a>
+
 <h3 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h3><p>如需获得来自服务器的响应，使用XMLHttpRequest对象的reponseText（获得字符串形式的响应数据）或responceXML（获得XML形式的响应数据）。</p>
 <h3 id="jQuery-AJAX方法"><a href="#jQuery-AJAX方法" class="headerlink" title="jQuery AJAX方法"></a>jQuery AJAX方法</h3><p>jQuery使用$符号作为jQuery的简写。</p>
 <h5 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h5><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.ajax():执行异步AJAX请求</span><br><span class="line">$.get():使用AJAX的HTTP GET请求从服务器加载数据</span><br><span class="line">$.getJSON():使用HTTP GET请求从服务器加载JSON编码的数据</span><br><span class="line">$.getScript():使用AJAX的HTTP GET请求从服务器加载数据并执行JavaScript</span><br><span class="line">$.post():使用AJAX的HTTP POST请求从服务器加载数据</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">ajaxSend</span><span class="params">()</span></span>：规定AJAX请求发送之前运行的函数</span><br><span class="line"><span class="function"><span class="title">ajaxSuccess</span><span class="params">()</span></span>：规定AJAX请求成功完成时运行的函数</span><br><span class="line"><span class="function"><span class="title">ajaxError</span><span class="params">()</span></span>：规定AJAX请求失败时运行的函数</span><br></pre></td></tr></table></figure>

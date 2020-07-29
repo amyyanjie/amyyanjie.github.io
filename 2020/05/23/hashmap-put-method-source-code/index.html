@@ -92,14 +92,14 @@
 <meta name="description" content="数据结构：数组+链表。Node&amp;lt;K,V&amp;gt;[] table。（源码参考put()方法），允许null键/值。 数组+链表有什么优点：  若是数组，数组缺点：需要连续内存空间；删除需要移动其他元素位置 若是链表，链表缺点：查找复杂度高。 时间复杂度：O(1)。常量时间（假设能正确分散）。  一、如何确定key的数组索引位置，为什么？1、得到混合key.hashCode()高低位的hash值">
 <meta name="keywords" content="集合">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Amy&#39;s Blog">
+<meta property="og:title" content="从put()分析HashMap">
 <meta property="og:url" content="http://yoursite.com/2020/05/23/hashmap-put-method-source-code/index.html">
 <meta property="og:site_name" content="Amy&#39;s Blog">
 <meta property="og:description" content="数据结构：数组+链表。Node&amp;lt;K,V&amp;gt;[] table。（源码参考put()方法），允许null键/值。 数组+链表有什么优点：  若是数组，数组缺点：需要连续内存空间；删除需要移动其他元素位置 若是链表，链表缺点：查找复杂度高。 时间复杂度：O(1)。常量时间（假设能正确分散）。  一、如何确定key的数组索引位置，为什么？1、得到混合key.hashCode()高低位的hash值">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-29T08:18:06.306Z">
+<meta property="og:updated_time" content="2020-07-29T08:25:21.950Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Amy&#39;s Blog">
+<meta name="twitter:title" content="从put()分析HashMap">
 <meta name="twitter:description" content="数据结构：数组+链表。Node&amp;lt;K,V&amp;gt;[] table。（源码参考put()方法），允许null键/值。 数组+链表有什么优点：  若是数组，数组缺点：需要连续内存空间；删除需要移动其他元素位置 若是链表，链表缺点：查找复杂度高。 时间复杂度：O(1)。常量时间（假设能正确分散）。  一、如何确定key的数组索引位置，为什么？1、得到混合key.hashCode()高低位的hash值">
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <title> | Amy's Blog</title>
+  <title>从put()分析HashMap | Amy's Blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -272,7 +272,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline"></h2>
+          <h2 class="post-title" itemprop="name headline">从put()分析HashMap</h2>
         
 
         <div class="post-meta">
@@ -324,7 +324,7 @@
 
           
           
-             <span id="/2020/05/23/hashmap-put-method-source-code/" class="leancloud_visitors" data-flag-title>
+             <span id="/2020/05/23/hashmap-put-method-source-code/" class="leancloud_visitors" data-flag-title="从put()分析HashMap">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -369,6 +369,8 @@
 <h2 id="二、为什么容量capacity必须为2的幂？"><a href="#二、为什么容量capacity必须为2的幂？" class="headerlink" title="二、为什么容量capacity必须为2的幂？"></a>二、为什么容量capacity必须为2的幂？</h2><p>体现在根据key分配到哪个桶中。取余运算(<code>hash%n</code>)可以使得均匀分配。</p>
 <p>当n为2的幂 ，<code>hash&amp;(n-1)</code>相当于<code>hash%n</code>，<strong>保证位运算和取余的结果相等，但效率更高</strong>。</p>
 <p>能减少哈希碰撞，避免不同hash值被分配到同一位置，在计算key的哈希值，<code>hash = key.hashCode()) ^ (h &gt;&gt;&gt; 16</code>，高16位与低16位异或运算，减少冲突。</p>
+<a id="more"></a>
+
 <h2 id="三、默认容量多少？若指定时不为2的幂呢？"><a href="#三、默认容量多少？若指定时不为2的幂呢？" class="headerlink" title="三、默认容量多少？若指定时不为2的幂呢？"></a>三、默认容量多少？若指定时不为2的幂呢？</h2><p>默认初始容量：16（1&lt;&lt;4），负载因子：0.75f。</p>
 <p>若指定<code>initialCapacity</code>时，不为2^n，hashMap的<code>tableSizeFor()</code>处理后能保证容量总为2的幂。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">tableSizeFor</span><span class="params">(<span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// cap=17,n=16</span></span><br><span class="line">    <span class="comment">// n转换成二进制00010000</span></span><br><span class="line">    <span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">1</span>; <span class="comment">// n=00010000|00001000=00011000</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">2</span>; <span class="comment">// n=00011000|00000110=00011110</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">4</span>; <span class="comment">// n=00011110|00000001=00011111</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">8</span>; <span class="comment">// n=00011111|00000000=00011111</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">16</span>;<span class="comment">// n=00011111|00000000=00011111  n=31</span></span><br><span class="line">    <span class="comment">// 返回n+1=32，2的5次方</span></span><br><span class="line">    <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -421,7 +423,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2020/05/23/hashmap-put-method-source-code/" title>http://yoursite.com/2020/05/23/hashmap-put-method-source-code/</a>
+      <a href="http://yoursite.com/2020/05/23/hashmap-put-method-source-code/" title="从put()分析HashMap">http://yoursite.com/2020/05/23/hashmap-put-method-source-code/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>

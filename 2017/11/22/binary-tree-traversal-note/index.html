@@ -89,19 +89,19 @@
 
 
 
-<meta name="description" content="前言本篇博文包含以下知识点：   涉及二叉树的先序、中序、后序的递归和非递归遍历。  二叉树具有以下特点：  每个节点最多有两颗子树，节点的度最大为2。 左子树和右子树是是有顺序的，次序不能颠倒。 即使某节点只有一个子树，也要区分左右子树。  无论哪种遍历方法，对节点的考察顺序都是一样的，只是有时候考察了节点，先暂存，在之后的过程输出。 先序：考察到一个节点后，即刻输出该节点的值，并继续遍历其左右">
+<meta name="description" content="前言本篇博文包含以下知识点：   涉及二叉树的先序、中序、后序的递归和非递归遍历。  二叉树具有以下特点：  每个节点最多有两颗子树，节点的度最大为2。 左子树和右子树是是有顺序的，次序不能颠倒。 即使某节点只有一个子树，也要区分左右子树。  无论哪种遍历方法，对节点的考察顺序都是一样的，只是有时候考察了节点，先暂存，在之后的过程输出。">
 <meta name="keywords" content="二叉树,树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树遍历笔记  (先序、中序、后序)">
 <meta property="og:url" content="http://yoursite.com/2017/11/22/binary-tree-traversal-note/index.html">
 <meta property="og:site_name" content="Amy&#39;s Blog">
-<meta property="og:description" content="前言本篇博文包含以下知识点：   涉及二叉树的先序、中序、后序的递归和非递归遍历。  二叉树具有以下特点：  每个节点最多有两颗子树，节点的度最大为2。 左子树和右子树是是有顺序的，次序不能颠倒。 即使某节点只有一个子树，也要区分左右子树。  无论哪种遍历方法，对节点的考察顺序都是一样的，只是有时候考察了节点，先暂存，在之后的过程输出。 先序：考察到一个节点后，即刻输出该节点的值，并继续遍历其左右">
+<meta property="og:description" content="前言本篇博文包含以下知识点：   涉及二叉树的先序、中序、后序的递归和非递归遍历。  二叉树具有以下特点：  每个节点最多有两颗子树，节点的度最大为2。 左子树和右子树是是有顺序的，次序不能颠倒。 即使某节点只有一个子树，也要区分左右子树。  无论哪种遍历方法，对节点的考察顺序都是一样的，只是有时候考察了节点，先暂存，在之后的过程输出。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2405011-5f5b0b136713f744.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-08-02T03:27:06.528Z">
+<meta property="og:updated_time" content="2020-07-29T08:28:26.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树遍历笔记  (先序、中序、后序)">
-<meta name="twitter:description" content="前言本篇博文包含以下知识点：   涉及二叉树的先序、中序、后序的递归和非递归遍历。  二叉树具有以下特点：  每个节点最多有两颗子树，节点的度最大为2。 左子树和右子树是是有顺序的，次序不能颠倒。 即使某节点只有一个子树，也要区分左右子树。  无论哪种遍历方法，对节点的考察顺序都是一样的，只是有时候考察了节点，先暂存，在之后的过程输出。 先序：考察到一个节点后，即刻输出该节点的值，并继续遍历其左右">
+<meta name="twitter:description" content="前言本篇博文包含以下知识点：   涉及二叉树的先序、中序、后序的递归和非递归遍历。  二叉树具有以下特点：  每个节点最多有两颗子树，节点的度最大为2。 左子树和右子树是是有顺序的，次序不能颠倒。 即使某节点只有一个子树，也要区分左右子树。  无论哪种遍历方法，对节点的考察顺序都是一样的，只是有时候考察了节点，先暂存，在之后的过程输出。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2405011-5f5b0b136713f744.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -365,12 +365,14 @@
 <li>即使某节点只有一个子树，也要区分左右子树。</li>
 </ul>
 <p>无论哪种遍历方法，对节点的考察顺序都是一样的，只是有时候考察了节点，先暂存，在之后的过程输出。</p>
+<a id="more"></a>
+
 <p><strong>先序</strong>：考察到一个节点后，即刻输出该节点的值，并继续遍历其左右树。（根节点-&gt;左子树-&gt;右子树）</p>
 <p><strong>中序</strong>：考察到一个节点后将其暂存，遍历完左子树后，再输出该节点的值，然后遍历右子树。（左子树-&gt;根节点-&gt;右子树）</p>
 <p><strong>后序</strong>：考察到一个节点后，将其暂存，遍历完左右子树后，再输出该节点的值。（左子树-&gt;右子树-&gt;根节点）</p>
 <p><strong>遍历(Traversal)</strong>：是指沿着某条搜索路线，一次对树中每个节点均做一次且仅做一次访问。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2405011-5f5b0b136713f744.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<a id="more"></a>
+<!--more-->
 
 <p><strong>二叉树节点类：</strong></p>
 <p>树节点： </p>

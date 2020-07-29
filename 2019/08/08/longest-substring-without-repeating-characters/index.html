@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Amy&#39;s Blog">
 <meta property="og:description" content="题目给定一个字符串，请你找出其中不含有重复字符的最长子串的长度。如”abcabcbb”-&amp;gt;3。 题解1、使用List list.contains()  list.add()：遍历每个字符，若list中不存在，加入进列表。 list.indexOf()：若list中已存在此字符，获取此字符的index，需要将&amp;lt;=该index的字符们从list中移除。 list.subList(int f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-16T03:55:12.392Z">
+<meta property="og:updated_time" content="2020-07-29T08:26:37.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3.无重复字符的最长子串">
 <meta name="twitter:description" content="题目给定一个字符串，请你找出其中不含有重复字符的最长子串的长度。如”abcabcbb”-&amp;gt;3。 题解1、使用List list.contains()  list.add()：遍历每个字符，若list中不存在，加入进列表。 list.indexOf()：若list中已存在此字符，获取此字符的index，需要将&amp;lt;=该index的字符们从list中移除。 list.subList(int f">
@@ -366,6 +366,8 @@
 <li>list变化：(a)-&gt;(a,d)-&gt;(a,d,v)-&gt;(v,d)-&gt;(v,d,f)</li>
 </ul>
 <p><strong>代码实现</strong></p>
+<a id="more"></a>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] arr = s.toCharArray();</span><br><span class="line">        List&lt;Character&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> lengthOfLongest = <span class="number">0</span>; <span class="comment">//所记长度-初始0</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            Character word = arr[i];</span><br><span class="line">            <span class="keyword">if</span> (list.contains(word)) &#123;</span><br><span class="line">                <span class="comment">// 获取list中该字符的index</span></span><br><span class="line">                <span class="keyword">int</span> indexOfRepeatedChar = list.indexOf(word);</span><br><span class="line">                <span class="comment">// 截取list中该字符的index及之前索引的字符列表</span></span><br><span class="line">                List&lt;Character&gt; needToRemoveChars = list.subList(<span class="number">0</span>, indexOfRepeatedChar + <span class="number">1</span>);</span><br><span class="line">                <span class="comment">// 从list中去除</span></span><br><span class="line">                list.removeAll(needToRemoveChars);</span><br><span class="line">                <span class="comment">// 注：此处不用更新lengthOfLongest，因为删除数量 &gt;= 增加数量(为1)</span></span><br><span class="line">                list.add(word);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                list.add(word);</span><br><span class="line">                <span class="comment">// 若所记长度&lt;列表长度，取列表长度。否则，所记长度不变</span></span><br><span class="line">                lengthOfLongest = lengthOfLongest &lt; list.size() ? list.size() : lengthOfLongest;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lengthOfLongest;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p>时间复杂度：O(n)，空间复杂度：O(n,m):取决于字符串 n 的大小以及字符集/字母 m 的大小。</p>
@@ -375,13 +377,12 @@
 
 <p><strong>关键点</strong></p>
 <ul>
-<li><p>滑动窗口[start,end]，初始[0,0],每次遍历end+1，窗口长度=end-start+1;</p>
-</li>
-<li><p>若map中存在重复元素，start要做判断：若map中重复元素的索引后一位在当前start向左，并不移动窗口,start不变。</p>
-<p>例如：”qwefewjk”，遍历至第二个w时，此时start=f处索引3，start并不会变成map中w索引1。</p>
-</li>
-<li><p>每次遍历都要将遍历字符做key，索引做value放进map。map主要用来判断字符是否有重复，并获取最近重复的索引。</p>
-</li>
+<li>滑动窗口[start,end]，初始[0,0],每次遍历end+1，窗口长度=end-start+1;</li>
+<li>若map中存在重复元素，start要做判断：若map中重复元素的索引后一位在当前start向左，并不移动窗口,start不变。</li>
+</ul>
+<p> 例如：”qwefewjk”，遍历至第二个w时，此时start=f处索引3，start并不会变成map中w索引1。</p>
+<ul>
+<li>每次遍历都要将遍历字符做key，索引做value放进map。map主要用来判断字符是否有重复，并获取最近重复的索引。</li>
 </ul>
 <p>题目：<a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener">力扣No.3-无重复字符的最长子串</a></p>
 

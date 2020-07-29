@@ -366,11 +366,6 @@
 <li>即使某节点只有一个子树，也要区分左右子树。</li>
 </ul>
 <p>无论哪种遍历方法，对节点的考察顺序都是一样的，只是有时候考察了节点，先暂存，在之后的过程输出。</p>
-<p><strong>先序</strong>：考察到一个节点后，即刻输出该节点的值，并继续遍历其左右树。（根节点-&gt;左子树-&gt;右子树）</p>
-<p><strong>中序</strong>：考察到一个节点后将其暂存，遍历完左子树后，再输出该节点的值，然后遍历右子树。（左子树-&gt;根节点-&gt;右子树）</p>
-<p><strong>后序</strong>：考察到一个节点后，将其暂存，遍历完左右子树后，再输出该节点的值。（左子树-&gt;右子树-&gt;根节点）</p>
-<p><strong>遍历(Traversal)</strong>：是指沿着某条搜索路线，一次对树中每个节点均做一次且仅做一次访问。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2405011-5f5b0b136713f744.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/11/22/binary-tree-traversal-note/#more" rel="contents">
@@ -851,22 +846,6 @@
         
           <p>ArrayList可以实现容量的自适应的增加(As elements are added to an ArrayList,<br>its capacity grows automatically)。通过JDK1.8中ArrayList的源码来分析：</p>
 <h2 id="ArrayList的相关定义"><a href="#ArrayList的相关定义" class="headerlink" title="ArrayList的相关定义"></a>ArrayList的相关定义</h2><p>ArrayList底层采用Object类型的数组实现。</p>
-<p>首先，定义默认初始容量，为10</p>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CAPACITY = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
-
-<p>再有，定义用于空实例的空数组实例</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">Object</span>[] EMPTY_ELEMENTDATA = &#123;&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>再有，定义空数组实例，用于默认大小的空实例</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">Object</span>[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>再有，定义了一个未被序列化的数组elementData，用来存储ArrayList对象列表</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * The capacity of the ArrayList is the length of this<span class="built_in"> array </span>buffer.</span><br><span class="line"> */</span><br><span class="line">transient Object[] elementData;</span><br></pre></td></tr></table></figure>
-
-<p>再有，定义了ArrayList的size变量</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The size of the ArrayList (the number of elements it contains).</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> <span class="built_in">size</span>;</span><br></pre></td></tr></table></figure>
-
-<p>为了实现ArrayList的自动扩容机制，java引进了capacity和size概念,以区别数组的length。<strong>capacity</strong>是底层数组的长度(length)，<strong>size</strong>是存储的列表对象的数量，被设置为private的。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/30/ArrayList-dilatancy-analysis/#more" rel="contents">
@@ -1645,10 +1624,9 @@
 
       
         
-          <p>这是我在简书上写的第一篇文章（其实我几乎没写过什么文章）。 相信很多人都有过我这种感觉，总想着哪天有时间的时候，就写些东西，并不是说要装装文艺范，其实自认为也没有那东西，就想着写写自己，写写生活中的过客与琐事，我也会想，二十几岁生命中就有过客了吗？那就要看怎么来定义这个词了。一直没有下笔，不是没有时间，也不是没有心境，好多事情都是这样，最后不得其踪，我也会反省，总觉得不只是坚持、自制力、行动力等一系列所谓成功要素就能概括出来的，毕竟我也是个平凡之人，这也是我的生活常态。我所缺乏的东西远远不只是这几个词。所幸的是，我在简书上迈出了第一步。</p>
+          <p>这是我今年写的第一篇文章（其实我几乎没写过什么文章）。 相信很多人都有过我这种感觉，总想着哪天有时间的时候，就写些东西，并不是说要装装文艺范，其实自认为也没有那东西，就想着写写自己，写写生活中的过客与琐事，我也会想，二十几岁生命中就有过客了吗？那就要看怎么来定义这个词了。一直没有下笔，不是没有时间，也不是没有心境，好多事情都是这样，最后不得其踪，我也会反省，总觉得不只是坚持、自制力、行动力等一系列所谓成功要素就能概括出来的，毕竟我也是个平凡之人，这也是我的生活常态。我所缺乏的东西远远不只是这几个词。所幸的是，我在简书上迈出了第一步。</p>
 <p>记录本身就是一件很美妙的事情，并不是说我要留个回忆等多少年后往回看，而是很享受当下透过文字看自己的心境，我自诩没有出口成章的才华，也没有常规写作的逻辑性和文学，我只想以一份真诚来塑造我写作的灵魂。这也是我的初衷。其实有想过很多主题，我想写写我这五年相守依旧深情的爱情，想说说我那朴实辛苦的父母，想诉诉我的家庭。可现在，我更想与文字随意地聊聊我自己。</p>
 <p>不管活在自己世界是不是等同于要做到随性、做自己，现在，我想以主观的角度介绍我这个人，好或不好，我就这样，再说，何为好？何为不好？</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6133202-73e4dd86f6f04046.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="树荫与我"></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/28/Hey-that-crying-girl/#more" rel="contents">

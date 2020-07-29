@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Amy&#39;s Blog">
 <meta property="og:description" content="关于原码、反码和补码首先了解机器数和机器数的真值。 机器数和机器数的真值1、机器数数字在计算机中的二进制表现形式。  符号数值化：数据的正负号，在机器里用一位二进制的0或1来区别。通常这个符号放在二进制数的最高位（称符号位），用0代表符号“+”，用1代表符号“-”。 二进制的位数受机器设备的限制。机器内部设备一次能表示的二进制位数叫机器字长。一台机器的字长是固定的（如8位、16位、32位、64位）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-08T09:49:27.630Z">
+<meta property="og:updated_time" content="2020-07-29T08:25:42.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原码反码补码">
 <meta name="twitter:description" content="关于原码、反码和补码首先了解机器数和机器数的真值。 机器数和机器数的真值1、机器数数字在计算机中的二进制表现形式。  符号数值化：数据的正负号，在机器里用一位二进制的0或1来区别。通常这个符号放在二进制数的最高位（称符号位），用0代表符号“+”，用1代表符号“-”。 二进制的位数受机器设备的限制。机器内部设备一次能表示的二进制位数叫机器字长。一台机器的字长是固定的（如8位、16位、32位、64位）">
@@ -363,7 +363,9 @@
 <h4 id="2、机器数的真值"><a href="#2、机器数的真值" class="headerlink" title="2、机器数的真值"></a>2、机器数的真值</h4><p>机器数有符号占据一位，所以机器数的形式值就不等于真值。</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">例如机器数：<span class="number">10000101</span></span><br><span class="line">最高位<span class="number">1</span>表示“-”，则真值数为<span class="number">-0000101</span>，十进制真值为<span class="number">-5</span>。</span><br><span class="line">真值是不计算符号位的（第一位不表示值，只表示正负）。</span><br></pre></td></tr></table></figure>
 
-<h3 id="机器数的三种形式"><a href="#机器数的三种形式" class="headerlink" title="机器数的三种形式"></a>机器数的三种形式</h3><h4 id="1、原码"><a href="#1、原码" class="headerlink" title="1、原码"></a>1、原码</h4><p>原码：将数的真值形式中“+”用0表示，“-”用1表示。</p>
+<h3 id="机器数的三种形式"><a href="#机器数的三种形式" class="headerlink" title="机器数的三种形式"></a>机器数的三种形式</h3><a id="more"></a>
+
+<h4 id="1、原码"><a href="#1、原码" class="headerlink" title="1、原码"></a>1、原码</h4><p>原码：将数的真值形式中“+”用0表示，“-”用1表示。</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+<span class="number">5</span>原码：<span class="number">00000101</span></span><br><span class="line"><span class="number">-5</span>原码：<span class="number">10000101</span></span><br></pre></td></tr></table></figure>
 
 <p>加减法运算复杂。</p>

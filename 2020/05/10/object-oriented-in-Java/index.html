@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Amy&#39;s Blog">
 <meta property="og:description" content="一、继承： 表示is-a的关系。将多个类的相同功能部分抽出放到父类，extends父类。 继承是is关系，组合是has关系（组合：通过持有实例）。1234567public class BaseMessage&amp;#123;    //...&amp;#125;public class TextMessage extends BaseMessage&amp;#123;    //...    //在子类中想调用父类哪">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-20T04:41:59.431Z">
+<meta property="og:updated_time" content="2020-07-29T08:29:48.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="继承、多态、接口、抽象类">
 <meta name="twitter:description" content="一、继承： 表示is-a的关系。将多个类的相同功能部分抽出放到父类，extends父类。 继承是is关系，组合是has关系（组合：通过持有实例）。1234567public class BaseMessage&amp;#123;    //...&amp;#125;public class TextMessage extends BaseMessage&amp;#123;    //...    //在子类中想调用父类哪">
@@ -361,6 +361,8 @@
 <p>一个类有且仅有一个父类（若没有明确写extends的类，编译器会自动加上 extends Object）。Object特殊，它没有父类。</p>
 <p>子类不会继承父类的任何构造方法。</p>
 <h3 id="1、protected"><a href="#1、protected" class="headerlink" title="1、protected"></a>1、protected</h3><p>子类无法访问父类的private方法或private字段。父类的字段需要用protected或public修饰。</p>
+<a id="more"></a>
+
 <h3 id="2、super"><a href="#2、super" class="headerlink" title="2、super"></a>2、super</h3><ul>
 <li>子类引用父类的字段时，可以用<code>super.fieldName</code>。</li>
 <li>子类调用父类的方法，可以通过<code>super</code>来调用。</li>
@@ -511,8 +513,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/05/23/hashmap-put-method-source-code/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/05/23/hashmap-put-method-source-code/" rel="prev" title="从put()分析HashMap">
+                从put()分析HashMap <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

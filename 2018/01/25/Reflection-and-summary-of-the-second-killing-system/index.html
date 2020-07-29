@@ -89,18 +89,18 @@
 
 
 
-<meta name="description" content="DAO层1.数据库设计与编码在sql中增/插 create database,use database;create table;inset into···· 2.DAO实体与接口编码（1）entity编码 编写相应属性，getter、setter、toString table中列对应–&amp;gt;entity属性。 （2）DAO接口 编写抽象方法，增删改查对应的抽象方法。 参数中要用@Param(“">
+<meta name="description" content="DAO层1.数据库设计与编码在sql中增/插 create database,use database;create table;inset into····">
 <meta name="keywords" content="秒杀系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="秒杀系统思考与总结">
 <meta property="og:url" content="http://yoursite.com/2018/01/25/Reflection-and-summary-of-the-second-killing-system/index.html">
 <meta property="og:site_name" content="Amy&#39;s Blog">
-<meta property="og:description" content="DAO层1.数据库设计与编码在sql中增/插 create database,use database;create table;inset into···· 2.DAO实体与接口编码（1）entity编码 编写相应属性，getter、setter、toString table中列对应–&amp;gt;entity属性。 （2）DAO接口 编写抽象方法，增删改查对应的抽象方法。 参数中要用@Param(“">
+<meta property="og:description" content="DAO层1.数据库设计与编码在sql中增/插 create database,use database;create table;inset into····">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T03:27:06.531Z">
+<meta property="og:updated_time" content="2020-07-29T08:27:22.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="秒杀系统思考与总结">
-<meta name="twitter:description" content="DAO层1.数据库设计与编码在sql中增/插 create database,use database;create table;inset into···· 2.DAO实体与接口编码（1）entity编码 编写相应属性，getter、setter、toString table中列对应–&amp;gt;entity属性。 （2）DAO接口 编写抽象方法，增删改查对应的抽象方法。 参数中要用@Param(“">
+<meta name="twitter:description" content="DAO层1.数据库设计与编码在sql中增/插 create database,use database;create table;inset into····">
 
 
 
@@ -354,6 +354,8 @@
       
         <h2 id="DAO层"><a href="#DAO层" class="headerlink" title="DAO层"></a>DAO层</h2><h4 id="1-数据库设计与编码"><a href="#1-数据库设计与编码" class="headerlink" title="1.数据库设计与编码"></a>1.数据库设计与编码</h4><p>在sql中增/插</p>
 <p>create database,use database;create table;inset into····</p>
+<a id="more"></a>
+
 <h4 id="2-DAO实体与接口编码"><a href="#2-DAO实体与接口编码" class="headerlink" title="2.DAO实体与接口编码"></a>2.DAO实体与接口编码</h4><p>（1）entity编码</p>
 <p>编写相应属性，getter、setter、toString</p>
 <p>table中列对应–&gt;entity属性。</p>
@@ -514,8 +516,6 @@
 <p>@RequestMapping中加入 produces = {“application/json;charset=UTF-8”})//contentType</p>
 <h4 id="基于bootstrap开发页面结构-jsp"><a href="#基于bootstrap开发页面结构-jsp" class="headerlink" title="基于bootstrap开发页面结构(jsp)"></a>基于bootstrap开发页面结构(jsp)</h4><p> 在webapp下。WEB-INF下放jsp文件。<br> 将通用或重复的部分提取出来，再采用jsp静态包含的方式</p>
  <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//静态包含：会将包含的comon/tag.jap合并到list.jsp中来，作为整个servlet输出..一个servlet</span></span><br><span class="line"><span class="comment">//动态包含：包含的jsp会作为独立的servlet，运行完之后会将运行结果与list.jsp的运行结果，也就是最后的静态HTML做合并..多个servlet</span></span><br><span class="line">&lt;%@include <span class="keyword">file</span>=<span class="string">"common/tag.jsp"</span>%&gt;<span class="comment">//静态包含</span></span><br></pre></td></tr></table></figure>
-
-
 
 <h4 id="交互"><a href="#交互" class="headerlink" title="交互"></a>交互</h4><p> 创建JavaScript文件seckill.js。存放主要交互逻辑js代码。javascript模块化。</p>
 <p> 在详情页jsp的HTML中引入js文件。<br> <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/resources/script/seckill.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>

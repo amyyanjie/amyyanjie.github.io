@@ -98,7 +98,7 @@
 <meta property="og:description" content="ArrayList介绍以下是ArrayList源码的介绍： 12345678910111213/** * Resizable-array implementation of the &amp;lt;tt&amp;gt;List&amp;lt;/tt&amp;gt; interface.  Implements * all optional list operations, and permits all elements, in">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://files.jb51.net/file_images/article/201311/20131105100548.jpg?201310510715">
-<meta property="og:updated_time" content="2019-08-02T03:27:06.529Z">
+<meta property="og:updated_time" content="2020-07-29T08:28:09.971Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArrayList类详解与遍历方式">
 <meta name="twitter:description" content="ArrayList介绍以下是ArrayList源码的介绍： 12345678910111213/** * Resizable-array implementation of the &amp;lt;tt&amp;gt;List&amp;lt;/tt&amp;gt; interface.  Implements * all optional list operations, and permits all elements, in">
@@ -357,6 +357,8 @@
         <h2 id="ArrayList介绍"><a href="#ArrayList介绍" class="headerlink" title="ArrayList介绍"></a>ArrayList介绍</h2><p>以下是ArrayList源码的介绍：</p>
 <figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Resizable-array implementation <span class="keyword">of</span> the <span class="xml"><span class="tag">&lt;<span class="name">tt</span>&gt;</span>List<span class="tag">&lt;/<span class="name">tt</span>&gt;</span></span> interface.  Implements</span><br><span class="line"> * all optional list operations, <span class="keyword">and</span> permits all elements, including</span><br><span class="line"> * <span class="xml"><span class="tag">&lt;<span class="name">tt</span>&gt;</span>null<span class="tag">&lt;/<span class="name">tt</span>&gt;</span></span>. </span><br><span class="line"> //ArrayList实现了可变大小的数组（动态数组），它允许所有元素，包括null。</span><br><span class="line"> </span><br><span class="line"> *In addition <span class="keyword">to</span> implementing the <span class="xml"><span class="tag">&lt;<span class="name">tt</span>&gt;</span>List<span class="tag">&lt;/<span class="name">tt</span>&gt;</span></span> interface,</span><br><span class="line"> * this class provides methods <span class="keyword">to</span> manipulate the size <span class="keyword">of</span> the <span class="keyword">array</span> that <span class="literal">is</span> used internally <span class="keyword">to</span> store the list. </span><br><span class="line"> //ArrayList实现了List接口。它提供了一些方法，来操作内部用于存储列表的数组的大小。</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> *(This class <span class="literal">is</span> roughly equivalent <span class="keyword">to</span> <span class="xml"><span class="tag">&lt;<span class="name">tt</span>&gt;</span>Vector<span class="tag">&lt;/<span class="name">tt</span>&gt;</span></span>, <span class="keyword">except</span> that it <span class="literal">is</span> unsynchronized.)</span><br><span class="line"> //ArrayList同Vector类似，不同的是ArrayList不是同步的。</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
+
 <p><strong>ArrayList的继承与接口实现</strong>：</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">ArrayList&lt;E&gt;</span> <span class="keyword">extends</span> <span class="title">AbstractList&lt;E&gt;</span></span></span><br><span class="line"><span class="class">        <span class="title">implements</span> <span class="title">List&lt;E&gt;</span>, <span class="title">RandomAccess</span>, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 
@@ -366,7 +368,7 @@
 <p>ArrayList实现java.io.Serializable接口，即ArrayList支持序列化，能通过序列化去传输。</p>
 <p><strong>ArrayList与Collection关系如下：</strong></p>
 <p><img src="http://files.jb51.net/file_images/article/201311/20131105100548.jpg?201310510715" alt="image"></p>
-<a id="more"></a>
+<!--more-->
 
 <h2 id="ArrayList的构造器"><a href="#ArrayList的构造器" class="headerlink" title="ArrayList的构造器"></a>ArrayList的构造器</h2><p>ArrayList提供了三个构造器：</p>
 <p><strong>1.public ArrayList(int initialCapacity);</strong><br><strong>用指定的大小来初始化内部的数组</strong>  </p>

@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Amy&#39;s Blog">
 <meta property="og:description" content="存储引擎MySQL5.5以后默认使用InnoDB存储引擎。其中InnoDB和BDB提供事务安全表，其他存储引擎都是非事务安全表。 若要修改默认引擎，可以修改配置文件中的default-storage-engine。可通过show variables like ‘default_ storage_ engine’查看当前数据库的默认引擎。 在创建表的时候通过engine=…或type=…来指定所要使">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T03:27:06.531Z">
+<meta property="og:updated_time" content="2020-07-29T08:27:11.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL存储引擎、索引知识整理">
 <meta name="twitter:description" content="存储引擎MySQL5.5以后默认使用InnoDB存储引擎。其中InnoDB和BDB提供事务安全表，其他存储引擎都是非事务安全表。 若要修改默认引擎，可以修改配置文件中的default-storage-engine。可通过show variables like ‘default_ storage_ engine’查看当前数据库的默认引擎。 在创建表的时候通过engine=…或type=…来指定所要使">
@@ -357,6 +357,8 @@
 <p>在创建表的时候通过engine=…或type=…来指定所要使用的引擎。</p>
 <p>show table status from DBname来查看指定表的引擎。</p>
 <p>主要存储引擎：MyISAM、InnoDB、MEMORY、MERGE</p>
+<a id="more"></a>
+
 <h2 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h2><p>与传统的ISAM与MyISAM相比，InnoDB的最大特色是支持了ACID兼容的事务功能，但写的效率差一些，并且会占用更多的磁盘空间以保留数据和索引。</p>
 <h3 id="事务-Transaction"><a href="#事务-Transaction" class="headerlink" title="事务(Transaction)"></a>事务(Transaction)</h3><p>事务是访问并可能更新数据库中各种数据项的一个程序执行单元。由事务开始和事务结束之间执行的全体操作组成。</p>
 <h4 id="事务属性–ACID"><a href="#事务属性–ACID" class="headerlink" title="事务属性–ACID"></a>事务属性–ACID</h4><p>事务是恢复和并发控制的基本单位。</p>

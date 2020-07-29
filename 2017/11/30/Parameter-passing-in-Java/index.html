@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/42dd60355c441042f266afbadca7fe3.png">
 <meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171130175424.png">
 <meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171130.png">
-<meta property="og:updated_time" content="2019-08-02T03:27:06.528Z">
+<meta property="og:updated_time" content="2020-07-29T08:28:19.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中的参数传递">
 <meta name="twitter:description" content="为了便于理解，会将参数传递分为按值传递和按引用传递。按值传递是传递的值的拷贝，按引用传递传递的是引用的地址值，所以有“在java里参数传递都是按值传递”、“引用也是按值传递的”这些说法。 基本数据类型作为参数传递基本数据类型作为参数传递时都是传递值的拷贝。 指的是方法调用中，传递的是值的拷贝，无论怎么改变这个拷贝，原值是不会改变的。 也即是说实参把它的值传递给形参，对形参的改变不会影响实参的值。">
@@ -360,12 +360,14 @@
         <p>为了便于理解，会将参数传递分为按值传递和按引用传递。按值传递是传递的值的拷贝，按引用传递传递的是引用的地址值，所以有“在java里参数传递都是按值传递”、“引用也是按值传递的”这些说法。</p>
 <h2 id="基本数据类型作为参数传递"><a href="#基本数据类型作为参数传递" class="headerlink" title="基本数据类型作为参数传递"></a>基本数据类型作为参数传递</h2><p><strong>基本数据类型作为参数传递时都是传递值的拷贝。</strong> 指的是方法调用中，传递的是值的拷贝，无论怎么改变这个拷贝，原值是不会改变的。</p>
 <p>也即是说实参把它的值传递给形参，对形参的改变不会影响实参的值。</p>
+<a id="more"></a>
+
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">        Test test1 = <span class="keyword">new</span> Test();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">5</span>;</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"调用前的i="</span> + i);</span><br><span class="line">        test1.testPassParameter(i);</span><br><span class="line">        <span class="comment">//传递后,testPassParameter方法中对形参i的改变不会影响这里的i</span></span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"调用后的i="</span> + i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testPassParameter</span>(<span class="params"><span class="keyword">int</span> i</span>)</span> &#123;</span><br><span class="line">        i = <span class="number">10</span>;<span class="comment">//这里只是对形参的改变</span></span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"tpp方法中的i="</span> + i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>输出结果</strong>：</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">调用前的<span class="attribute">i</span>=5</span><br><span class="line">tpp方法中的<span class="attribute">i</span>=10</span><br><span class="line">调用后的<span class="attribute">i</span>=5</span><br></pre></td></tr></table></figure>
 
-<a id="more"></a>
+<!--more-->
 
 <h2 id="对象作为参数传递"><a href="#对象作为参数传递" class="headerlink" title="对象作为参数传递"></a>对象作为参数传递</h2><p>对象作为参数传递时，在方法内改变对象的值，有时原对象跟着改变，而有时又没有改变。就会让人对“传值”和“传引用”产生疑惑。</p>
 <p>先看看两种情况的例子。</p>

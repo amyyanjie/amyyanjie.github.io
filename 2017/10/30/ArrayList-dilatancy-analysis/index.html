@@ -89,18 +89,18 @@
 
 
 
-<meta name="description" content="ArrayList可以实现容量的自适应的增加(As elements are added to an ArrayList,its capacity grows automatically)。通过JDK1.8中ArrayList的源码来分析： ArrayList的相关定义ArrayList底层采用Object类型的数组实现。 首先，定义默认初始容量，为10 1private static final">
+<meta name="description" content="ArrayList可以实现容量的自适应的增加(As elements are added to an ArrayList,its capacity grows automatically)。通过JDK1.8中ArrayList的源码来分析： ArrayList的相关定义ArrayList底层采用Object类型的数组实现。">
 <meta name="keywords" content="集合,ArrayList">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ArrayList扩容分析">
 <meta property="og:url" content="http://yoursite.com/2017/10/30/ArrayList-dilatancy-analysis/index.html">
 <meta property="og:site_name" content="Amy&#39;s Blog">
-<meta property="og:description" content="ArrayList可以实现容量的自适应的增加(As elements are added to an ArrayList,its capacity grows automatically)。通过JDK1.8中ArrayList的源码来分析： ArrayList的相关定义ArrayList底层采用Object类型的数组实现。 首先，定义默认初始容量，为10 1private static final">
+<meta property="og:description" content="ArrayList可以实现容量的自适应的增加(As elements are added to an ArrayList,its capacity grows automatically)。通过JDK1.8中ArrayList的源码来分析： ArrayList的相关定义ArrayList底层采用Object类型的数组实现。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T03:27:06.527Z">
+<meta property="og:updated_time" content="2020-07-29T08:28:42.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArrayList扩容分析">
-<meta name="twitter:description" content="ArrayList可以实现容量的自适应的增加(As elements are added to an ArrayList,its capacity grows automatically)。通过JDK1.8中ArrayList的源码来分析： ArrayList的相关定义ArrayList底层采用Object类型的数组实现。 首先，定义默认初始容量，为10 1private static final">
+<meta name="twitter:description" content="ArrayList可以实现容量的自适应的增加(As elements are added to an ArrayList,its capacity grows automatically)。通过JDK1.8中ArrayList的源码来分析： ArrayList的相关定义ArrayList底层采用Object类型的数组实现。">
 
 
 
@@ -354,6 +354,8 @@
       
         <p>ArrayList可以实现容量的自适应的增加(As elements are added to an ArrayList,<br>its capacity grows automatically)。通过JDK1.8中ArrayList的源码来分析：</p>
 <h2 id="ArrayList的相关定义"><a href="#ArrayList的相关定义" class="headerlink" title="ArrayList的相关定义"></a>ArrayList的相关定义</h2><p>ArrayList底层采用Object类型的数组实现。</p>
+<a id="more"></a>
+
 <p>首先，定义默认初始容量，为10</p>
 <figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CAPACITY = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
 
@@ -370,7 +372,7 @@
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The size of the ArrayList (the number of elements it contains).</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> <span class="built_in">size</span>;</span><br></pre></td></tr></table></figure>
 
 <p>为了实现ArrayList的自动扩容机制，java引进了capacity和size概念,以区别数组的length。<strong>capacity</strong>是底层数组的长度(length)，<strong>size</strong>是存储的列表对象的数量，被设置为private的。</p>
-<a id="more"></a>
+<!---more-->
 
 <h2 id="ArrayList的初始化"><a href="#ArrayList的初始化" class="headerlink" title="ArrayList的初始化"></a>ArrayList的初始化</h2><p>ArrayList有三种方式来初始化，构造方法源码如下：</p>
 <p><strong>1.用指定的初始容量构造一个空列表</strong></p>
