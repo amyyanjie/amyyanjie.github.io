@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/05/23/hashmap-put-method-source-code/</loc>
+    
+    <lastmod>2020-07-30T03:38:34.314Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/05/10/object-oriented-in-Java/</loc>
     
     <lastmod>2020-07-29T08:29:48.761Z</lastmod>
@@ -149,13 +156,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/05/23/hashmap-put-method-source-code/</loc>
-    
-    <lastmod>2020-07-29T08:25:21.950Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2019-08-02T03:27:06.532Z</lastmod>
@@ -205,7 +205,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/01/Execution-of-finally-code-block/</loc>
+    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
     
     <lastmod>2019-08-02T03:27:06.526Z</lastmod>
     
@@ -219,7 +219,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
+    <loc>http://yoursite.com/2017/10/01/Execution-of-finally-code-block/</loc>
     
     <lastmod>2019-08-02T03:27:06.526Z</lastmod>
     

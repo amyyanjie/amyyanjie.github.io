@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2020/05/23/hashmap-put-method-source-code/</loc>
+    <lastmod>2020-07-30</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/2020/05/10/object-oriented-in-Java/</loc>
     <lastmod>2020-07-29</lastmod>
   </url>  <url>
@@ -64,9 +67,6 @@
     <loc>http://yoursite.com/2020/04/21/computer-number/</loc>
     <lastmod>2020-07-29</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/2020/05/23/hashmap-put-method-source-code/</loc>
-    <lastmod>2020-07-29</lastmod>
-  </url>  <url>
     <loc>http://yoursite.com/2017/12/04/The-difference-between-Collection-and-Collections-and-the-methods-commonly-used-in-Collections/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>  <url>
@@ -79,13 +79,13 @@
     <loc>http://yoursite.com/2017/10/22/Java-how-to-retain-two-decimal-places/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/2017/10/01/Execution-of-finally-code-block/</loc>
+    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2017/10/15/Analyze-the-difference-between-int-and-Integer/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
+    <loc>http://yoursite.com/2017/10/01/Execution-of-finally-code-block/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>
 </urlset>
