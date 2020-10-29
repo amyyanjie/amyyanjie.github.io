@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="异常,">
+  <meta name="keywords" content="多线程,">
 
 
 
@@ -89,18 +89,20 @@
 
 
 
-<meta name="description" content="本文包含以下知识点：   try里有return，finally还执行么？那么紧跟在这个try后的finally{}里的code会不会被执行，什么时候被执行，在return前还是后  如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗  在什么情况下，finally语句不会执行   一、try里有return，finally怎么执行1.finall">
-<meta name="keywords" content="异常">
+<meta name="description" content="零、概念在计算机中，我们把一个任务称为一个进程。浏览器是一个进程，word是另一个进程。  一个Java程序实际上是一个JVM进程，JVM用一个主线程来执行main()方法，在main()内部，又可以启动多个线程。另外，还有垃圾回收其他工作线程。 当所有非守护线程执行完毕后，JVM进程退出。  线程是操作系统调度的最小任务单位。 进程和线程的关系：包含关系。一个进程可以包含一个或多个线程，但至少一">
+<meta name="keywords" content="多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="finally代码块的执行情况">
-<meta property="og:url" content="http://yoursite.com/2017/10/01/Execution-of-finally-code-block/index.html">
+<meta property="og:title" content="线程学习">
+<meta property="og:url" content="http://yoursite.com/2020/05/28/thread-learning/index.html">
 <meta property="og:site_name" content="Amy&#39;s Blog">
-<meta property="og:description" content="本文包含以下知识点：   try里有return，finally还执行么？那么紧跟在这个try后的finally{}里的code会不会被执行，什么时候被执行，在return前还是后  如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗  在什么情况下，finally语句不会执行   一、try里有return，finally怎么执行1.finall">
+<meta property="og:description" content="零、概念在计算机中，我们把一个任务称为一个进程。浏览器是一个进程，word是另一个进程。  一个Java程序实际上是一个JVM进程，JVM用一个主线程来执行main()方法，在main()内部，又可以启动多个线程。另外，还有垃圾回收其他工作线程。 当所有非守护线程执行完毕后，JVM进程退出。  线程是操作系统调度的最小任务单位。 进程和线程的关系：包含关系。一个进程可以包含一个或多个线程，但至少一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T03:27:06.526Z">
+<meta property="og:image" content="https://amy-resource.oss-cn-beijing.aliyuncs.com/images/imagesThreadState.png">
+<meta property="og:updated_time" content="2020-10-29T02:12:12.285Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="finally代码块的执行情况">
-<meta name="twitter:description" content="本文包含以下知识点：   try里有return，finally还执行么？那么紧跟在这个try后的finally{}里的code会不会被执行，什么时候被执行，在return前还是后  如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗  在什么情况下，finally语句不会执行   一、try里有return，finally怎么执行1.finall">
+<meta name="twitter:title" content="线程学习">
+<meta name="twitter:description" content="零、概念在计算机中，我们把一个任务称为一个进程。浏览器是一个进程，word是另一个进程。  一个Java程序实际上是一个JVM进程，JVM用一个主线程来执行main()方法，在main()内部，又可以启动多个线程。另外，还有垃圾回收其他工作线程。 当所有非守护线程执行完毕后，JVM进程退出。  线程是操作系统调度的最小任务单位。 进程和线程的关系：包含关系。一个进程可以包含一个或多个线程，但至少一">
+<meta name="twitter:image" content="https://amy-resource.oss-cn-beijing.aliyuncs.com/images/imagesThreadState.png">
 
 
 
@@ -128,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/01/Execution-of-finally-code-block/">
+  <link rel="canonical" href="http://yoursite.com/2020/05/28/thread-learning/">
 
 
 
 
 
-  <title>finally代码块的执行情况 | Amy's Blog</title>
+  <title>线程学习 | Amy's Blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +257,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/01/Execution-of-finally-code-block/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/28/thread-learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Amy">
@@ -272,7 +274,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">finally代码块的执行情况</h2>
+          <h2 class="post-title" itemprop="name headline">线程学习</h2>
         
 
         <div class="post-meta">
@@ -284,8 +286,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-01T00:10:04+08:00">
-                2017-10-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-28T14:29:28+08:00">
+                2020-05-28
               </time>
             
 
@@ -324,7 +326,7 @@
 
           
           
-             <span id="/2017/10/01/Execution-of-finally-code-block/" class="leancloud_visitors" data-flag-title="finally代码块的执行情况">
+             <span id="/2020/05/28/thread-learning/" class="leancloud_visitors" data-flag-title="线程学习">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -352,55 +354,77 @@
       
 
       
-        <p>本文包含以下知识点：</p>
-<ul>
-<li><input checked disabled type="checkbox"> try里有return，finally还执行么？那么紧跟在这个try后的finally{}里的code会不会被执行，什么时候被执行，在return前还是后</li>
-<li><input checked disabled type="checkbox"> 如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗</li>
-<li><input checked disabled type="checkbox"> 在什么情况下，finally语句不会执行</li>
-</ul>
-<hr>
-<h2 id="一、try里有return，finally怎么执行"><a href="#一、try里有return，finally怎么执行" class="headerlink" title="一、try里有return，finally怎么执行"></a>一、try里有return，finally怎么执行</h2><p>1.<strong>finally块里的代码是在return之前执行的。</strong></p>
-<p>在异常处理中，无论是执行try还是catch，finally{}中的代码都会执行（除非特殊情况）。由于程序执行return就意味着结束对当前函数的调用并跳出这个函数体，因此任何语句要执行都只能在return前执行。</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">testFinally</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.<span class="keyword">out</span>.println(<span class="string">"execute finally"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> result = testFinally();</span><br><span class="line">        System.<span class="keyword">out</span>.println(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>运行结果</strong>：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">execute</span> <span class="keyword">finally</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
-
+        <h2 id="零、概念"><a href="#零、概念" class="headerlink" title="零、概念"></a>零、概念</h2><p>在计算机中，我们把一个任务称为一个进程。浏览器是一个进程，word是另一个进程。</p>
+<blockquote>
+<p>一个Java程序实际上是一个JVM进程，JVM用一个主线程来执行<code>main()</code>方法，在<code>main()</code>内部，又可以启动多个线程。另外，还有垃圾回收其他工作线程。</p>
+<p>当所有非守护线程执行完毕后，JVM进程退出。</p>
+</blockquote>
+<p>线程是操作系统调度的最小任务单位。</p>
+<p>进程和线程的关系：包含关系。一个进程可以包含一个或多个线程，但至少一个线程。</p>
+<p>进程间通信比线程间通信慢，因为线程间通信是读取同一变量。</p>
+<h2 id="一、创建新线程"><a href="#一、创建新线程" class="headerlink" title="一、创建新线程"></a>一、创建新线程</h2><p>Java用<code>Thread</code>对象表示一个线程，线程执行代码写在<code>run()</code>方法中，一个线程对象只能调用一次<code>start()</code>方法。</p>
+<p>创建新线程：</p>
 <a id="more"></a>
 
-<p>2.此外，<strong>如果try-catch-finally中都有return，那么finally块中的return将会覆盖别处的return语句</strong>，最终返回到调用者那里的是finally中return的值。</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">testFinally</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.<span class="keyword">out</span>.println(<span class="string">"execute finally"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> result = testFinally();</span><br><span class="line">        System.<span class="keyword">out</span>.println(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 方式一：从Tread派生一个自定义类，覆写run()</span></span><br><span class="line">        Thread t1 = <span class="keyword">new</span> MyThread();</span><br><span class="line">        t1.start(); <span class="comment">// 启动新线程，会在内部自动调用实例的run方法</span></span><br><span class="line">      </span><br><span class="line">        <span class="comment">// 方式二：传入一个Runnable实例</span></span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyRunnable());</span><br><span class="line">        t2.start(); </span><br><span class="line">      </span><br><span class="line">        <span class="comment">// 方式三：Lambda</span></span><br><span class="line">        Thread t3 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        t3.start(); <span class="comment">// 启动新线程      </span></span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>运行结果</strong>:</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">execute</span> <span class="keyword">finally</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p>return语句并不一定都是函数的出口，执行return时，只是把return后面的值复制了一份到返回值变量里去了。</p>
-<p>3.此外，<strong>在try/catch中有return时，在finally块中改变基本类型的数据对返回值没有任何影响；而在finally中改变引用类型的数据会对返回结果有影响。</strong></p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * try/catch中有return,在finally&#123;&#125;中改变基本数据类型、引用类型对运行结果的影响</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">testFinally1</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> result1 = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> result1;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">            result1 = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">return</span> result1;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            result1 = <span class="number">3</span>;</span><br><span class="line">            System.<span class="keyword">out</span>.println(<span class="string">"execute testFinally1"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> StringBuffer <span class="title">testFinally2</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        StringBuffer result2 = <span class="keyword">new</span> StringBuffer(<span class="string">"hello"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> result2;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            result2.append(<span class="string">"world"</span>);</span><br><span class="line">            System.<span class="keyword">out</span>.println(<span class="string">"execute testFinally2"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> test1 = testFinally1();</span><br><span class="line">        System.<span class="keyword">out</span>.println(test1);</span><br><span class="line">        StringBuffer test2 = testFinally2();</span><br><span class="line">        System.<span class="keyword">out</span>.println(test2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>运行结果</strong>:</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">execute testFinally1</span><br><span class="line">1</span><br><span class="line">execute testFinally2</span><br><span class="line">helloworld</span><br></pre></td></tr></table></figure>
-
-<p>程序在执行到return时会先将返回值存储在一个指定位置，其次去执行finally块，最会再return。</p>
-<p>在finally块中改变基本类型的数据result1/引用类型数据result2的值，与java的<strong>值传递和引用传递</strong>相关。值传递中，形参和实参有着不同的存储单元，对形参的改变不会影响实参的值；引用传递中，传递的是对象的地址，形参和实参的对象指向同一块存储单元对形参的改变就会影响实参的值。</p>
-<h2 id="二、如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗？finally不会执行的情况"><a href="#二、如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗？finally不会执行的情况" class="headerlink" title="二、如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗？finally不会执行的情况"></a>二、如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗？finally不会执行的情况</h2><ul>
-<li>java程序中的finally块并不一定会被执行。<br>至少有两种情况finally语句是不会执行的。</li>
+<p>必须调用Thread实例的<code>start()</code>方法才能启动新线程，<code>start()</code>方法内部调用了一个 <code>private native void start0()</code> 方法。（调用Thread实例的<code>run()</code>方法相当于调用普通的Java方法，不会启动新线程）。</p>
+<h2 id="二、线程的状态"><a href="#二、线程的状态" class="headerlink" title="二、线程的状态"></a>二、线程的状态</h2><p>1、六种状态</p>
+<p><img src="https://amy-resource.oss-cn-beijing.aliyuncs.com/images/imagesThreadState.png" alt></p>
+<ul>
+<li>New：（初始）新创建的线程，还没有调用<code>start()</code>方法；</li>
+<li>Runnable：（运行）运行中的线程，正在执行<code>run()</code>方法的 Java 代码；</li>
+<li>Blocked：（阻塞）运行中的线程，因为某些操作被阻塞而被挂起；</li>
+<li>Waiting：（等待）运行中的线程，进入等待状态表示当前线程需要等待其他线程做出一些特定动作（通知或中断）；</li>
+<li>TimeWaiting：（超时等待）运行中的线程，<code>sleep()</code>进入计时等待；</li>
+<li>Terminated：（终止），线程已终止。</li>
 </ul>
-<p><strong>(1)try语句没有被执行到。</strong></p>
-<p>即没有进入try代码块，对应的finally自然不会执行。</p>
-<p>比如，在try语句之前return就返回了，这样finally不会执行；<br>或者在程序进入java之前就出现异常，会直接结束，也不会执行finally块。</p>
-<p><strong>(2)在try/catch块中有System.exit(0)来退出JVM。</strong></p>
-<p>System.exit(0)是终止JVM的，会强制退出程序，finally{}中的代码就不会被执行。</p>
-<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ul>
-<li><p><a href="http://blog.csdn.net/tt_man/article/details/52355736" target="_blank" rel="noopener"> java中finally语句是否一定会被执行</a></p>
-</li>
-<li><p><a href="http://blog.csdn.net/dove_knowledge/article/details/71077512" target="_blank" rel="noopener">finally块中的代码什么时候被执行？finally是不是一定会被执行？</a></p>
-</li>
-<li><p><a href="http://www.jianshu.com/p/c63596a87eee" target="_blank" rel="noopener">Java中的参数传递</a></p>
-</li>
-<li><p><a href="https://www.cnblogs.com/fudashi/p/6498205.html" target="_blank" rel="noopener">finally代码块不会执行的情况总结</a></p>
-</li>
+<p><strong>线程终止的原因有：</strong></p>
+<ul>
+<li>线程正常终止：<code>run()</code>方法执行完成；</li>
+<li>线程意外终止：<code>run()</code>方法因为未捕获的异常导致线程终止；</li>
+<li>线程强制终止：对某个线程的 <code>Thread</code> 实例调用 <code>stop()</code> 方法强制终止（强烈不推荐）</li>
 </ul>
+<p>通过对另一个线程对象调用<code>join()</code>方法可以等待其执行结束。对已经结束的线程调用<code>join()</code>会立刻返回。</p>
+<p>安全地终止线程：thread.interrupt()中断操作或runner.cancel()方法使线程在终止时有机会去清理资源。</p>
+<h2 id="三、中断线程"><a href="#三、中断线程" class="headerlink" title="三、中断线程"></a>三、中断线程</h2><p>方式一：对目标线程调用 <code>interrupt()</code>方法</p>
+<blockquote>
+<p>对目标线程调用 <code>interrupt()</code> 方法可以请求中断一个线程，目标线程可以通过检测 <code>isInterrupted()</code> 标志获取自身是否已中断。如果目标线程处于等待状态，该线程会捕获到 <code>InterruptedException</code>；</p>
+<p>目标线程通过检测到 <code>isInterrupted()</code> 为 <code>true</code> 或者捕获了 <code>InterruptedException</code> 都应该立刻结束自身线程；</p>
+</blockquote>
+<p>方式二 ：设置标志位：</p>
+<p>目标线程中设置标志位变量<code>public volatile boolean running = true;</code>，通过标志位判断是否应该继续进行。</p>
+<p>外部线程设置标志位值<code>AThread.running = false</code>，就可以让目标线程中断。</p>
+<p><strong>线程间共享变量需要使用<code>volatile</code>标记</strong>（涉及到java内存模型，<code>volatile</code>解决了共享变量在线程间的可见性问题），确保每个线程读取到更新后的变量值。</p>
+<p>中断与终止不同，中断可以选择不退出。</p>
+<h2 id="四、守护线程"><a href="#四、守护线程" class="headerlink" title="四、守护线程"></a>四、守护线程</h2><p>守护线程是指为其他线程服务的线程。</p>
+<p>所有非守护线程执行完毕后，虚拟机退出（不会关心守护线程是否结束）。</p>
+<p>在执行<code>start()</code>启动线程前，线程调用<code>t.setDaemon(true);</code>可以将线程标记为守护线程。</p>
+<h2 id="五、wait和notify"><a href="#五、wait和notify" class="headerlink" title="五、wait和notify"></a>五、wait和notify</h2><p><code>wait</code>和<code>notify</code>用于多线程协调运行。</p>
+<ul>
+<li>必须在<code>syncronized</code>块中才能调用<code>wait()</code>方法，且只能在锁对象上调用<code>wait()</code>方法 。</li>
+</ul>
+<p><code>wait()</code>方法是定义在<code>Object</code>类的一个<code>native</code>方法。调用<code>wait()</code>方法时，会释放线程获得的锁，线程处于等待状态。<code>wait()</code>方法返回后，线程又会试图获得锁。</p>
+<ul>
+<li>等待的线程如何被唤醒？<code>wait()</code>方法什么时候返回？在相同的锁对象上调用<code>notity()</code>方法。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TaskQueue</span> </span>&#123;</span><br><span class="line">    Queue&lt;String&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> String <span class="title">getTask</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (queue.isEmpty()) &#123; <span class="comment">// 注意此处必须用while，若从wait()返回后还需要判空</span></span><br><span class="line">            <span class="comment">// 释放锁</span></span><br><span class="line">            <span class="keyword">this</span>.wait(); </span><br><span class="line">            <span class="comment">// 重新获取this锁</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> queue.remove();</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">addTask</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.queue.add(s);</span><br><span class="line">        <span class="keyword">this</span>.notify(); <span class="comment">// 唤醒正在this锁等待的一个线程（具体哪个依赖操作系统）</span></span><br><span class="line">      <span class="comment">// this.notifyAll(); //唤醒所有在this锁等待的线程</span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、sleep、yield、wait、join方法区别"><a href="#六、sleep、yield、wait、join方法区别" class="headerlink" title="六、sleep、yield、wait、join方法区别"></a>六、sleep、yield、wait、join方法区别</h2><p>1、sleep</p>
+<p><strong>static 修饰，Thread 类的静态方法，针对当前线程</strong>；</p>
+<p>让出CPU，但是不会释放锁。</p>
+<p>有超时设置；</p>
+<p>可中断方法，可能抛出 InterruptedException。</p>
+<p>2、yield</p>
+<p><strong>static 修饰，Thread 类的静态方法，针对当前线程</strong>；</p>
+<p>yield () 方法线程礼让，始终都是Runnable 状态。<strong>只能让同优先级的线程</strong>有执行的机会，是一种建议，不能保证被采纳。 yield () 只是使当前线程重新回到可执行状态（就绪），所以执行 yield () 的线程有可能在进入<strong>到可执行状态后</strong>马上又被执行。</p>
+<p>3、wait</p>
+<p><strong>wait () 和 notify ()、notifyAll ()  这三个方法都是 java.lang.Object 的方法</strong>。</p>
+<p>Object 类的方法 (notify ()、notifyAll ()  也是 Object 对象)，必须放在循环体和同步代码块中，执行该方法的线程会释放锁，进入线程等待池中等待被再次唤醒 (notify 随机唤醒，notifyAll 全部唤醒，线程结束自动唤醒) 即放入锁池中竞争同步锁。</p>
+<p>4、join</p>
+<p><strong>join () 是由线程对象来调用。</strong></p>
+<p>等待调用 join 方法的线程结束，再继续执行。</p>
+<p>当前运行线程调用另一个线程的 join 方法，当前线程进入阻塞状态直到另一个线程运行结束等待该线程终止。 注意该方法也需要捕捉异常。</p>
 
       
     </div>
@@ -429,7 +453,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2017/10/01/Execution-of-finally-code-block/" title="finally代码块的执行情况">http://yoursite.com/2017/10/01/Execution-of-finally-code-block/</a>
+      <a href="http://yoursite.com/2020/05/28/thread-learning/" title="线程学习">http://yoursite.com/2020/05/28/thread-learning/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -445,7 +469,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Exception/" rel="tag"># 异常</a>
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
           
         </div>
       
@@ -458,8 +482,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/28/Hey-that-crying-girl/" rel="next" title="嘿！那个爱哭的女孩">
-                <i class="fa fa-chevron-left"></i> 嘿！那个爱哭的女孩
+              <a href="/2020/05/23/hashmap-put-method-source-code/" rel="next" title="从put()分析HashMap">
+                <i class="fa fa-chevron-left"></i> 从put()分析HashMap
               </a>
             
           </div>
@@ -467,10 +491,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/" rel="prev" title="浅析Java基础类型与封装类型的区别">
-                浅析Java基础类型与封装类型的区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -638,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、try里有return，finally怎么执行"><span class="nav-number">1.</span> <span class="nav-text">一、try里有return，finally怎么执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗？finally不会执行的情况"><span class="nav-number">2.</span> <span class="nav-text">二、如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗？finally不会执行的情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料："><span class="nav-number">3.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#零、概念"><span class="nav-number">1.</span> <span class="nav-text">零、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、创建新线程"><span class="nav-number">2.</span> <span class="nav-text">一、创建新线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、线程的状态"><span class="nav-number">3.</span> <span class="nav-text">二、线程的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、中断线程"><span class="nav-number">4.</span> <span class="nav-text">三、中断线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、守护线程"><span class="nav-number">5.</span> <span class="nav-text">四、守护线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、wait和notify"><span class="nav-number">6.</span> <span class="nav-text">五、wait和notify</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、sleep、yield、wait、join方法区别"><span class="nav-number">7.</span> <span class="nav-text">六、sleep、yield、wait、join方法区别</span></a></li></ol></div>
             
 
           </div>

@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Amy&#39;s Blog">
 <meta property="og:description" content="数据结构：数组+链表。Node&amp;lt;K,V&amp;gt;[] table。（源码参考put()方法），允许null键/值。 数组+链表有什么优点：  若是数组，数组缺点：需要连续内存空间；删除需要移动其他元素位置 若是链表，链表缺点：查找复杂度高。 时间复杂度：O(1)。常量时间（假设能正确分散）。  一、如何确定key的数组索引位置，为什么？1、得到混合key.hashCode()高低位的hash值">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-30T03:38:34.314Z">
+<meta property="og:updated_time" content="2020-10-29T02:10:38.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从put()分析HashMap">
 <meta name="twitter:description" content="数据结构：数组+链表。Node&amp;lt;K,V&amp;gt;[] table。（源码参考put()方法），允许null键/值。 数组+链表有什么优点：  若是数组，数组缺点：需要连续内存空间；删除需要移动其他元素位置 若是链表，链表缺点：查找复杂度高。 时间复杂度：O(1)。常量时间（假设能正确分散）。  一、如何确定key的数组索引位置，为什么？1、得到混合key.hashCode()高低位的hash值">
@@ -360,6 +360,8 @@
 <li>时间复杂度：O(1)。常量时间（假设能正确分散）。</li>
 </ul>
 <h2 id="一、如何确定key的数组索引位置，为什么？"><a href="#一、如何确定key的数组索引位置，为什么？" class="headerlink" title="一、如何确定key的数组索引位置，为什么？"></a>一、如何确定key的数组索引位置，为什么？</h2><p>1、得到混合<code>key.hashCode()</code>高低位的hash值。</p>
+<a id="more"></a>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="comment">// 将key的hashCode与其hashCode无符号右移(低位丢弃高位补零)16位进行异或运算(XOR运算同0异1)。</span></span><br><span class="line">    <span class="comment">// 实际上是把key的hashCode的低16位和高16位做XOR运算</span></span><br><span class="line">    <span class="comment">// int类型，4字节，32位</span></span><br><span class="line">    <span class="comment">// 混合高位和低位，可以增加低位的随机性，减少碰撞。</span></span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">    <span class="comment">// key==null，hash为0，所以key可以为null。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>2、在数组table（桶）中的索引下标为：index =<code>hash &amp; (n-1)</code>，n为桶长度，n为2的幂。</p>
@@ -462,6 +464,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/05/28/thread-learning/" rel="prev" title="线程学习">
+                线程学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -538,7 +544,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -560,7 +566,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
