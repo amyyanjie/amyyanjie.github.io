@@ -89,23 +89,18 @@
 
 
 
-<meta name="description" content="为了便于理解，会将参数传递分为按值传递和按引用传递。按值传递是传递的值的拷贝，按引用传递传递的是引用的地址值，所以有“在java里参数传递都是按值传递”、“引用也是按值传递的”这些说法。 基本数据类型作为参数传递基本数据类型作为参数传递时都是传递值的拷贝。 指的是方法调用中，传递的是值的拷贝，无论怎么改变这个拷贝，原值是不会改变的。 也即是说实参把它的值传递给形参，对形参的改变不会影响实参的值。">
+<meta name="description" content="为了便于理解，会将参数传递分为按值传递和按引用传递。 其实核心理解：实参和形参是两个变量，名称相同而已。如果都指向同一对象，而方法又改变了对象内容，则原值才发生变化。 形参、实参 形参： 定义方法使用的参数。   形参只会在方法被调用的时候，虚拟机才会分配内存单元，方法调用结束后便会释放所分配的内存单元。因此，形参只在方法内部有效。">
 <meta name="keywords" content="Java基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java中的参数传递">
 <meta property="og:url" content="http://yoursite.com/2017/11/30/Parameter-passing-in-Java/index.html">
 <meta property="og:site_name" content="Amy&#39;s Blog">
-<meta property="og:description" content="为了便于理解，会将参数传递分为按值传递和按引用传递。按值传递是传递的值的拷贝，按引用传递传递的是引用的地址值，所以有“在java里参数传递都是按值传递”、“引用也是按值传递的”这些说法。 基本数据类型作为参数传递基本数据类型作为参数传递时都是传递值的拷贝。 指的是方法调用中，传递的是值的拷贝，无论怎么改变这个拷贝，原值是不会改变的。 也即是说实参把它的值传递给形参，对形参的改变不会影响实参的值。">
+<meta property="og:description" content="为了便于理解，会将参数传递分为按值传递和按引用传递。 其实核心理解：实参和形参是两个变量，名称相同而已。如果都指向同一对象，而方法又改变了对象内容，则原值才发生变化。 形参、实参 形参： 定义方法使用的参数。   形参只会在方法被调用的时候，虚拟机才会分配内存单元，方法调用结束后便会释放所分配的内存单元。因此，形参只在方法内部有效。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/1512033661%281%29.jpg">
-<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/42dd60355c441042f266afbadca7fe3.png">
-<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171130175424.png">
-<meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171130.png">
-<meta property="og:updated_time" content="2020-07-29T08:28:19.733Z">
+<meta property="og:updated_time" content="2020-10-29T09:10:52.066Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中的参数传递">
-<meta name="twitter:description" content="为了便于理解，会将参数传递分为按值传递和按引用传递。按值传递是传递的值的拷贝，按引用传递传递的是引用的地址值，所以有“在java里参数传递都是按值传递”、“引用也是按值传递的”这些说法。 基本数据类型作为参数传递基本数据类型作为参数传递时都是传递值的拷贝。 指的是方法调用中，传递的是值的拷贝，无论怎么改变这个拷贝，原值是不会改变的。 也即是说实参把它的值传递给形参，对形参的改变不会影响实参的值。">
-<meta name="twitter:image" content="http://ot8blk4sm.bkt.clouddn.com/1512033661%281%29.jpg">
+<meta name="twitter:description" content="为了便于理解，会将参数传递分为按值传递和按引用传递。 其实核心理解：实参和形参是两个变量，名称相同而已。如果都指向同一对象，而方法又改变了对象内容，则原值才发生变化。 形参、实参 形参： 定义方法使用的参数。   形参只会在方法被调用的时候，虚拟机才会分配内存单元，方法调用结束后便会释放所分配的内存单元。因此，形参只在方法内部有效。">
 
 
 
@@ -357,11 +352,18 @@
       
 
       
-        <p>为了便于理解，会将参数传递分为按值传递和按引用传递。按值传递是传递的值的拷贝，按引用传递传递的是引用的地址值，所以有“在java里参数传递都是按值传递”、“引用也是按值传递的”这些说法。</p>
-<h2 id="基本数据类型作为参数传递"><a href="#基本数据类型作为参数传递" class="headerlink" title="基本数据类型作为参数传递"></a>基本数据类型作为参数传递</h2><p><strong>基本数据类型作为参数传递时都是传递值的拷贝。</strong> 指的是方法调用中，传递的是值的拷贝，无论怎么改变这个拷贝，原值是不会改变的。</p>
-<p>也即是说实参把它的值传递给形参，对形参的改变不会影响实参的值。</p>
+        <p>为了便于理解，会将参数传递分为按值传递和按引用传递。</p>
+<p>其实核心理解：<strong>实参和形参是两个变量，名称相同而已。如果都指向同一对象，而方法又改变了对象内容，则原值才发生变化。</strong></p>
+<h2 id="形参、实参"><a href="#形参、实参" class="headerlink" title="形参、实参"></a>形参、实参</h2><ul>
+<li><strong>形参：</strong> 定义方法使用的参数。</li>
+</ul>
+<blockquote>
+<p>形参只会在方法被调用的时候，虚拟机才会分配内存单元，方法调用结束后便会释放所分配的内存单元。因此，形参只在方法内部有效。</p>
+</blockquote>
 <a id="more"></a>
 
+<h2 id="基本数据类型作为参数传递"><a href="#基本数据类型作为参数传递" class="headerlink" title="基本数据类型作为参数传递"></a>基本数据类型作为参数传递</h2><p><strong>基本数据类型作为参数传递时都是传递值的拷贝。</strong> 指的是方法调用中，传递的是值的拷贝，无论怎么改变这个拷贝，原值是不会改变的。</p>
+<p>也即是说实参把它的值传递给形参，对形参的改变不会影响实参的值。</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">        Test test1 = <span class="keyword">new</span> Test();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">5</span>;</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"调用前的i="</span> + i);</span><br><span class="line">        test1.testPassParameter(i);</span><br><span class="line">        <span class="comment">//传递后,testPassParameter方法中对形参i的改变不会影响这里的i</span></span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"调用后的i="</span> + i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testPassParameter</span>(<span class="params"><span class="keyword">int</span> i</span>)</span> &#123;</span><br><span class="line">        i = <span class="number">10</span>;<span class="comment">//这里只是对形参的改变</span></span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"tpp方法中的i="</span> + i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>输出结果</strong>：</p>
@@ -379,37 +381,24 @@
 <p><strong>分析如下：</strong></p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//(1)s1,s2指向字符串的地址不同，假设为地址1，地址2</span></span><br><span class="line"><span class="built_in">StringBuffer</span> s1 = <span class="keyword">new</span> <span class="built_in">StringBuffer</span>(<span class="string">"hello"</span>);</span><br><span class="line"><span class="built_in">StringBuffer</span> s2 = <span class="keyword">new</span> <span class="built_in">StringBuffer</span>(<span class="string">"hello"</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://ot8blk4sm.bkt.clouddn.com/1512033661%281%29.jpg" alt="image"></p>
 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//(<span class="number">2</span>)调用changeStringBuffer方法</span><br><span class="line"><span class="symbol">changeStringBuffer</span>(<span class="built_in">s1</span>, <span class="built_in">s2</span>)<span class="comment">;</span></span><br><span class="line">//调用后会将<span class="built_in">s1</span>,<span class="built_in">s2</span>的地址(地址<span class="number">1</span>，地址<span class="number">2</span>)传给ss1,ss2，即现在ss1也指向地址<span class="number">1</span>，ss2也指向地址<span class="number">2</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://ot8blk4sm.bkt.clouddn.com/42dd60355c441042f266afbadca7fe3.png" alt="image"></p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//(<span class="number">3</span>)ss1所指向字符串的值变为helloworld,调用者<span class="built_in">s1</span>的值相应变化。</span><br><span class="line"><span class="symbol">ss1.append</span>(<span class="string">"world"</span>)<span class="comment">;</span></span><br><span class="line">//ss2将指向ss1指向的地址(地址<span class="number">1</span>),但此时<span class="built_in">s2</span>依旧指向地址<span class="number">2</span>，<span class="built_in">s2</span>的值在调用前后不变。</span><br><span class="line"><span class="symbol">ss2</span> = ss1<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//(<span class="number">3</span>)ss1所指向字符串的值变为helloworld,调用者<span class="built_in">s1</span>的值相应变化。</span><br><span class="line"><span class="symbol">ss1.append</span>(<span class="string">"world"</span>)<span class="comment">;</span></span><br><span class="line">//ss2将指向ss1指向的地址(地址<span class="number">1</span>)，但此时<span class="built_in">s2</span>依旧指向地址<span class="number">2</span>，<span class="built_in">s2</span>的值在调用前后不变。</span><br><span class="line"><span class="symbol">ss2</span> = ss1<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://ot8blk4sm.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171130175424.png" alt="image"></p>
-<p>所以，s1的输出为helloworld,s2的输出结果为hello。</p>
-<p>（注意，这里为了区分，s1,s2和ss1,ss2用了不同的名称，但有时候形参与实参的名字相同，其实两者变量是完全不同的，一个是main方法中的变量，一个是changeStringBuffer()中的变量。）</p>
+<p>所以，s1的输出为helloworld，s2的输出结果为hello。</p>
+<p>（注意，这里为了区分，s1,s2和ss1,ss2用了不同的名称，但有时候形参与实参的名字相同，其实两者变量是完全不同的，一个是main方法中的变量，一个是changeStringBuffer()中的局部变量。）</p>
 <p>可以看出，在java中对象作为参数传递时，<strong>传递的是引用的地址，是把对象在内存中的地址拷贝了一份传给了参数</strong>。</p>
-<h2 id="拓展："><a href="#拓展：" class="headerlink" title="拓展："></a>拓展：</h2><p>基本数据类型的包装类型在传递参数时其实也是“按引用传递的”，只是因为包装类型变量都是不可变量，容易误解。</p>
-<p>String是final类型，是个特殊的类，对它的一些操作符是<strong>重载</strong>的。比如：</p>
-<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span> str = <span class="string">"hello"</span>;//等价于<span class="built_in">String</span> str=<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"hello"</span>);</span><br><span class="line"></span><br><span class="line"> <span class="built_in">String</span> str = <span class="string">"hello"</span>;</span><br><span class="line">        str = str + <span class="string">"world"</span>;//等价于str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="keyword">new</span> StringBuffer(str).append(<span class="string">"world"</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="拓展："><a href="#拓展：" class="headerlink" title="拓展："></a>拓展：</h2><p>String是final类型，是个特殊的类，对它的一些操作符是<strong>重载</strong>的。比如：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String</span> <span class="built_in">str</span> = <span class="string">"hello"</span>;<span class="comment">//可能创建一个或者不创建对象。</span></span><br><span class="line"><span class="comment">//如果"hello"这个字符串在常量池里不存在，会在java常量池里创建一个String对象，str指向这个内存地址。</span></span><br><span class="line"><span class="comment">//无论以后用这种方式创建多少个值为"hello"的字符串对象，始终只有一个内存地址被分配</span></span><br><span class="line"><span class="comment">//java中称为“字符串驻留”，所有的字符串常量都会在编译后自动地驻留</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">String</span> <span class="built_in">str</span> = <span class="string">"hello"</span>;</span><br><span class="line">        <span class="built_in">str</span> = <span class="built_in">str</span> + <span class="string">"world"</span>;<span class="comment">//等价于str = new String(new StringBuffer(str).append("world"));</span></span><br></pre></td></tr></table></figure>
 
 <p>从以上分析，现在可以更易理解下面的代码：</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class Test &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> fun(<span class="keyword">String</span> <span class="built_in">str</span>, <span class="built_in">char</span> ch[]) &#123;</span><br><span class="line">        <span class="built_in">str</span> = <span class="string">"world"</span>;</span><br><span class="line">        ch[<span class="number">0</span>] = <span class="string">'d'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">String</span> <span class="built_in">str</span> = <span class="keyword">new</span> <span class="keyword">String</span>(<span class="string">"hello"</span>);</span><br><span class="line">        <span class="built_in">char</span>[] ch = &#123;<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>&#125;;</span><br><span class="line">        fun(<span class="built_in">str</span>, ch);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">str</span>);</span><br><span class="line">        System.out.<span class="built_in">println</span>(ch);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class Test &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> fun(<span class="keyword">String</span> <span class="built_in">str</span>, <span class="built_in">char</span>[] ch) &#123;</span><br><span class="line">        <span class="built_in">str</span> = <span class="string">"world"</span>;</span><br><span class="line">        ch[<span class="number">0</span>] = <span class="string">'d'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">String</span> <span class="built_in">str</span> = <span class="keyword">new</span> <span class="keyword">String</span>(<span class="string">"hello"</span>);</span><br><span class="line">        <span class="built_in">char</span>[] ch = &#123;<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>&#125;;</span><br><span class="line">        fun(<span class="built_in">str</span>, ch);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">str</span>);</span><br><span class="line">        System.out.<span class="built_in">println</span>(ch);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>输出结果</strong>  </p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hello</span>  </span><br><span class="line"><span class="attribute">dbc</span></span><br></pre></td></tr></table></figure>
 
-<p>方法调用时，名称相同的实参和形参并不一样，一个是main()中的str,指向存放”hello”的内存地址。一个是fun()中的str，str=”world”,相当于new String(“world”)。String是final类型，将在堆中重新分配一个内存空间存放”world”。ch[0]=’d’,对象的内容发生改变。</p>
-<p><img src="http://ot8blk4sm.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171130.png" alt="image"></p>
+<p>方法调用时，名称相同的实参和形参并不一样，一个是main()中的str ，指向存放”hello”的内存地址。一个是fun()中的str，str=”world”，str指向常量池中的”world”内存地址。ch[0]=’d’，对象的内容发生改变。</p>
 <p>所以main()中str变量存放的对象内容依然是”hello”。ch从”abc”变为”dbc”。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h2><ul>
-<li><p><a href="http://depp.wang/2017/07/26/String-Parameter-passing/" target="_blank" rel="noopener">String的参数传递</a></p>
-</li>
-<li><p><a href="http://blog.csdn.net/qq_16633405/article/details/52818487" target="_blank" rel="noopener">java基础中按值传递和引用传递详解</a></p>
-</li>
-<li><p><a href="http://blog.csdn.net/dove_knowledge/article/details/71038511" target="_blank" rel="noopener">Java中的值传递与引用传递详解</a></p>
-</li>
-</ul>
 
       
     </div>
@@ -647,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型作为参数传递"><span class="nav-number">1.</span> <span class="nav-text">基本数据类型作为参数传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象作为参数传递"><span class="nav-number">2.</span> <span class="nav-text">对象作为参数传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展："><span class="nav-number">3.</span> <span class="nav-text">拓展：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#形参、实参"><span class="nav-number">1.</span> <span class="nav-text">形参、实参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型作为参数传递"><span class="nav-number">2.</span> <span class="nav-text">基本数据类型作为参数传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象作为参数传递"><span class="nav-number">3.</span> <span class="nav-text">对象作为参数传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展："><span class="nav-number">4.</span> <span class="nav-text">拓展：</span></a></li></ol></div>
             
 
           </div>

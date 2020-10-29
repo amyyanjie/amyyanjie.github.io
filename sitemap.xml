@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/11/30/Parameter-passing-in-Java/</loc>
+    
+    <lastmod>2020-10-29T09:10:52.066Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/05/28/thread-learning/</loc>
     
     <lastmod>2020-10-29T02:12:12.285Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>http://yoursite.com/2017/11/22/binary-tree-traversal-note/</loc>
     
     <lastmod>2020-07-29T08:28:26.290Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/11/30/Parameter-passing-in-Java/</loc>
-    
-    <lastmod>2020-07-29T08:28:19.733Z</lastmod>
     
   </url>
   
@@ -163,7 +163,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
+    <loc>http://yoursite.com/categories/index.html</loc>
     
     <lastmod>2019-08-02T03:27:06.532Z</lastmod>
     
@@ -177,7 +177,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/index.html</loc>
+    <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2019-08-02T03:27:06.532Z</lastmod>
     
@@ -212,7 +212,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/01/Execution-of-finally-code-block/</loc>
+    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
     
     <lastmod>2019-08-02T03:27:06.526Z</lastmod>
     
@@ -226,7 +226,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
+    <loc>http://yoursite.com/2017/10/01/Execution-of-finally-code-block/</loc>
     
     <lastmod>2019-08-02T03:27:06.526Z</lastmod>
     

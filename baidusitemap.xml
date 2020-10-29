@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2017/11/30/Parameter-passing-in-Java/</loc>
+    <lastmod>2020-10-29</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/2020/05/28/thread-learning/</loc>
     <lastmod>2020-10-29</lastmod>
   </url>  <url>
@@ -17,9 +20,6 @@
     <lastmod>2020-07-29</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2017/11/22/binary-tree-traversal-note/</loc>
-    <lastmod>2020-07-29</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2017/11/30/Parameter-passing-in-Java/</loc>
     <lastmod>2020-07-29</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2017/12/10/Analysis-of-ArrayList-Class-and-its-traversal-Mode/</loc>
@@ -82,13 +82,13 @@
     <loc>http://yoursite.com/2017/10/22/Java-how-to-retain-two-decimal-places/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/2017/10/01/Execution-of-finally-code-block/</loc>
+    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2017/10/15/Analyze-the-difference-between-int-and-Integer/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
+    <loc>http://yoursite.com/2017/10/01/Execution-of-finally-code-block/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>
 </urlset>
