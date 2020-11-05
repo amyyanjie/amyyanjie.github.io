@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Amy&#39;s Blog">
 <meta property="og:description" content="本文包含以下知识点：   try里有return，finally还执行么？那么紧跟在这个try后的finally{}里的code会不会被执行，什么时候被执行，在return前还是后  如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗  在什么情况下，finally语句不会执行   一、try里有return，finally怎么执行1.finall">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T03:27:06.526Z">
+<meta property="og:updated_time" content="2020-10-30T08:42:27.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="finally代码块的执行情况">
 <meta name="twitter:description" content="本文包含以下知识点：   try里有return，finally还执行么？那么紧跟在这个try后的finally{}里的code会不会被执行，什么时候被执行，在return前还是后  如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗  在什么情况下，finally语句不会执行   一、try里有return，finally怎么执行1.finall">
@@ -384,13 +384,13 @@
 <p>程序在执行到return时会先将返回值存储在一个指定位置，其次去执行finally块，最会再return。</p>
 <p>在finally块中改变基本类型的数据result1/引用类型数据result2的值，与java的<strong>值传递和引用传递</strong>相关。值传递中，形参和实参有着不同的存储单元，对形参的改变不会影响实参的值；引用传递中，传递的是对象的地址，形参和实参的对象指向同一块存储单元对形参的改变就会影响实参的值。</p>
 <h2 id="二、如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗？finally不会执行的情况"><a href="#二、如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗？finally不会执行的情况" class="headerlink" title="二、如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗？finally不会执行的情况"></a>二、如果执行finally代码块之前方法返回了结果，或者JVM退出了，finally块中的代码还会执行吗？finally不会执行的情况</h2><ul>
-<li>java程序中的finally块并不一定会被执行。<br>至少有两种情况finally语句是不会执行的。</li>
+<li>java程序中的 finally 块并不一定会被执行。<br>至少有两种情况 finally语句是不会执行的。</li>
 </ul>
 <p><strong>(1)try语句没有被执行到。</strong></p>
 <p>即没有进入try代码块，对应的finally自然不会执行。</p>
 <p>比如，在try语句之前return就返回了，这样finally不会执行；<br>或者在程序进入java之前就出现异常，会直接结束，也不会执行finally块。</p>
 <p><strong>(2)在try/catch块中有System.exit(0)来退出JVM。</strong></p>
-<p>System.exit(0)是终止JVM的，会强制退出程序，finally{}中的代码就不会被执行。</p>
+<p>System.exit(0)是终止 JVM的 （0 代表正常退出，非零代表异常退出），会强制退出程序，finally{} 中的代码就不会被执行。</p>
 <h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ul>
 <li><p><a href="http://blog.csdn.net/tt_man/article/details/52355736" target="_blank" rel="noopener"> java中finally语句是否一定会被执行</a></p>
 </li>
@@ -548,7 +548,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
