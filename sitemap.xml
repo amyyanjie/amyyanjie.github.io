@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/06/20/Comparable&Comparator/</loc>
+    
+    <lastmod>2020-11-11T09:00:29.669Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/04/21/computer-number/</loc>
+    
+    <lastmod>2020-11-11T08:59:50.566Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/06/05/addShutdownHook/</loc>
     
     <lastmod>2020-11-05T07:36:10.812Z</lastmod>
@@ -170,21 +184,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/04/21/computer-number/</loc>
-    
-    <lastmod>2020-07-29T08:25:42.820Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
+    <loc>http://yoursite.com/categories/index.html</loc>
     
     <lastmod>2019-08-02T03:27:06.532Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/index.html</loc>
+    <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2019-08-02T03:27:06.532Z</lastmod>
     
@@ -212,14 +219,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/22/Java-how-to-retain-two-decimal-places/</loc>
+    <loc>http://yoursite.com/2017/11/07/Java-collection-framework-and-the-basic-interface/</loc>
     
     <lastmod>2019-08-02T03:27:06.527Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/07/Java-collection-framework-and-the-basic-interface/</loc>
+    <loc>http://yoursite.com/2017/10/22/Java-how-to-retain-two-decimal-places/</loc>
     
     <lastmod>2019-08-02T03:27:06.527Z</lastmod>
     

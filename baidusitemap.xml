@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2020/06/20/Comparable&Comparator/</loc>
+    <lastmod>2020-11-11</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2020/04/21/computer-number/</loc>
+    <lastmod>2020-11-11</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/2020/06/05/addShutdownHook/</loc>
     <lastmod>2020-11-05</lastmod>
   </url>  <url>
@@ -73,19 +79,16 @@
     <loc>http://yoursite.com/2020/04/20/positional-operator/</loc>
     <lastmod>2020-07-29</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/2020/04/21/computer-number/</loc>
-    <lastmod>2020-07-29</lastmod>
-  </url>  <url>
     <loc>http://yoursite.com/2017/12/04/The-difference-between-Collection-and-Collections-and-the-methods-commonly-used-in-Collections/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/2017/10/22/Java-how-to-retain-two-decimal-places/</loc>
+    <loc>http://yoursite.com/2017/11/07/Java-collection-framework-and-the-basic-interface/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/2017/11/07/Java-collection-framework-and-the-basic-interface/</loc>
+    <loc>http://yoursite.com/2017/10/22/Java-how-to-retain-two-decimal-places/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2017/10/15/Analyze-the-difference-between-int-and-Integer/</loc>

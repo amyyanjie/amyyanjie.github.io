@@ -89,18 +89,18 @@
 
 
 
-<meta name="description" content="关于原码、反码和补码首先了解机器数和机器数的真值。 机器数和机器数的真值1、机器数数字在计算机中的二进制表现形式。  符号数值化：数据的正负号，在机器里用一位二进制的0或1来区别。通常这个符号放在二进制数的最高位（称符号位），用0代表符号“+”，用1代表符号“-”。 二进制的位数受机器设备的限制。机器内部设备一次能表示的二进制位数叫机器字长。一台机器的字长是固定的（如8位、16位、32位、64位）">
+<meta name="description" content="1、Comparable接口12345package java.lang;import java.util.*;public interface Comparable&amp;lt;T&amp;gt; &amp;#123;    public int compareTo(T o);&amp;#125;  列表和数组中的对象，如果实现了Comparable接口，就能直接通过Collections.sort(List)和Arrays">
 <meta name="keywords" content="Java基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="原码反码补码">
-<meta property="og:url" content="http://yoursite.com/2020/04/21/computer-number/index.html">
+<meta property="og:title" content="Comparable和Comparator">
+<meta property="og:url" content="http://yoursite.com/2020/06/20/Comparable&Comparator/index.html">
 <meta property="og:site_name" content="Amy&#39;s Blog">
-<meta property="og:description" content="关于原码、反码和补码首先了解机器数和机器数的真值。 机器数和机器数的真值1、机器数数字在计算机中的二进制表现形式。  符号数值化：数据的正负号，在机器里用一位二进制的0或1来区别。通常这个符号放在二进制数的最高位（称符号位），用0代表符号“+”，用1代表符号“-”。 二进制的位数受机器设备的限制。机器内部设备一次能表示的二进制位数叫机器字长。一台机器的字长是固定的（如8位、16位、32位、64位）">
+<meta property="og:description" content="1、Comparable接口12345package java.lang;import java.util.*;public interface Comparable&amp;lt;T&amp;gt; &amp;#123;    public int compareTo(T o);&amp;#125;  列表和数组中的对象，如果实现了Comparable接口，就能直接通过Collections.sort(List)和Arrays">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-11-11T08:59:50.566Z">
+<meta property="og:updated_time" content="2020-11-11T09:00:29.669Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="原码反码补码">
-<meta name="twitter:description" content="关于原码、反码和补码首先了解机器数和机器数的真值。 机器数和机器数的真值1、机器数数字在计算机中的二进制表现形式。  符号数值化：数据的正负号，在机器里用一位二进制的0或1来区别。通常这个符号放在二进制数的最高位（称符号位），用0代表符号“+”，用1代表符号“-”。 二进制的位数受机器设备的限制。机器内部设备一次能表示的二进制位数叫机器字长。一台机器的字长是固定的（如8位、16位、32位、64位）">
+<meta name="twitter:title" content="Comparable和Comparator">
+<meta name="twitter:description" content="1、Comparable接口12345package java.lang;import java.util.*;public interface Comparable&amp;lt;T&amp;gt; &amp;#123;    public int compareTo(T o);&amp;#125;  列表和数组中的对象，如果实现了Comparable接口，就能直接通过Collections.sort(List)和Arrays">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/21/computer-number/">
+  <link rel="canonical" href="http://yoursite.com/2020/06/20/Comparable&Comparator/">
 
 
 
 
 
-  <title>原码反码补码 | Amy's Blog</title>
+  <title>Comparable和Comparator | Amy's Blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/21/computer-number/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/20/Comparable&Comparator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Amy">
@@ -272,7 +272,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">原码反码补码</h2>
+          <h2 class="post-title" itemprop="name headline">Comparable和Comparator</h2>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-21T21:22:04+08:00">
-                2020-04-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-20T22:15:20+08:00">
+                2020-06-20
               </time>
             
 
@@ -324,7 +324,7 @@
 
           
           
-             <span id="/2020/04/21/computer-number/" class="leancloud_visitors" data-flag-title="原码反码补码">
+             <span id="/2020/06/20/Comparable&Comparator/" class="leancloud_visitors" data-flag-title="Comparable和Comparator">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -352,45 +352,27 @@
       
 
       
-        <h2 id="关于原码、反码和补码"><a href="#关于原码、反码和补码" class="headerlink" title="关于原码、反码和补码"></a>关于原码、反码和补码</h2><p>首先了解机器数和机器数的真值。</p>
-<h3 id="机器数和机器数的真值"><a href="#机器数和机器数的真值" class="headerlink" title="机器数和机器数的真值"></a>机器数和机器数的真值</h3><h4 id="1、机器数"><a href="#1、机器数" class="headerlink" title="1、机器数"></a>1、机器数</h4><p>数字在计算机中的二进制表现形式。</p>
-<ul>
-<li>符号数值化：数据的正负号，在机器里用一位二进制的0或1来区别。通常这个符号放在二进制数的最高位（称符号位），用0代表符号“+”，用1代表符号“-”。</li>
-<li>二进制的位数受机器设备的限制。机器内部设备一次能表示的二进制位数叫机器字长。一台机器的字长是固定的（如8位、16位、32位、64位）。<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">比如在字长为<span class="number">8</span>的计算机中。</span><br><span class="line">十进制的+<span class="number">5</span>，其机器数为：<span class="number">00000101</span></span><br><span class="line">十进制的<span class="number">-5</span>，其机器数为：<span class="number">10000101</span></span><br></pre></td></tr></table></figure>
+        <h3 id="1、Comparable接口"><a href="#1、Comparable接口" class="headerlink" title="1、Comparable接口"></a>1、<code>Comparable</code>接口</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.lang;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(T o)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>列表和数组中的对象，如果实现了<code>Comparable</code>接口，就能直接通过<code>Collections.sort(List)</code>和<code>Arrays.sort(Object[])</code>进行排序。</p>
+<p>实现了<code>Comparable</code>接口的对象，可以用作<code>SortedMap</code>中的键或<code>SortedSet</code>排序集中的元素，且无需指定 Comparator比较器。</p>
+<p>比如 Integer 类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Integer</span> <span class="keyword">extends</span> <span class="title">Number</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Integer anotherInteger)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> compare(<span class="keyword">this</span>.value, anotherInteger.value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 根据元素大小比较，-1 小于 anotherInteger，0 等于，1 大于</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (x &lt; y) ? -<span class="number">1</span> : ((x == y) ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用自然排序需要类实现 <code>Comparable</code>，并且在内部重写 <code>comparaTo</code> 方法。</p>
+<h3 id="2、Comparator比较器"><a href="#2、Comparator比较器" class="headerlink" title="2、Comparator比较器"></a>2、<code>Comparator</code>比较器</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.util;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(T o1, T o2)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>;</span><br><span class="line">    <span class="comment">// 以及一些 default 方法：实现类不必覆写default方法。</span></span><br><span class="line">    <span class="comment">// 以及一些 static 静态方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们如果想让类保持它的原貌，不想修改类使主动实现 Comparable 接口，但又需要它们之间进行比较，这就需要用到<code>Comparator</code>接口。</p>
+<p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*User类*/</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">2505035389234495754L</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> userId;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(<span class="keyword">int</span> userId, Integer age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userId = userId;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*自定义User类的比较器*/</span></span><br><span class="line"><span class="comment">//创建一个 Comparator 接口的实现类，在 compare 方法中针对自定义类写排序规则</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">UserComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">User</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(User o1, User o2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (o1 == <span class="keyword">null</span> || o2 == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> o1.getAge() - o2.getAge();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*将自定义比较器 UserComparator 对象作为参数传递给排序类的某个方法。*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ComparatorTest</span>  </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        User user1 = <span class="keyword">new</span> User(<span class="number">1</span>, <span class="number">18</span>);</span><br><span class="line">        User user2 = <span class="keyword">new</span> User(<span class="number">2</span>, <span class="number">15</span>);</span><br><span class="line">        List&lt;User&gt; userList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        userList.add(user1);</span><br><span class="line">        userList.add(user2);</span><br><span class="line">        <span class="comment">//userList.sort(new UserComparator());</span></span><br><span class="line">        Collections.sort(userList,<span class="keyword">new</span> UserComparator());</span><br><span class="line">        System.out.println(userList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、两者比较："><a href="#3、两者比较：" class="headerlink" title="3、两者比较："></a>3、两者比较：</h3><ul>
+<li><p>使用自然排序需要类实现 <code>Comparable</code>，并且在内部重写 <code>comparaTo</code> 方法。</p>
 </li>
-</ul>
-<h4 id="2、机器数的真值"><a href="#2、机器数的真值" class="headerlink" title="2、机器数的真值"></a>2、机器数的真值</h4><p>机器数有符号占据一位，所以机器数的形式值就不等于真值。</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">例如机器数：<span class="number">10000101</span></span><br><span class="line">最高位<span class="number">1</span>表示“-”，则真值数为<span class="number">-0000101</span>，十进制真值为<span class="number">-5</span>。</span><br><span class="line">真值是不计算符号位的（第一位不表示值，只表示正负）。</span><br></pre></td></tr></table></figure>
-
-<h3 id="机器数的三种形式"><a href="#机器数的三种形式" class="headerlink" title="机器数的三种形式"></a>机器数的三种形式</h3><a id="more"></a>
-
-<h4 id="1、原码"><a href="#1、原码" class="headerlink" title="1、原码"></a>1、原码</h4><p>原码：将数的真值形式中“+”用0表示，“-”用1表示。</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+<span class="number">5</span>原码：<span class="number">00000101</span></span><br><span class="line"><span class="number">-5</span>原码：<span class="number">10000101</span></span><br></pre></td></tr></table></figure>
-
-<p>加减法运算复杂。</p>
-<h4 id="2、反码"><a href="#2、反码" class="headerlink" title="2、反码"></a>2、反码</h4><p>正数的反码与原码相同；负数的反码是对其原码数值位（不包含符号位）逐一取反。</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+<span class="number">5</span>原码：<span class="number">00000101</span>   反码：<span class="number">00000101</span></span><br><span class="line"><span class="number">-5</span>原码：<span class="number">10000101</span>   反码：<span class="number">11111010</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3、补码"><a href="#3、补码" class="headerlink" title="3、补码"></a>3、补码</h4><p>正数的补码与原码相同；负数的补码是符号位不变，其余位取反，再末位+1（相当于反码末位+1）。</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+<span class="number">5</span>原码：<span class="number">00000101</span>   反码：<span class="number">00000101</span>    补码：<span class="number">00000101</span></span><br><span class="line"><span class="number">-5</span>原码：<span class="number">10000101</span>   反码：<span class="number">11111010</span>    补码：<span class="number">11111011</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>数据在计算机中是以其补码形式存储和运算的。</strong></p>
-<ul>
-<li>补码运算时，其符号位与数值部分一起参与运算。</li>
-<li>补码运算时，其运算结果仍为补码。（在转换为真值时，若符号位为 0，数位不变；若符号位为 1，应将结果求补才是其真值。）</li>
-</ul>
-<p>java转换二进制：</p>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Integer.toBinaryString()</span></span><br><span class="line"><span class="keyword">System</span>.out.println(<span class="keyword">Integer</span>.toBinaryString(<span class="number">5</span>));  <span class="comment">//输出101</span></span><br><span class="line"><span class="keyword">System</span>.out.println(<span class="keyword">Integer</span>.toBinaryString(<span class="number">-5</span>)); <span class="comment">//输出11111111111111111111111111111011</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="二进制数的四则运算"><a href="#二进制数的四则运算" class="headerlink" title="二进制数的四则运算"></a>二进制数的四则运算</h2><ul>
-<li>加运算：0+0=0；1+0=1；0+1=1；1+1=10（逢2进1）。</li>
-<li>减运算：1-1=0；1-0=1；0-0=0；0-1=1（向高位借1当2）。</li>
-<li>乘运算：0 * 0=0；0 * 1=0；1 * 1=1。</li>
-<li>除运算：1除以1=1；0除以1=0。</li>
-</ul>
-<h2 id="推荐文章"><a href="#推荐文章" class="headerlink" title="推荐文章"></a>推荐文章</h2><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2009/08/twos_complement.html" target="_blank" rel="noopener">阮一峰的网络日志：关于2的补码</a></li>
+<li><p><code>Comparator</code> 则是在外部制定排序规则，然后作为排序策略参数传递给某些类，比如 <code>Collections.sort ()</code>，<code>Arrays.sort()</code>，或者一些内部有序的集合（比如 <code>SortedSet</code>，<code>SortedMap</code> 等）。</p>
+</li>
 </ul>
 
       
@@ -420,7 +402,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2020/04/21/computer-number/" title="原码反码补码">http://yoursite.com/2020/04/21/computer-number/</a>
+      <a href="http://yoursite.com/2020/06/20/Comparable&Comparator/" title="Comparable和Comparator">http://yoursite.com/2020/06/20/Comparable&Comparator/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -449,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/20/positional-operator/" rel="next" title="位运算符">
-                <i class="fa fa-chevron-left"></i> 位运算符
+              <a href="/2020/06/05/addShutdownHook/" rel="next" title="Hook(钩子)线程">
+                <i class="fa fa-chevron-left"></i> Hook(钩子)线程
               </a>
             
           </div>
@@ -458,10 +440,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/05/10/object-oriented-in-Java/" rel="prev" title="继承、多态、接口、抽象类">
-                继承、多态、接口、抽象类 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -629,7 +607,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于原码、反码和补码"><span class="nav-number">1.</span> <span class="nav-text">关于原码、反码和补码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#机器数和机器数的真值"><span class="nav-number">1.1.</span> <span class="nav-text">机器数和机器数的真值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、机器数"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、机器数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、机器数的真值"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、机器数的真值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器数的三种形式"><span class="nav-number">1.2.</span> <span class="nav-text">机器数的三种形式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、原码"><span class="nav-number">1.2.1.</span> <span class="nav-text">1、原码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、反码"><span class="nav-number">1.2.2.</span> <span class="nav-text">2、反码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、补码"><span class="nav-number">1.2.3.</span> <span class="nav-text">3、补码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制数的四则运算"><span class="nav-number">2.</span> <span class="nav-text">二进制数的四则运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐文章"><span class="nav-number">3.</span> <span class="nav-text">推荐文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、Comparable接口"><span class="nav-number">1.</span> <span class="nav-text">1、Comparable接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、Comparator比较器"><span class="nav-number">2.</span> <span class="nav-text">2、Comparator比较器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、两者比较："><span class="nav-number">3.</span> <span class="nav-text">3、两者比较：</span></a></li></ol></div>
             
 
           </div>
