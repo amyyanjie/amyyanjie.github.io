@@ -1,0 +1,1057 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="google-site-verification" content="hOzwzcL7Td1p_evvLmRBasbQKy5-i5AgJwNLD2vHKJ8">
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Java基础,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="final 关键字可以声明成员变量、方法、类以及本地变量。 通过为final域增加写和读重排序规则，可以为Java程序员提供初始化安全保证：只要对象是正确构造的，不需要使用同步（指lock和volatile的使用）就可以保证任意线程都能看到这个final域在构造函数中被初始化之后的值。">
+<meta name="keywords" content="Java基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="final关键字及final域的内存语义">
+<meta property="og:url" content="http://yoursite.com/2020/11/19/final/index.html">
+<meta property="og:site_name" content="Amy&#39;s Blog">
+<meta property="og:description" content="final 关键字可以声明成员变量、方法、类以及本地变量。 通过为final域增加写和读重排序规则，可以为Java程序员提供初始化安全保证：只要对象是正确构造的，不需要使用同步（指lock和volatile的使用）就可以保证任意线程都能看到这个final域在构造函数中被初始化之后的值。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://amy-resource.oss-cn-beijing.aliyuncs.com/images/write_final_reordering.png">
+<meta property="og:image" content="https://amy-resource.oss-cn-beijing.aliyuncs.com/images/read_final_reordering.png">
+<meta property="og:image" content="https://amy-resource.oss-cn-beijing.aliyuncs.com/images/reference_final_reordering.png">
+<meta property="og:image" content="https://amy-resource.oss-cn-beijing.aliyuncs.com/images/reference_escape_final_example.png">
+<meta property="og:updated_time" content="2020-11-19T07:57:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="final关键字及final域的内存语义">
+<meta name="twitter:description" content="final 关键字可以声明成员变量、方法、类以及本地变量。 通过为final域增加写和读重排序规则，可以为Java程序员提供初始化安全保证：只要对象是正确构造的，不需要使用同步（指lock和volatile的使用）就可以保证任意线程都能看到这个final域在构造函数中被初始化之后的值。">
+<meta name="twitter:image" content="https://amy-resource.oss-cn-beijing.aliyuncs.com/images/write_final_reordering.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键字","hits_empty":"没有找到与 ${query} 相关的内容","hits_stats":"${hits}条相关记录，共耗时${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/11/19/final/">
+
+
+
+
+
+  <title>final关键字及final域的内存语义 | Amy's Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Amy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">这是副标题</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/19/final/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">final关键字及final域的内存语义</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-19T12:48:09+08:00">
+                2020-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/11/19/final/" class="leancloud_visitors" data-flag-title="final关键字及final域的内存语义">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>final 关键字可以声明成员变量、方法、类以及本地变量。</p>
+<p>通过为final域增加写和读重排序规则，可以为Java程序员提供初始化安全保证：只要对象是正确构造的，不需要使用同步（指lock和volatile的使用）就可以保证任意线程都能看到这个final域在构造函数中被初始化之后的值。</p>
+<a id="more"></a>
+
+<h2 id="一、final-使用"><a href="#一、final-使用" class="headerlink" title="一、final 使用"></a>一、final 使用</h2><p>一旦你将引用声明作final，你将不能改变这个引用了，编译器会检查代码，如果你试图将变量再次初始化的话，编译器会报编译错误。</p>
+<h3 id="1-1、final-变量"><a href="#1-1、final-变量" class="headerlink" title="1.1、final 变量"></a>1.1、final 变量</h3><p>final 可以声明成员变量和本地变量（局部变量）。</p>
+<p>1）必须显示初始化</p>
+<p> final 修饰变量，必须要显示初始化。这里有两种初始化方式，一种是在变量声明的时候初始化；第二种方法是在声明变量的时候不赋初值，但是要在这个变量所在的类的所有的构造函数中对这个变量赋初值。</p>
+<blockquote>
+<p>   在类成员中 <code>final</code>如果和 <code>static</code>一起使用，作为类常量使用，此时必须在声明时初始化赋值。</p>
+<p>   本地变量（局部变量）也必须在声明时赋值，不属于类变量，无法在构造函数中赋值。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*与static一起使用，做类常量，必须声明时初始化赋值*/</span></span><br><span class="line">    <span class="comment">// private final static String a; //报错</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String a = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*可以在声明时初始化赋值，也可以在构造函数中赋值*/</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String b = <span class="string">"b"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String c;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FinalTest</span><span class="params">(String c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.c = c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2）基本数据类型和引用类型变量</p>
+<p>final 修饰基本数据类型变量，不可变的是变量值，在初始化后不可改变；</p>
+<p>final 修饰引用类型变量，<strong>不可变的是引用指向的对象地址，引用指向的对象内容是可以变化的</strong>。对其初始化之后便不能再让其指向其他对象了，但该引用所指向的对象的内容是可以发生变化的。</p>
+<h3 id="1-2、final-方法"><a href="#1-2、final-方法" class="headerlink" title="1.2、final 方法"></a>1.2、final 方法</h3><p>final 方法不能被重写。</p>
+<p>使用 final 修饰方法的原因：把方法锁定，以防任何继承类修改它的含义，即该方法不能被子类重写。</p>
+<h3 id="1-3、final-类"><a href="#1-3、final-类" class="headerlink" title="1.3、final 类"></a>1.3、final 类</h3><p>final 类不能被继承。</p>
+<p>​    final 类中的变量可以为final，也可以非final。<br>​    final 类中的方法默认为final，因为不会被覆写。</p>
+<h3 id="1-4、final其他特点"><a href="#1-4、final其他特点" class="headerlink" title="1.4、final其他特点"></a>1.4、final其他特点</h3><ul>
+<li><p>接口中声明的所有变量本身是final的。</p>
+<p>接口中定义的成员变量，默认都是<code>public static final</code>的常量（静态字段）。</p>
+</li>
+<li><p><code>final</code>与<code>abstract</code>是相反的，不会一起出现。</p>
+</li>
+<li><p><code>final</code>与<code>static</code>：一起使用，可修饰变量、修饰方法，不可被改变重写，通过类名直接访问。</p>
+</li>
+<li><p>父类中 <code>private final</code> 方法，子类可以重新定义同名方法，这种情况不是重写。</p>
+</li>
+</ul>
+<h2 id="二、final-的重排序规则"><a href="#二、final-的重排序规则" class="headerlink" title="二、final 的重排序规则"></a>二、final 的重排序规则</h2><p>对于 final 域，编译器和处理器要遵守两个重排序规则：</p>
+<ul>
+<li><p>在构造函数内对一个 final 域的写入，与随后把这个被构造对象的引用赋值给一个引用变量，这两个操作之间不能重排序。</p>
+<p>  原因：编译器会在 final 域的写之后，构造函数 return 之前，插入一个 <strong>StoreStore 屏障</strong>。</p>
+</li>
+<li><p>初次读一个包含 final 域的对象的引用，与随后初次读这个 final 域，这两个操作之间不能重排序。</p>
+<p>  原因：编译器会在读 final 域操作的前面插入一个 <strong>LoadLoad 屏障</strong>。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalExample</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;                            <span class="comment">//普通变量</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> j;                      <span class="comment">//final变量</span></span><br><span class="line">    <span class="keyword">static</span> FinalExample obj;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FinalExample</span><span class="params">()</span> </span>&#123;     <span class="comment">//构造函数</span></span><br><span class="line">        i = <span class="number">1</span>;                        <span class="comment">//写普通域</span></span><br><span class="line">        j = <span class="number">2</span>;                        <span class="comment">//写final域</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writer</span><span class="params">()</span> </span>&#123;    <span class="comment">//写线程A执行</span></span><br><span class="line">        obj = <span class="keyword">new</span> FinalExample();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reader</span><span class="params">()</span> </span>&#123;       <span class="comment">//读线程B执行</span></span><br><span class="line">        FinalExample object = obj;       <span class="comment">//读对象引用</span></span><br><span class="line">        <span class="keyword">int</span> a = object.i;                <span class="comment">//读普通域</span></span><br><span class="line">        <span class="keyword">int</span> b = object.j;                <span class="comment">//读final域</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里假设一个线程 A 执行 writer () 方法，随后另一个线程 B 执行 reader () 方法。下面我们通过这两个线程的交互来说明这两个规则。</p>
+<h3 id="2-1、写-final-域的重排序规则"><a href="#2-1、写-final-域的重排序规则" class="headerlink" title="2.1、写 final 域的重排序规则"></a>2.1、写 final 域的重排序规则</h3><p>1）分析</p>
+<p>writer () 方法只包含一行代码：<code>FinalExample obj = new FinalExample ()</code>。</p>
+<p>这行代码包含两个步骤：构造一个 FinalExample 类型的对象；把这个对象的引用赋值给引用变量 obj。</p>
+<p>假设线程 B 读对象引用与读对象的成员域之间没有重排序，下图是一种可能的执行时序：</p>
+<img src="https://amy-resource.oss-cn-beijing.aliyuncs.com/images/write_final_reordering.png" alt="write_final_reordering" style="zoom: 33%;">
+
+<p>在上图中，写普通域 i 的操作被编译器重排序到了构造函数之外，读线程 B 错误的读取了普通变量 i 初始化之前的值。</p>
+<p>而写 final 域的操作，被写 final 域的重排序规则 “限定” 在了构造函数之内，读线程 B 正确的读取了 final 变量初始化之后的值。</p>
+<p>2）规则描述</p>
+<p><strong>写 final 域的重排序规则如下：</strong></p>
+<ul>
+<li><p><strong>JMM （Java 内存模型）禁止编译器把 final 域的写重排序到构造函数之外</strong>。</p>
+<p>编译器会在 final 域的写之后，构造函数 return 之前，插入一个 <strong>StoreStore 屏障</strong>。这个屏障禁止处理器把 final 域的写重排序到构造函数之外。</p>
+</li>
+</ul>
+<p><strong>写 final 域的重排序规则可以确保：在对象引用为任意线程可见之前，对象的 final 域已经被正确初始化过了</strong>，而普通域不具有这个保障。以上图为例，在读线程 B “看到” 对象引用 obj 时，很可能 obj 对象还没有构造完成（对普通域 i 的写操作被重排序到构造函数外，此时初始值 2 还没有写入普通域 i）。</p>
+<h3 id="2-2、读-final-域的重排序规则"><a href="#2-2、读-final-域的重排序规则" class="headerlink" title="2.2、读 final 域的重排序规则"></a>2.2、读 final 域的重排序规则</h3><p>1）分析</p>
+<blockquote>
+<p>初次读对象引用与初次读该对象包含的 final 域，这两个操作之间存在间接依赖关系。由于编译器遵守间接依赖关系，因此编译器不会重排序这两个操作。</p>
+<p>大多数处理器也会遵守间接依赖，大多数处理器也不会重排序这两个操作。但有少数处理器允许对存在间接依赖关系的操作做重排序（比如 alpha 处理器），这个规则就是专门用来针对这种处理器。</p>
+</blockquote>
+<p>reader () 方法包含三个操作：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reader</span>(<span class="params"></span>)</span> &#123;       </span><br><span class="line">    FinalExample <span class="keyword">object</span> = obj;       <span class="comment">//初次读引用变量 obj</span></span><br><span class="line">    <span class="keyword">int</span> a = <span class="keyword">object</span>.i;                <span class="comment">//初次读引用变量 obj 指向对象的普通域 j</span></span><br><span class="line">    <span class="keyword">int</span> b = <span class="keyword">object</span>.j;                <span class="comment">//初次读引用变量 obj 指向对象的 final 域 i</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>假设写线程 A 没有发生任何重排序，同时程序在不遵守间接依赖的处理器上执行，下面是一种可能的执行时序：</p>
+<img src="https://amy-resource.oss-cn-beijing.aliyuncs.com/images/read_final_reordering.png" alt="read_final_reordering" style="zoom:33%;">
+
+<p>在上图中，读对象的普通域的操作被处理器重排序到读对象引用之前。读普通域时，该域还没有被写线程 A 写入，这是一个错误的读取操作。</p>
+<p>而读 final 域的重排序规则会把读对象 final 域的操作 “限定” 在读对象引用之后，此时该 final 域已经被 A 线程初始化过了，这是一个正确的读取操作。</p>
+<p>2）规则描述</p>
+<p>读 final 域的重排序规则如下：</p>
+<ul>
+<li><p>在一个线程中，初次读对象引用与初次读该对象包含的 final 域，JMM 禁止处理器重排序这两个操作（注意，这个规则仅仅针对处理器）。</p>
+<p>编译器会在<strong>读 final 域操作的前面插入一个 LoadLoad 屏障</strong>。</p>
+</li>
+</ul>
+<p>读 final 域的重排序规则可以确保：在读一个对象的 final 域之前，一定会先读包含这个 final 域的对象的引用。在这个示例程序中，如果该引用不为 null，那么引用对象的 final 域一定已经被 A 线程初始化过了。</p>
+<h3 id="2-3、如果-final-域是引用类型"><a href="#2-3、如果-final-域是引用类型" class="headerlink" title="2.3、如果 final 域是引用类型"></a>2.3、如果 final 域是引用类型</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalReferenceExample</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span>[] intArray;                 <span class="comment">// final 是引用类型</span></span><br><span class="line">    <span class="keyword">static</span> FinalReferenceExample obj;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FinalReferenceExample</span><span class="params">()</span> </span>&#123;      <span class="comment">// 构造函数</span></span><br><span class="line">        intArray = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1</span>];  <span class="comment">// 1.对 final 域的写入</span></span><br><span class="line">        intArray[<span class="number">0</span>] = <span class="number">1</span>;        <span class="comment">// 2.对这个 final 域引用的对象的成员域的写入</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writerOne</span><span class="params">()</span> </span>&#123;          <span class="comment">// 写线程 A</span></span><br><span class="line">        obj = <span class="keyword">new</span> FinalReferenceExample(); <span class="comment">// 3.把被构造的对象的引用赋值给某个引用变量</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writerTwo</span><span class="params">()</span> </span>&#123;          <span class="comment">// 写线程 B</span></span><br><span class="line">        obj.intArray[<span class="number">0</span>] = <span class="number">2</span>;                  <span class="comment">//4. </span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reader</span><span class="params">()</span> </span>&#123;             <span class="comment">// 读线程 C</span></span><br><span class="line">        <span class="keyword">if</span> (obj != <span class="keyword">null</span>) &#123;                    <span class="comment">//5. </span></span><br><span class="line">            <span class="keyword">int</span> temp1 = obj.intArray[<span class="number">0</span>];      <span class="comment">//6. </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1）分析</p>
+<p>假设首先线程 A 执行 writerOne () 方法，执行完后线程 B 执行 writerTwo () 方法，执行完后线程 C 执行 reader () 方法。下面是一种可能的线程执行时序：</p>
+<img src="https://amy-resource.oss-cn-beijing.aliyuncs.com/images/reference_final_reordering.png" alt="reference_final_reordering" style="zoom:33%;">
+
+<p>线程 A ：<code>obj = new FinalReferenceExample()</code>主要包括：</p>
+<p>1 是写 final 引用：<code>intArray = new int[1];</code></p>
+<p>2 是写 final 引用对象的成员域：<code>intArray[0] = 1;</code></p>
+<p>3 是把构造对象的引用赋值给引用变量 obj 。</p>
+<p>这里除了前面提到的 1 不能和 3 重排序外，2 和 3 也不能重排序。</p>
+<p>JMM 可以确保读线程 C 至少能看到写线程 A 在构造函数中对 final 引用对象的成员域的写入。即 C 至少能看到数组下标 0 的值为 1。而写线程 B 对数组元素的写入，读线程 C 可能看的到，也可能看不到。JMM 不保证线程 B 的写入对读线程 C 可见，因为写线程 B 和读线程 C 之间存在数据竞争，此时的执行结果不可预知。</p>
+<p><strong>如果想要确保读线程 C 看到写线程 B 对数组元素的写入，写线程 B 和读线程 C 之间需要使用同步原语（lock 或 volatile）来确保内存可见性</strong>。</p>
+<p>2）描述</p>
+<ul>
+<li>在构造函数内对一个 final 引用的对象的成员域的写入，与随后在构造函数外把这个被构造对象的引用赋值给一个引用变量，这两个操作之间不能重排序。</li>
+</ul>
+<h2 id="三、为什么-final-引用不能从构造函数内”逸出“"><a href="#三、为什么-final-引用不能从构造函数内”逸出“" class="headerlink" title="三、为什么 final 引用不能从构造函数内”逸出“"></a>三、为什么 final 引用不能从构造函数内”逸出“</h2><p>写 final 域的重排序规则可以确保：在引用变量为任意线程可见之前，该引用变量指向的对象的 final 域已经在构造函数中被正确初始化过了。</p>
+<p>其实要得到这个效果，还需要一个保证：在构造函数内部，不能让这个被构造对象的引用为其他线程可见，也就是对象引用不能在构造函数中 “逸出”。</p>
+<p>为了说明问题，让我们来看下面示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalReferenceEscapeExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">static</span> FinalReferenceEscapeExample obj;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FinalReferenceEscapeExample</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        i = <span class="number">1</span>;                     <span class="comment">// 1.写 final 域</span></span><br><span class="line">        obj = <span class="keyword">this</span>;                  <span class="comment">// 2.这里非正确构造，被构造对象的 this 引用在构造函数中 “逸出”，执行 read () 方法的线程仍然可能无法看到 final 域被初始化后的值</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> FinalReferenceEscapeExample();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reader</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (obj != <span class="keyword">null</span>) &#123;                     <span class="comment">//3</span></span><br><span class="line">            <span class="keyword">int</span> temp = obj.i;                 <span class="comment">//4</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>假设一个线程 A 执行 writer () 方法，另一个线程 B 执行 reader () 方法。</p>
+<p>这里的操作 2（<code>obj = this</code> ）使得对象还未完成构造前就为线程 B 可见。即使这里的操作 2 是构造函数的最后一步，且即使在程序中操作 2 排在操作 1 后面，执行 read () 方法的线程仍然可能无法看到 final 域被初始化后的值，因为这里的操作 1 和操作 2 之间可能被重排序。</p>
+<p>实际的执行时序可能如下图所示：</p>
+<img src="https://amy-resource.oss-cn-beijing.aliyuncs.com/images/reference_escape_final_example.png" alt="reference_escape_final_example" style="zoom:33%;">
+
+<p>从上图可以看出：<strong>在构造函数返回前，被构造对象的引用不能为其他线程可见（不能将 final 引用在构造函数内逸出），因为此时的 final 域可能还没有被初始化。在构造函数返回后，任意线程都将保证能看到 final 域正确初始化之后的值。</strong></p>
+<h2 id="四、final-语义"><a href="#四、final-语义" class="headerlink" title="四、final 语义"></a>四、final 语义</h2><p>通过为 final 域增加写和读重排序规则，可以为 java 程序员提供初始化安全保证：</p>
+<p><strong>只要对象是正确构造的（被构造对象的引用在构造函数中没有 “逸出”），那么不需要使用同步（指 lock 和 volatile 的使用），就可以保证任意线程都能看到这个 final 域在构造函数中被初始化之后的值。</strong></p>
+<blockquote>
+<p>final 关键字的可见性是指：：被 final 修饰的字段在构造器中一旦初始化完成，并且构造器没有把 “this” 的引用传递出去（ this 引用逃逸是一件很危险的事情，其他线程有可能通过这个引用访问到“初始化了一半”的对象），那在其他线程中就能看见 final 字段的值。</p>
+</blockquote>
+<p>《Java并发编程的艺术》</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Amy
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2020/11/19/final/" title="final关键字及final域的内存语义">http://yoursite.com/2020/11/19/final/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java-Foundation/" rel="tag"># Java基础</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/17/current-limiting/" rel="next" title="限流算法">
+                <i class="fa fa-chevron-left"></i> 限流算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59a23d4837e48752" async="async"></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="gitalk-container"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/deppwang.png" alt="Amy">
+          <p class="site-author-name" itemprop="name">Amy</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/DeppWang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://jm.taobao.org/" title="阿里中间件团队博客" target="_blank">阿里中间件团队博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me/" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.liaoxuefeng.com/" title="廖雪峰个人网站" target="_blank">廖雪峰个人网站</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、final-使用"><span class="nav-number">1.</span> <span class="nav-text">一、final 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1、final-变量"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、final 变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2、final-方法"><span class="nav-number">1.2.</span> <span class="nav-text">1.2、final 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3、final-类"><span class="nav-number">1.3.</span> <span class="nav-text">1.3、final 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4、final其他特点"><span class="nav-number">1.4.</span> <span class="nav-text">1.4、final其他特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、final-的重排序规则"><span class="nav-number">2.</span> <span class="nav-text">二、final 的重排序规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1、写-final-域的重排序规则"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、写 final 域的重排序规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2、读-final-域的重排序规则"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、读 final 域的重排序规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3、如果-final-域是引用类型"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、如果 final 域是引用类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、为什么-final-引用不能从构造函数内”逸出“"><span class="nav-number">3.</span> <span class="nav-text">三、为什么 final 引用不能从构造函数内”逸出“</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、final-语义"><span class="nav-number">4.</span> <span class="nav-text">四、final 语义</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Amy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp
+本站访客数<span id="busuanzi_value_site_uv"></span>人次
+
+</div>
+
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  
+   <script src="/js/src/md5.min.js"></script>
+   
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'b58b66e4ffae6a11e4ae',
+          clientSecret: '0a7632a9afef7e63fe9bf854bc04b52d2e531827',
+          repo: 'deppwang.github.io',
+          owner: 'DeppWang',
+          admin: ['DeppWang'],
+          id: md5(location.pathname)
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("TUz90ld4GOIFf4QNVMoS5bOL-gzGzoHsz", "6O4O958ETCIUpQylcG1Gc8wY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

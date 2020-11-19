@@ -255,6 +255,834 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/21/computer-number/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/21/computer-number/" itemprop="url">原码反码补码</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-21T21:22:04+08:00">
+                2020-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/04/21/computer-number/" class="leancloud_visitors" data-flag-title="原码反码补码">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="关于原码、反码和补码"><a href="#关于原码、反码和补码" class="headerlink" title="关于原码、反码和补码"></a>关于原码、反码和补码</h2><p>首先了解机器数和机器数的真值。</p>
+<h3 id="机器数和机器数的真值"><a href="#机器数和机器数的真值" class="headerlink" title="机器数和机器数的真值"></a>机器数和机器数的真值</h3><h4 id="1、机器数"><a href="#1、机器数" class="headerlink" title="1、机器数"></a>1、机器数</h4><p>数字在计算机中的二进制表现形式。</p>
+<ul>
+<li>符号数值化：数据的正负号，在机器里用一位二进制的0或1来区别。通常这个符号放在二进制数的最高位（称符号位），用0代表符号“+”，用1代表符号“-”。</li>
+<li>二进制的位数受机器设备的限制。机器内部设备一次能表示的二进制位数叫机器字长。一台机器的字长是固定的（如8位、16位、32位、64位）。<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">比如在字长为<span class="number">8</span>的计算机中。</span><br><span class="line">十进制的+<span class="number">5</span>，其机器数为：<span class="number">00000101</span></span><br><span class="line">十进制的<span class="number">-5</span>，其机器数为：<span class="number">10000101</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="2、机器数的真值"><a href="#2、机器数的真值" class="headerlink" title="2、机器数的真值"></a>2、机器数的真值</h4><p>机器数有符号占据一位，所以机器数的形式值就不等于真值。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">例如机器数：<span class="number">10000101</span></span><br><span class="line">最高位<span class="number">1</span>表示“-”，则真值数为<span class="number">-0000101</span>，十进制真值为<span class="number">-5</span>。</span><br><span class="line">真值是不计算符号位的（第一位不表示值，只表示正负）。</span><br></pre></td></tr></table></figure>
+
+<h3 id="机器数的三种形式"><a href="#机器数的三种形式" class="headerlink" title="机器数的三种形式"></a>机器数的三种形式</h3>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/21/computer-number/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/20/positional-operator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/20/positional-operator/" itemprop="url">位运算符</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-20T21:22:04+08:00">
+                2020-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/04/20/positional-operator/" class="leancloud_visitors" data-flag-title="位运算符">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><blockquote>
+<p>java定义了位运算符，应用于<strong>short（短整型）、int（整数类型）、long（长整型）、byte（字节型）、char（字符型）</strong>。位运算表示对每个二进制位(bit)进行计算，其操作数和运算结果都是整数型。</p>
+</blockquote>
+<p>位运算符主要针对二进制（补码），按照低位到高位一一对齐运算。</p>
+<ul>
+<li>位逻辑运算符包括：<code>&amp;</code>（与）、<code>|</code>（或）、<code>~</code>（非）、<code>^</code>（异或）。除了<code>~</code>为单目运算符外，其余都为双目运算符。</li>
+<li>位移运算符包括&lt;&lt;（左移运算符）、&gt;&gt;（右移运算符）、&gt;&gt;&gt;（无符号右移运算符）。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/20/positional-operator/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </li></ul></div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/palindrome-number/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/20/palindrome-number/" itemprop="url">5.回文数-判断</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T19:00:02+08:00">
+                2019-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms-DataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms/DataStructure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/08/20/palindrome-number/" class="leancloud_visitors" data-flag-title="5.回文数-判断">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
+<p>例：121 -&gt; true，-121 -&gt; false</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="一、字符串的反转"><a href="#一、字符串的反转" class="headerlink" title="一、字符串的反转"></a>一、字符串的反转</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    String str = String.valueOf(x);</span><br><span class="line">    String reserveStr = <span class="keyword">new</span> StringBuilder(str).reverse().toString();</span><br><span class="line">    <span class="keyword">if</span> (str.equals(reserveStr)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、数学：去首去尾，首尾比较"><a href="#二、数学：去首去尾，首尾比较" class="headerlink" title="二、数学：去首去尾，首尾比较"></a>二、数学：去首去尾，首尾比较</h3><p>例：x = 12321</p>
+<ul>
+<li>得到首位left： 12321 / 10000 = 1; (此处div=10000为计算得出)</li>
+<li>得到末位right：12321 % 10 =1; (此处10为定值，用来取个位上的数)</li>
+<li>若left=right，去首尾缩减，x -&gt; 232 ：(12321 % 10000) / 10 。即(x % div) / 10。</li>
+<li>x已缩减两位数-&gt; div减小。div -&gt; div / 100。</li>
+</ul>
+<p><strong>代码实现</strong></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/20/palindrome-number/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/15/reverse-integer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/15/reverse-integer/" itemprop="url">4.整数反转</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-15T17:20:00+08:00">
+                2019-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms-DataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms/DataStructure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/08/15/reverse-integer/" class="leancloud_visitors" data-flag-title="4.整数反转">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。如果反转后整数溢出那么就返回 0。</p>
+<p>如123-&gt;321 , 120-&gt;21 , -123-&gt;-321</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="算法思路-除运算-模运算"><a href="#算法思路-除运算-模运算" class="headerlink" title="算法思路:除运算(/)+模运算(%)"></a>算法思路:除运算(/)+模运算(%)</h3><table>
+<thead>
+<tr>
+<th>除数10</th>
+<th>（1）相除取整x</th>
+<th>（2）取余pop</th>
+<th>（3）对取模结果累计     result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一次循环-&gt;</td>
+<td>1234/10=123</td>
+<td>1234%10=4</td>
+<td>0*10+4=4</td>
+</tr>
+<tr>
+<td>第二次循环-&gt;</td>
+<td>123/10=12</td>
+<td>123%10=3</td>
+<td>4*10+3=43</td>
+</tr>
+<tr>
+<td>第三次循环-&gt;</td>
+<td>12/10=1</td>
+<td>12%10=2</td>
+<td>43*10+2=432</td>
+</tr>
+<tr>
+<td>第四次循环-&gt;</td>
+<td>1/10=0</td>
+<td>1%10=1</td>
+<td>432*10+1=4321</td>
+</tr>
+<tr>
+<td>0—&gt;不再循环</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>关键点</strong>：除数是10，当算出一位数字pop，就会将当前result * 10+pop，并不是对4、3、2、1最后来计算(不是4 * 1000+3*100···)</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/15/reverse-integer/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/longest-substring-without-repeating-characters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/08/longest-substring-without-repeating-characters/" itemprop="url">3.无重复字符的最长子串</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T12:14:00+08:00">
+                2019-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms-DataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms/DataStructure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/08/08/longest-substring-without-repeating-characters/" class="leancloud_visitors" data-flag-title="3.无重复字符的最长子串">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，请你找出其中不含有重复字符的<strong>最长子串</strong>的长度。如”abcabcbb”-&gt;3。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="1、使用List"><a href="#1、使用List" class="headerlink" title="1、使用List"></a>1、使用List</h3><ul>
+<li>list.contains() </li>
+<li>list.add()：遍历每个字符，若list中不存在，加入进列表。</li>
+<li>list.indexOf()：若list中已存在此字符，获取此字符的index，需要将&lt;=该index的字符们从list中移除。</li>
+<li>list.subList(int fromIndex, int toIndex)</li>
+<li>list.removeAll()</li>
+</ul>
+<p><strong>示例</strong></p>
+<ul>
+<li>s=”advdf”；</li>
+<li>list变化：(a)-&gt;(a,d)-&gt;(a,d,v)-&gt;(v,d)-&gt;(v,d,f)</li>
+</ul>
+<p><strong>代码实现</strong></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/08/longest-substring-without-repeating-characters/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/01/add-two-numbers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -526,6 +1354,183 @@
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/equals-hashCode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/deppwang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/15/equals-hashCode/" itemprop="url">equals方法和hashCode</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-15T15:43:20+08:00">
+                2018-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/15/equals-hashCode/" class="leancloud_visitors" data-flag-title="equals方法和hashCode">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Object-类的equals-、hashCode"><a href="#Object-类的equals-、hashCode" class="headerlink" title="Object 类的equals()、hashCode()"></a>Object 类的equals()、hashCode()</h2><p>所有的<code>class</code>最终都继承自<code>Object</code>。<code>Object</code>定义了几个重要的方法：</p>
+<ul>
+<li><p>hashCode()：是一个<code>native</code>方法，计算一个 instance 哈希值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><p>equals()：<code>return (this == obj);</code>，判断是否为同一对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="equals方法-和-的区别"><a href="#equals方法-和-的区别" class="headerlink" title="equals方法 和 == 的区别"></a>equals方法 和 == 的区别</h2><ul>
+<li><p>== 比较两个基本数据类型是否相等，或者比较两个引用是否指向同一个对象。</p>
+</li>
+<li><p>equals 用于比较两个对象是否是同一个对象。</p>
+<p>Integer 重写了 equals 方法，拆箱后用双等号判断是否相等。比较 Integer，用equals方法。</p>
+<p>String 也重写了 equals 方法，比较两个字符串是否含有相同的字符组合。</p>
+</li>
+</ul>
+<h2 id="重写了-equals-方法，就必须重写-hashCode-方法"><a href="#重写了-equals-方法，就必须重写-hashCode-方法" class="headerlink" title="重写了 equals 方法，就必须重写 hashCode 方法"></a>重写了 equals 方法，就必须重写 hashCode 方法</h2><p>重写了 equals 方法，就要重写 hashcode 方法，两个对象相等，他们的 hashcode 要相同。</p>
+<ul>
+<li><p>如果两个对象相等，则 hashcode 一定也是相同的</p>
+</li>
+<li><p>两个对象相等，对两个对象分别调用 equals 方法都返回 true</p>
+</li>
+<li><p>两个对象有相同的 hashcode 值，但它们不一定是相等的</p>
+</li>
+</ul>
+<p>因此，equals 方法被覆盖过，则 hashCode 方法也必须被覆盖</p>
+<p><strong>hashCode 方法的重写原则就是保证 equals 方法认定为相同的两个对象拥有相同的哈希值</strong>。</p>
+
+          
         
       
     </div>
@@ -862,924 +1867,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/25/SpringMVC-technique/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/deppwang.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/25/SpringMVC-technique/" itemprop="url">SpringMVC技巧</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-25T12:10:40+08:00">
-                2018-01-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/01/25/SpringMVC-technique/" class="leancloud_visitors" data-flag-title="SpringMVC技巧">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="注解映射技巧"><a href="#注解映射技巧" class="headerlink" title="注解映射技巧"></a>注解映射技巧</h2><p>@RequestMapping注解：</p>
-<p>(1)支持标准的URL，<br>(2)支持Ant风格的URL（?表示匹配一个字符，<em>表示匹配任一字符，*</em>表示匹配任一的URL的路径）<br>(3)占{xxx}占位符的URL。占位符可以通过类似于参数的方式，提前占到一个URL映射。后面可以用对应的用户提交的具体的值来替换掉对应的占位符。如/user/{userId}匹配user/123、user/abc等URL，123和abc可以在方法中以参数的方式传入，对应的{userId}。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/25/SpringMVC-technique/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/25/Reflection-and-summary-of-the-second-killing-system/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/deppwang.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/25/Reflection-and-summary-of-the-second-killing-system/" itemprop="url">秒杀系统思考与总结</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-25T10:10:40+08:00">
-                2018-01-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/项目/" itemprop="url" rel="index">
-                    <span itemprop="name">项目</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/01/25/Reflection-and-summary-of-the-second-killing-system/" class="leancloud_visitors" data-flag-title="秒杀系统思考与总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="DAO层"><a href="#DAO层" class="headerlink" title="DAO层"></a>DAO层</h2><h4 id="1-数据库设计与编码"><a href="#1-数据库设计与编码" class="headerlink" title="1.数据库设计与编码"></a>1.数据库设计与编码</h4><p>在sql中增/插</p>
-<p>create database,use database;create table;inset into····</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/25/Reflection-and-summary-of-the-second-killing-system/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/19/AJAX-study-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/deppwang.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/19/AJAX-study-notes/" itemprop="url">AJAX学习笔记</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T11:14:04+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/01/19/AJAX-study-notes/" class="leancloud_visitors" data-flag-title="AJAX学习笔记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>(Asynchronous JavaScript and XML)，异步的JavaScript和XML。是一种用于创建快速动态网页的技术。</p>
-<p>最大的优点是在不需要重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。</p>
-<p>通过AJAX，JavaScript无需等待服务器的响应，而是：在等待服务器响应时执行其他脚本；当响应就绪后对响应进行处理。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/19/AJAX-study-notes/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/16/HTML-study-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/deppwang.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/16/HTML-study-notes/" itemprop="url">HTML学习笔记</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-16T15:14:04+08:00">
-                2018-01-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/01/16/HTML-study-notes/" class="leancloud_visitors" data-flag-title="HTML学习笔记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>HTML(Hyper Text Markup Language)，即超文本标记语言，定义了网页的内容。HTML文档也叫做web页面，包含了HTML标签及文本内容。</p>
-<p>HTML运行在浏览器上，由浏览器来解析。只有<body>区域才会在浏览器中显示。</body></p>
-<hr>
-<p>HTML链接是通过标签<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure></p>
-<p><a href="http://www.runoob.com" target="_blank">这是一个链接</a>  </p>
-<p>如果将 target 属性设置为 “_blank”, 链接将在新窗口打开。</p>
-<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTML图像是通过标签```&lt;img&gt;```来定义的。</span><br></pre></td></tr></table></figure>
-
-<img src="/images/logo.png" width="258" height="39">
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">```<span class="params">&lt;br/&gt;</span>```标签定义换行。</span><br><span class="line"></span><br><span class="line">```<span class="params">&lt;hr/&gt;</span>```标签在HTML页面中创建水平线，可用于分隔内容。</span><br><span class="line"></span><br><span class="line">    <span class="params">&lt;!--这是一个注释&gt;</span></span><br><span class="line">    <span class="params">&lt;h1&gt;</span>这是一个标题<span class="params">&lt;/h1&gt;</span></span><br><span class="line">    <span class="params">&lt;p&gt;</span>这是一个段落<span class="params">&lt;/p&gt;</span></span><br><span class="line">    <span class="params">&lt;hr&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​    </span><br><span class="line">-----</span><br><span class="line">可以添加在头部区域<span class="params">&lt;head&gt;</span>的元素标签为: <span class="params">&lt;title&gt;</span>, <span class="params">&lt;style&gt;</span>, <span class="params">&lt;meta&gt;</span>, <span class="params">&lt;link&gt;</span>, <span class="params">&lt;script&gt;</span>, <span class="params">&lt;noscript&gt;</span>, and <span class="params">&lt;base&gt;</span>.</span><br><span class="line"></span><br><span class="line">-----</span><br><span class="line"><span class="meta">#### HTML CSS</span></span><br><span class="line">CSS可以通过以下方式添加到HTML中：</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>内联样式：在HTML元素中使用<span class="string">"style"</span>属性。当特殊的样式需要应用到个别元素时，就可以使用内联样式。</span><br><span class="line"></span><br><span class="line">如定义style=<span class="string">"background-color:green;"</span>    </span><br><span class="line">font-family(字体)，color,font-size(字体大小)，text-align(文字对齐)</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>内部样式表：在HTML文档头部<span class="params">&lt;head&gt;</span>区域使用<span class="params">&lt;style&gt;</span>元素来包含CSS。当单个文件需要特别样式事，可使用内部样式表。</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>外部引用：使用外部CSS文件。当样式需要被应用到很多页面时，可使用外部样式表。</span><br><span class="line"></span><br><span class="line">```html</span><br><span class="line"><span class="params">&lt;head&gt;</span></span><br><span class="line">    <span class="params">&lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;</span></span><br><span class="line"><span class="params">&lt;/head&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="图像由标签定义"><a href="#图像由标签定义" class="headerlink" title="图像由标签定义"></a>图像由<img>标签定义</h4><p>要在页面上显示图像，要使用源属性(src，指”source”)，源属性的值是图像的URL地址。alt属性是替换文本属性（无法载入图像时，显示替代性的文本）</p>
-<h4 id="表格由标签来定义"><a href="#表格由标签来定义" class="headerlink" title="表格由标签来定义"></a>表格由<table>标签来定义</table></h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">由<span class="tag">&lt;<span class="name">tr</span>&gt;</span>标签定义行，</span><br><span class="line"><span class="tag">&lt;<span class="name">th</span>&gt;</span>标签定义表头，</span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>标签定义表格数据。</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">thead</span>&gt;</span>,</span><br><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span>,</span><br><span class="line">t<span class="tag">&lt;<span class="name">foot</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">无序列表使用<span class="tag">&lt;<span class="name">ul</span>&gt;</span>标签</span><br><span class="line">有序列表使用<span class="tag">&lt;<span class="name">ol</span>&gt;</span>标签</span><br><span class="line">每个列表项使用<span class="tag">&lt;<span class="name">li</span>&gt;</span>标签</span><br></pre></td></tr></table></figure>
-
-<h4 id="区块和内联元素"><a href="#区块和内联元素" class="headerlink" title="区块和内联元素"></a>区块和内联元素</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HTML可以通过<span class="tag">&lt;<span class="name">div</span>&gt;</span>和<span class="tag">&lt;<span class="name">span</span>&gt;</span>将元素组合起来</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>定义了文档的区域，块级</span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>用来组合文档中的行内元素，内联元素</span><br><span class="line"></span><br><span class="line">块级元素在浏览器显示时，通常会以新行来开始（结束）。实例：<span class="tag">&lt;<span class="name">h1</span>&gt;</span>,<span class="tag">&lt;<span class="name">p</span>&gt;</span>,<span class="tag">&lt;<span class="name">ul</span>&gt;</span>,<span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line">内联元素在显示时通常不会以新行开始。实例：<span class="tag">&lt;<span class="name">b</span>&gt;</span>,<span class="tag">&lt;<span class="name">td</span>&gt;</span>,<span class="tag">&lt;<span class="name">a</span>&gt;</span>,<span class="tag">&lt;<span class="name">img</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">表单元素时允许用户在表单中输入内容，</span><br><span class="line">如：文本域、下拉列表、单选框、复选框等</span><br><span class="line">1.文本域</span><br><span class="line">&lt;<span class="keyword">form</span>&gt;</span><br><span class="line">    First name:&lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"text"</span> name=<span class="string">"firstname"</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br><span class="line">2.密码字段</span><br><span class="line">&lt;<span class="keyword">form</span>&gt;</span><br><span class="line">    Password:&lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"password"</span> name=<span class="string">"pwd"</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br><span class="line">3.单选按钮</span><br><span class="line">&lt;<span class="keyword">form</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"radio"</span> name=<span class="string">"sex"</span> value=<span class="string">"male"</span>&gt;Male&lt;<span class="keyword">br</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"radio"</span> name=<span class="string">"sex"</span> value=<span class="string">"female"</span>&gt;Female</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br><span class="line">4.复选框</span><br><span class="line">&lt;<span class="keyword">form</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"checkbox"</span> name=<span class="string">"vehicle"</span> value=<span class="string">"Bike"</span>&gt;I have a bike&lt;<span class="keyword">br</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"checkbox"</span> name=<span class="string">"vehicle"</span> value=<span class="string">"Car"</span>&gt;I have a car</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br><span class="line">5.提交按钮</span><br><span class="line">&lt;<span class="keyword">form</span> name=<span class="string">"input"</span> action=<span class="string">"html_form_action.php"</span> method=<span class="string">"get"</span>&gt;</span><br><span class="line">    Username:&lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"text"</span> name=<span class="string">"user"</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"submit"</span> valur=<span class="string">"Submit"</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用框架，可以在同一个浏览器窗口中显示不止一个页面。</span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"demo_iframe.html name="</span><span class="attr">iframe_a</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.runoob.com</span></span></span><br><span class="line"><span class="tag"><span class="string">target="</span><span class="attr">iframe_a</span>"&gt;</span>RUNOOB.COM<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JavaScript最常用于图片操作、表单验证以及内容动态更新。</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span>元素既可包含脚本语句，也可通过src属性指向外部脚本文件</span><br><span class="line"><span class="handlebars"><span class="xml"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span>标签提供无法使用脚本时的替代内容</span></span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/15/jQuery-study-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/deppwang.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/15/jQuery-study-notes/" itemprop="url">jQuery学习笔记</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T13:10:04+08:00">
-                2018-01-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/01/15/jQuery-study-notes/" class="leancloud_visitors" data-flag-title="jQuery学习笔记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>jQuery是一个JavaScript函数库，是目前最流行的JS框架，jQuery库可以通过一行简单的标记被添加到网页中。</p>
-<p>jQuery库包含以下功能：HTML元素选取；HTML元素操作；CSS操作；HTML事件函数；JavaScript特效和动画；HTML DOM遍历和修改；AJAX；Utilities。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/15/jQuery-study-notes/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/10/JavaScript-study-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/deppwang.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/10/JavaScript-study-notes/" itemprop="url">JavaScript学习笔记</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-10T00:10:04+08:00">
-                2018-01-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/01/10/JavaScript-study-notes/" class="leancloud_visitors" data-flag-title="JavaScript学习笔记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>HTML(Hyper Text Markup Language)，即超文本标记语言，定义了网页的内容；   </p>
-<p>CSS(Cascading Style Sheet)，即层叠样式表，描述了网页的布局；  </p>
-<p>JavaScript网页的行为；</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/10/JavaScript-study-notes/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1827,7 +1914,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1849,7 +1936,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Amy&#39;s Blog">
 <meta property="og:description" content="一、关闭钩子介绍 处理被拦截的函数调用、事件、消息的代码，被称为钩子（hook）。  Java shutdown hook 很方便在程序退出时运行一些代码。我们可以使用 java.lang.addshutdownhook (Thread hook) 方法在 JVM 中添加 shutdown hook。  在 JVM 程序即将退出的时候，Hook 线程就会被启动执行。 1、java.lang.Run">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-11-05T07:36:10.812Z">
+<meta property="og:updated_time" content="2020-11-13T02:42:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hook(钩子)线程">
 <meta name="twitter:description" content="一、关闭钩子介绍 处理被拦截的函数调用、事件、消息的代码，被称为钩子（hook）。  Java shutdown hook 很方便在程序退出时运行一些代码。我们可以使用 java.lang.addshutdownhook (Thread hook) 方法在 JVM 中添加 shutdown hook。  在 JVM 程序即将退出的时候，Hook 线程就会被启动执行。 1、java.lang.Run">
@@ -363,6 +363,8 @@
 
 <p>hook： 初始化但未启动的 Thread 对象。</p>
 <p>可以通过调用静态工厂方法 <code>getRuntime()</code> 来获取 <code>Runtime</code> 类的对象。</p>
+<a id="more"></a>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Runtime.getRuntime().addShutdownHook(<span class="keyword">new</span> Thread() &#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">//...</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br><span class="line">或者 Runtime.getRuntime().addShutdownHook(<span class="keyword">new</span> Thread(() -&gt; &#123;<span class="comment">/*...*/</span>&#125;);</span><br><span class="line">或者传入Runnable实例</span><br><span class="line">                                        </span><br><span class="line"><span class="comment">//通过调用静态工厂方法 getRuntime() 来获取 Runtime 类的对象                                  </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Runtime</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Runtime currentRuntime = <span class="keyword">new</span> Runtime();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Runtime <span class="title">getRuntime</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> currentRuntime; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>2、shutdown hook 什么情况下执行？</p>
@@ -545,7 +547,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -567,7 +569,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

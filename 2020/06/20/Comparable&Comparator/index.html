@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Amy&#39;s Blog">
 <meta property="og:description" content="1、Comparable接口12345package java.lang;import java.util.*;public interface Comparable&amp;lt;T&amp;gt; &amp;#123;    public int compareTo(T o);&amp;#125;  列表和数组中的对象，如果实现了Comparable接口，就能直接通过Collections.sort(List)和Arrays">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-11-11T09:00:29.669Z">
+<meta property="og:updated_time" content="2020-11-13T02:49:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Comparable和Comparator">
 <meta name="twitter:description" content="1、Comparable接口12345package java.lang;import java.util.*;public interface Comparable&amp;lt;T&amp;gt; &amp;#123;    public int compareTo(T o);&amp;#125;  列表和数组中的对象，如果实现了Comparable接口，就能直接通过Collections.sort(List)和Arrays">
@@ -356,6 +356,8 @@
 
 <p>列表和数组中的对象，如果实现了<code>Comparable</code>接口，就能直接通过<code>Collections.sort(List)</code>和<code>Arrays.sort(Object[])</code>进行排序。</p>
 <p>实现了<code>Comparable</code>接口的对象，可以用作<code>SortedMap</code>中的键或<code>SortedSet</code>排序集中的元素，且无需指定 Comparator比较器。</p>
+<a id="more"></a>
+
 <p>比如 Integer 类：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Integer</span> <span class="keyword">extends</span> <span class="title">Number</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Integer anotherInteger)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> compare(<span class="keyword">this</span>.value, anotherInteger.value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 根据元素大小比较，-1 小于 anotherInteger，0 等于，1 大于</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (x &lt; y) ? -<span class="number">1</span> : ((x == y) ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -374,6 +376,7 @@
 <li><p><code>Comparator</code> 则是在外部制定排序规则，然后作为排序策略参数传递给某些类，比如 <code>Collections.sort ()</code>，<code>Arrays.sort()</code>，或者一些内部有序的集合（比如 <code>SortedSet</code>，<code>SortedMap</code> 等）。</p>
 </li>
 </ul>
+<p>在定义比较方法中，需要考虑 <code>null</code> 的情况。</p>
 
       
     </div>
@@ -440,6 +443,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/28/serializable/" rel="prev" title="序列化">
+                序列化 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -517,7 +524,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -539,7 +546,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
