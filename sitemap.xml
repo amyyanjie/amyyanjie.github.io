@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/08/20/queue/</loc>
+    
+    <lastmod>2020-11-26T07:46:04.387Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/03/15/equals-hashCode/</loc>
     
-    <lastmod>2020-11-19T10:27:48.972Z</lastmod>
+    <lastmod>2020-11-19T10:32:23.626Z</lastmod>
     
   </url>
   
@@ -233,7 +240,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/22/Java-how-to-retain-two-decimal-places/</loc>
+    <loc>http://yoursite.com/2017/12/04/The-difference-between-Collection-and-Collections-and-the-methods-commonly-used-in-Collections/</loc>
     
     <lastmod>2019-08-02T03:27:06.000Z</lastmod>
     
@@ -247,6 +254,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/2017/10/15/Analyze-the-difference-between-int-and-Integer/</loc>
+    
+    <lastmod>2019-08-02T03:27:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
     
     <lastmod>2019-08-02T03:27:06.000Z</lastmod>
@@ -254,14 +268,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/12/04/The-difference-between-Collection-and-Collections-and-the-methods-commonly-used-in-Collections/</loc>
-    
-    <lastmod>2019-08-02T03:27:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/15/Analyze-the-difference-between-int-and-Integer/</loc>
+    <loc>http://yoursite.com/2017/10/22/Java-how-to-retain-two-decimal-places/</loc>
     
     <lastmod>2019-08-02T03:27:06.000Z</lastmod>
     

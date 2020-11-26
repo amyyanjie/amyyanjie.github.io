@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="字节流、字符流,IO流,">
+  <meta name="keywords" content="IO,">
 
 
 
@@ -90,7 +90,7 @@
 
 
 <meta name="description" content="本文包含以下知识点：   字节流OutputStream和InputStream类及其子类  字符流Writer和Reader类及其子类  转换流OutputStreamWriter和InputStreamReader  代码示例  字节流、字符流的比较  各类的使用场景  流在程序中所有的数据都是以流的方式进行传输和保存的。程序需要数据的时候要使用输入流读取数据，而当程序需要将一些数据保存起来的">
-<meta name="keywords" content="字节流、字符流,IO流">
+<meta name="keywords" content="IO">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字节流、字符流及其转换、比较与使用场景">
 <meta property="og:url" content="http://yoursite.com/2017/11/15/Byte-stream-character-stream-and-its-conversion-comparison-and-usage-scenario/index.html">
@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/12201.png">
 <meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/12202.png">
 <meta property="og:image" content="http://ot8blk4sm.bkt.clouddn.com/221.png">
-<meta property="og:updated_time" content="2019-08-02T03:27:06.000Z">
+<meta property="og:updated_time" content="2020-11-13T08:51:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字节流、字符流及其转换、比较与使用场景">
 <meta name="twitter:description" content="本文包含以下知识点：   字节流OutputStream和InputStream类及其子类  字符流Writer和Reader类及其子类  转换流OutputStreamWriter和InputStreamReader  代码示例  字节流、字符流的比较  各类的使用场景  流在程序中所有的数据都是以流的方式进行传输和保存的。程序需要数据的时候要使用输入流读取数据，而当程序需要将一些数据保存起来的">
@@ -371,6 +371,12 @@
 </ul>
 <h2 id="流"><a href="#流" class="headerlink" title="流"></a>流</h2><p>在程序中所有的数据都是以流的方式进行传输和保存的。程序需要数据的时候要使用<strong>输入流读取数据</strong>，而当程序需要将一些<strong>数据保存</strong>起来的时候，就要使用<strong>输出流完成</strong>。</p>
 <p>在java.io包中操作文件内容的主要有两大类：字节流、字符流。两类都分为输入和输出操作。<strong>输入流基本方法是读，输出流基本方法是写。</strong></p>
+<blockquote>
+<p>输入流输出流是相对于内存而言的，程序运行在内存中。</p>
+<p>从外存读取数据到内存以及将数据从内存写到外存中：</p>
+<p>输入：读取外部数据（磁盘、光盘等存储设备的数据）到程序（内存）中，输入流。</p>
+<p>输出：将数据从程序 (内存) 中写到磁盘、光盘等存储设备中，输出流。</p>
+</blockquote>
 <p><strong>大致操作流程：</strong>（以File为例）  </p>
 <ol>
 <li>使用File类打开一个文件；  </li>
@@ -709,9 +715,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ByteCharStream/" rel="tag"># 字节流、字符流</a>
-          
-            <a href="/tags/IOStream/" rel="tag"># IO流</a>
+            <a href="/tags/IO/" rel="tag"># IO</a>
           
         </div>
       
@@ -814,7 +818,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
