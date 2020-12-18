@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/11/25/Consumer&Supplier&Predicate&Function/</loc>
+    
+    <lastmod>2020-12-18T07:38:10.796Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/11/21/cache-penetration-or-breakdown-or-avalanche/</loc>
     
     <lastmod>2020-12-01T10:38:40.972Z</lastmod>
@@ -247,21 +254,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/15/Analyze-the-difference-between-int-and-Integer/</loc>
-    
-    <lastmod>2019-08-02T03:27:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
-    
-    <lastmod>2019-08-02T03:27:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/12/04/The-difference-between-Collection-and-Collections-and-the-methods-commonly-used-in-Collections/</loc>
+    <loc>http://yoursite.com/2017/10/22/Java-how-to-retain-two-decimal-places/</loc>
     
     <lastmod>2019-08-02T03:27:06.000Z</lastmod>
     
@@ -275,7 +268,21 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/22/Java-how-to-retain-two-decimal-places/</loc>
+    <loc>http://yoursite.com/2017/12/04/The-difference-between-Collection-and-Collections-and-the-methods-commonly-used-in-Collections/</loc>
+    
+    <lastmod>2019-08-02T03:27:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2019-08-02T03:27:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/08/Brief-Analysis-on-the-Differences-between-Java-Primitives-and-Wrappers/</loc>
     
     <lastmod>2019-08-02T03:27:06.000Z</lastmod>
     
@@ -296,14 +303,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
+    <loc>http://yoursite.com/categories/index.html</loc>
     
     <lastmod>2019-08-02T03:27:06.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/index.html</loc>
+    <loc>http://yoursite.com/2017/10/15/Analyze-the-difference-between-int-and-Integer/</loc>
     
     <lastmod>2019-08-02T03:27:06.000Z</lastmod>
     
